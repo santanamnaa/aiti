@@ -1,146 +1,73 @@
-import React, { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useInView } from 'react-intersection-observer';
-import { ExternalLink } from 'lucide-react';
-import SectionHeader from '../common/SectionHeader';
+import React from 'react';
+import { User } from 'lucide-react';
 
-// Portfolio item interface
-interface PortfolioItem {
-  id: number;
-  title: string;
-  category: string;
-  image: string;
-  link: string;
-}
+const profile = {
+  name: 'CHAERRY',
+  title: 'Solution Architect | IT & Telecommunications Expert',
+  location: 'Bandung, Indonesia',
+  image: '/images/directur.png', // Ganti dengan path foto profil
+};
+
+const summary = `Seorang Solution Architect berpengalaman dengan lebih dari 20 tahun kiprah di bidang teknologi informasi dan telekomunikasi. Memiliki spesialisasi dalam merancang dan mengimplementasikan solusi berskala enterprise, modernisasi sistem legacy, serta transformasi digital berbasis AI dan sistem terdistribusi. Menguasai berbagai bahasa pemrograman dan arsitektur sistem modern dengan fokus pada efisiensi, skalabilitas, dan keberlanjutan.`;
+
+const skills = [
+  'Arsitektur Solusi & Sistem (Telco & IT)',
+  'RAG AI (Retrieval-Augmented Generation) & Sistem Pengetahuan',
+  'Full-Stack Development: Java, Kotlin, Python, Go, Node.js',
+  'Desain API: REST, gRPC, SOAP, GraphQL',
+  'Database: Oracle, PostgreSQL, Neo4j (Cypher, PL/SQL, PgSQL)',
+  'Cloud & Vector Database: Pinecone, Supabase, Neo4j Aura',
+  'OSS/BSS Systems: Clarity OSS (Service Manager)',
+  'Sistem Inventarisasi Jaringan & Auto-Discovery',
+  'Administrasi Linux & Shell Scripting',
+  'Metodologi Agile, DevOps, CI/CD Pipelines',
+];
 
 const PortfolioSection: React.FC = () => {
-  const { t } = useTranslation();
-  const [activeFilter, setActiveFilter] = useState('all');
-  const { ref, inView } = useInView({
-    threshold: 0.1,
-    triggerOnce: true,
-  });
-  
-  // Portfolio data
-  const portfolioItems: PortfolioItem[] = [
-    {
-      id: 1,
-      title: 'E-commerce Web Platform',
-      category: 'web',
-      image: '/images/imagehere.png',
-      link: '#'
-    },
-    {
-      id: 2,
-      title: 'Banking Mobile App',
-      category: 'mobile',
-      image: '/images/imagehere.png',
-      link: '#'
-    },
-    {
-      id: 3,
-      title: 'Inventory Management System',
-      category: 'desktop',
-      image: '/images/imagehere.png',
-      link: '#'
-    },
-    {
-      id: 4,
-      title: 'Travel Booking Website',
-      category: 'web',
-      image: '/images/imagehere.png',
-      link: '#'
-    },
-    {
-      id: 5,
-      title: 'Fitness Tracking App',
-      category: 'mobile',
-      image: '/images/imagehere.png',
-      link: '#'
-    },
-    {
-      id: 6,
-      title: 'Point of Sale System',
-      category: 'desktop',
-      image: '/images/imagehere.png',
-      link: '#'
-    }
-  ];
-  
-  // Filter items based on active filter
-  const filteredItems = activeFilter === 'all' 
-    ? portfolioItems 
-    : portfolioItems.filter(item => item.category === activeFilter);
-  
-  // Filter categories
-  const filters = [
-    { id: 'all', name: t('portfolio.all') },
-    { id: 'web', name: t('portfolio.web') },
-    { id: 'mobile', name: t('portfolio.mobile') },
-    { id: 'desktop', name: t('portfolio.desktop') }
-  ];
-  
   return (
-    <section id="portfolio" className="section">
-      <div className="container mx-auto px-4">
-        <SectionHeader 
-          title={t('portfolio.title')} 
-          subtitle={t('portfolio.subtitle')} 
-        />
-        
-        {/* Filter buttons */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {filters.map(filter => (
-            <button
-              key={filter.id}
-              onClick={() => setActiveFilter(filter.id)}
-              className={`px-6 py-2 rounded-full transition-all duration-300 ${
-                activeFilter === filter.id 
-                  ? 'bg-secondary text-white' 
-                  : 'bg-gray-100 text-neutral hover:bg-gray-200'
-              }`}
-            >
-              {filter.name}
-            </button>
-          ))}
-        </div>
-        
-        {/* Portfolio grid */}
-        <div 
-          ref={ref}
-          className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ${
-            inView ? 'opacity-100' : 'opacity-0'
-          } transition-opacity duration-1000`}
-        >
-          {filteredItems.map((item, index) => (
-            <div 
-              key={item.id}
-              className="portfolio-item group"
-              style={{ 
-                transitionDelay: `${index * 100}ms`,
-                opacity: inView ? 1 : 0,
-                transform: inView ? 'translateY(0)' : 'translateY(20px)',
-                transition: 'opacity 0.5s ease, transform 0.5s ease'
-              }}
-            >
-              <img 
-                src={item.image} 
-                alt={item.title} 
-                className="w-full h-64 object-cover"
-              />
-              <div className="portfolio-overlay">
-                <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-                <p className="text-sm text-gray-200 mb-4 capitalize">{item.category}</p>
-                <a 
-                  href={item.link} 
-                  className="flex items-center text-secondary hover:underline"
-                >
-                  {t('portfolio.view')}
-                  <ExternalLink className="w-4 h-4 ml-1" />
-                </a>
+    <section className="section bg-gray-50 py-24 relative overflow-hidden">
+      <div className="container mx-auto px-4 relative z-10">
+        <h2 className="text-2xl md:text-3xl font-bold text-neutral-700 mb-4 text-center">
+          PORTOFOLIO <span className="text-secondary">DIREKSI</span>
+        </h2>
+        <p className="text-neutral-700 mb-10 max-w-2xl mx-auto text-center text-base md:text-lg">
+          <span className="text-secondary font-semibold">AITISERVE</span> dibangun oleh para profesional berpengalaman dengan keahlian mendalam di bidang <span className="text-secondary font-semibold">teknologi</span>. Dengan pemahaman kuat terhadap kebutuhan <span className="text-secondary font-semibold">industri</span>, kami hadir sebagai mitra terpercaya dalam menyediakan <span className="text-secondary font-semibold">solusi digital</span> yang inovatif dan berdampak.
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+          {/* Kiri: Card Profil */}
+          <div className="bg-white border border-gray-200 rounded-xl p-6 flex flex-col items-center shadow-sm">
+            <img
+              src={profile.image}
+              alt={profile.name}
+              className="w-32 h-40 object-cover rounded-lg mb-4 border"
+            />
+            <div className="text-xl font-bold text-neutral-900 mb-1">{profile.name}</div>
+            <div className="text-neutral-700 text-sm mb-2 text-center">{profile.title}</div>
+            <div className="text-secondary text-sm font-medium">{profile.location}</div>
+          </div>
+          {/* Kanan: Ringkasan & Keahlian */}
+          <div className="flex flex-col gap-8">
+            {/* Ringkasan Profesional */}
+            <div>
+              <div className="flex items-center mb-2">
+                <span className="inline-block w-4 h-4 rounded-full bg-secondary mr-2" />
+                <span className="font-bold text-neutral-800 text-lg">Ringkasan Profesional</span>
               </div>
+              <div className="text-neutral-700 text-base md:text-lg pl-6">{summary}</div>
             </div>
-          ))}
+            {/* Keahlian Utama */}
+            <div>
+              <div className="flex items-center mb-2">
+                <span className="inline-block w-4 h-4 rounded-full bg-secondary mr-2" />
+                <span className="font-bold text-neutral-800 text-lg">Keahlian Utama</span>
+              </div>
+              <ul className="list-disc pl-10 text-neutral-700 text-base md:text-lg space-y-1">
+                {skills.map((item, idx) => (
+                  <li key={idx}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </section>

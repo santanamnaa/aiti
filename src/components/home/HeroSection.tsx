@@ -12,25 +12,19 @@ const HeroSection: React.FC = () => {
       {/* Background with diagonal overlay */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-fixed"
-        style={{ backgroundImage: "url('/images/01-good.webp')" }}
+        style={{ backgroundImage: "url('/images/BG_WEB.png')" }}
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/95 to-primary/80"></div>
-      </div>
-
-      {/* Decorative shapes */}
-      <div className="absolute top-0 right-0 w-1/3 h-full opacity-10">
-        <div className="absolute top-0 right-0 w-full h-full bg-secondary transform rotate-45 translate-x-1/2 -translate-y-1/4"></div>
       </div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-3xl">
           <motion.h1 
-            className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight"
+            className="text-5xl md:text-7xl font-heading font-bold text-white mb-6 leading-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            {t('hero.title')}
+            PT AITISERVE DJAYA NARAYA
           </motion.h1>
           
           <motion.p 
@@ -39,7 +33,7 @@ const HeroSection: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            {t('hero.subtitle')}
+            Menyediakan Solusi Digital Terdepan
           </motion.p>
           
           <motion.div 
@@ -52,7 +46,7 @@ const HeroSection: React.FC = () => {
               to="/services" 
               className="btn btn-primary group"
             >
-              {t('hero.cta')}
+              Lihat Layanan
               <ChevronRight className="ml-2 h-5 w-5 transform group-hover:translate-x-1 transition-transform" />
             </Link>
             
@@ -60,7 +54,7 @@ const HeroSection: React.FC = () => {
               to="/contact" 
               className="btn btn-outline"
             >
-              {t('hero.secondary_cta')}
+              Hubungi Kami
             </Link>
           </motion.div>
         </div>

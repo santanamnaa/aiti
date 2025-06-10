@@ -32,7 +32,7 @@ const Header: React.FC = () => {
 
   const headerClasses = `fixed w-full z-40 transition-all duration-300 ${
     isScrolled || !isHomePage
-      ? 'bg-primary shadow-lg py-3'
+      ? 'bg-primary/95 shadow-lg py-1'
       : 'bg-transparent py-5'
   }`;
 
@@ -49,32 +49,10 @@ const Header: React.FC = () => {
             {t('nav.home')}
           </NavLink>
 
-          {/* Dropdown */}
-          <div className="relative">
-            <button
-              className="nav-link flex items-center"
-              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-            >
-              {t('nav.services')}
-              <ChevronDown className="w-4 h-4 ml-1" />
-            </button>
-            {isDropdownOpen && (
-              <div className="absolute left-0 mt-2 w-52 bg-white rounded-md shadow-lg py-2 z-50">
-                <Link to="/services#web" className="block px-4 py-2 text-sm text-primary hover:bg-gray-100">
-                  {t('services.web.title')}
-                </Link>
-                <Link to="/services#mobile" className="block px-4 py-2 text-sm text-primary hover:bg-gray-100">
-                  {t('services.mobile.title')}
-                </Link>
-                <Link to="/services#desktop" className="block px-4 py-2 text-sm text-primary hover:bg-gray-100">
-                  {t('services.desktop.title')}
-                </Link>
-                <Link to="/services#consulting" className="block px-4 py-2 text-sm text-primary hover:bg-gray-100">
-                  {t('services.consulting.title')}
-                </Link>
-              </div>
-            )}
-          </div>
+          {/* Services Link (no dropdown) */}
+          <NavLink to="/services" className={({ isActive }) => isActive ? 'nav-link nav-link-active' : 'nav-link'}>
+            {t('nav.services')}
+          </NavLink>
 
           <NavLink to="/portfolio" className={({ isActive }) => isActive ? 'nav-link nav-link-active' : 'nav-link'}>
             {t('nav.portfolio')}

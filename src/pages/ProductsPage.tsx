@@ -82,33 +82,33 @@ const ProductsPage: React.FC = () => {
   
   return (
     <>
-      {/* Hero */}
-      <section className="pt-32 pb-20 bg-primary">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            {t('productsPage.heroTitle')}
-          </h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            {t('productsPage.heroSubtitle')}
-          </p>
-        </div>
-      </section>
       
       {/* Products */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <SectionHeader 
-            title={t('productsPage.sectionTitle')} 
-            subtitle={t('productsPage.sectionSubtitle')} 
-          />
-          
+      <section className="py-24 bg-gray-50 min-h-screen relative overflow-hidden">
+        {/* Decorative Gradient Header */}
+        <div className="container mx-auto px-6 scrollbar-none relative z-10">
+          {/* Header */}
+          <div className="mb-14 flex flex-col items-center justify-center relative">
+            {/* Blurred Gradient Background - larger and more offset */}
+            <div className="absolute -top-10 left-1/2 -translate-x-1/2 -z-10 w-[120%] h-[160%] flex items-center justify-center pointer-events-none select-none">
+              <div className="w-full h-full bg-gradient-to-r from-secondary/30 via-primary/20 to-secondary/30 blur-3xl rounded-3xl opacity-50"></div>
+            </div>
+            <div className="w-full bg-primary rounded-3xl px-6 py-12 shadow-lg relative z-10">
+              <h2 className="text-5xl md:text-6xl font-semibold text-white text-center tracking-tight drop-shadow-lg relative">
+                Produk & Solusi <span className="text-secondary">AITISERVE</span>
+                <span className="block mx-auto mt-4 w-32 h-1 rounded-full bg-gradient-to-r from-secondary via-white to-secondary opacity-80 animate-pulse-slow"></span>
+              </h2>
+              <p className="text-white/90 mt-8 mb-0 text-lg md:text-xl text-center max-w-3xl mx-auto font-light">
+                Temukan berbagai produk dan solusi digital inovatif dari <span className='text-secondary font-semibold'>AITISERVE</span> yang dirancang untuk mendukung transformasi bisnis Anda. Kami menghadirkan sistem ERP, CRM, Project Management, HR, dan layanan teknologi lainnya yang adaptif, efisien, dan siap menjawab tantangan era digital.
+              </p>
+            </div>
+          </div>
           <div className="space-y-24">
             {products.map((product, index) => {
               const { ref, inView } = useInView({
                 threshold: 0.1,
                 triggerOnce: true,
               });
-              
               return (
                 <div 
                   key={product.id}
@@ -117,43 +117,48 @@ const ProductsPage: React.FC = () => {
                   className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
                 >
                   <div 
-                    className={index % 2 === 0 ? 'order-1 lg:order-1' : 'order-1 lg:order-2'}
+                    className={
+                      `relative z-10 ${index % 2 === 0 ? 'order-1 lg:order-1' : 'order-1 lg:order-2'} ` +
+                      'transition-all duration-500'
+                    }
                     style={{ 
                       opacity: inView ? 1 : 0,
-                      transform: inView ? 'translateY(0)' : 'translateY(20px)',
-                      transition: 'opacity 0.5s ease, transform 0.5s ease'
+                      transform: inView ? 'translateY(0)' : 'translateY(40px)',
                     }}
                   >
-                    <h2 className="text-3xl font-bold text-primary mb-4">{product.title}</h2>
-                    <p className="text-neutral mb-6">{product.description}</p>
-                    
-                    <div className="space-y-3">
-                      {product.features.map((feature, idx) => (
-                        <div key={idx} className="flex items-start">
-                          <Check className="w-5 h-5 text-secondary mr-2 flex-shrink-0 mt-1" />
-                          <p className="text-neutral-dark">{feature}</p>
-                        </div>
-                      ))}
+                    <div className="bg-gradient-to-br from-white via-secondary/10 to-primary/5 rounded-2xl shadow-xl p-10 hover:shadow-2xl transition-all duration-300">
+                      <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4 tracking-tight">
+                        {product.title}
+                      </h2>
+                      <p className="text-neutral-700 mb-8 text-lg font-light">{product.description}</p>
+                      <div className="space-y-4 mb-8">
+                        {product.features.map((feature, idx) => (
+                          <div key={idx} className="flex items-start">
+                            <Check className="w-6 h-6 text-secondary mr-3 flex-shrink-0 mt-1" />
+                            <p className="text-neutral-800 text-base md:text-lg font-medium">{feature}</p>
+                          </div>
+                        ))}
+                      </div>
+                      <button className="inline-block px-8 py-3 rounded-full bg-primary text-white font-semibold text-lg shadow-md hover:bg-secondary hover:text-primary transition-all duration-300">
+                        {t('productsPage.learnMoreButton')}
+                      </button>
                     </div>
-                    
-                    <button className="btn btn-primary mt-8">
-                      {t('productsPage.learnMoreButton')}
-                    </button>
                   </div>
-                  
                   <div 
-                    className={index % 2 === 0 ? 'order-2 lg:order-2' : 'order-2 lg:order-1'}
+                    className={
+                      `relative z-10 ${index % 2 === 0 ? 'order-2 lg:order-2' : 'order-2 lg:order-1'} ` +
+                      'transition-all duration-500 flex justify-center'
+                    }
                     style={{ 
                       opacity: inView ? 1 : 0,
-                      transform: inView ? 'translateY(0)' : 'translateY(20px)',
-                      transition: 'opacity 0.5s ease, transform 0.5s ease',
+                      transform: inView ? 'translateY(0)' : 'translateY(40px)',
                       transitionDelay: '0.2s'
                     }}
                   >
                     <img 
                       src={product.image} 
                       alt={product.title} 
-                      className="w-full h-auto rounded-lg shadow-lg"
+                      className="w-full max-w-md h-auto rounded-2xl shadow-2xl border-4 border-white bg-white object-cover"
                     />
                   </div>
                 </div>
@@ -162,8 +167,6 @@ const ProductsPage: React.FC = () => {
           </div>
         </div>
       </section>
-      
-      
       {/* CTA */}
       <CtaSection />
     </>

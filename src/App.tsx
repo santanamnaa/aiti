@@ -9,6 +9,8 @@ import CareersPage from './pages/CareersPage';
 import ContactPage from './pages/ContactPage';
 import CompanyProfilePage from './pages/CompanyProfilePage';
 import NotFoundPage from './pages/NotFoundPage';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import TermsOfServicePage from './pages/TermsOfServicePage';
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
         <Route path="careers" element={<CareersPage />} />
         <Route path="contact" element={<ContactPage />} />
         <Route path="company-profile" element={<CompanyProfilePage />} />
+        <Route path="privacy-policy" element={<PrivacyPolicyPage />} />
+        <Route path="terms-of-service" element={<TermsOfServicePage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
