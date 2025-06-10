@@ -12,7 +12,7 @@ const HeroSection: React.FC = () => {
       {/* Background with diagonal overlay */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-fixed"
-        style={{ backgroundImage: "url('/images/BG_WEB.png')" }}
+        style={{ backgroundImage: "url('/images/BG_WEB.webp')" }}
       >
       </div>
       

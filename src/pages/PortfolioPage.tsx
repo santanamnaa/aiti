@@ -5,7 +5,7 @@ const profile = {
   name: 'CHAERRY',
   title: 'Solution Architect | IT & Telecommunications Expert',
   location: 'Bandung, Indonesia',
-  image: '/images/directur.png',
+  image: '/images/directur.webp',
 };
 
 const summary = `Seorang Solution Architect berpengalaman dengan lebih dari 20 tahun kiprah di bidang teknologi informasi dan telekomunikasi. Memiliki spesialisasi dalam merancang dan mengimplementasikan solusi berskala enterprise, modernisasi sistem legacy, serta transformasi digital berbasis AI dan sistem terdistribusi. Menguasai berbagai bahasa pemrograman dan arsitektur sistem modern dengan fokus pada efisiensi, skalabilitas, dan keberlanjutan.`;
