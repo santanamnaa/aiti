@@ -340,7 +340,7 @@ const HomePage: React.FC = () => {
       </div>
 
       {/* CONTACT & FOOTER */}
-      <div className="relative bg-[#18202B] overflow-hidden py-16">
+      <div className="relative bg-primary overflow-hidden py-16">
         <div className="container mx-auto px-4 text-center text-white">
           <h2 className="text-2xl md:text-3xl font-bold mb-4">Hubungi Kami</h2>
           <p className="mb-6 text-base md:text-lg">
@@ -354,55 +354,6 @@ const HomePage: React.FC = () => {
           </a>
         </div>
       </div>
-      <footer className="bg-[#15212C] text-gray-400 py-10">
-        <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div>
-            <img src="/images/aiti-logo-footer.png" alt="AITI Logo" className="w-24 mb-4" />
-            <p className="text-sm">
-              AITISERVE DJAYA NARAYA combines AI and IT to deliver innovative, results-driven digital solutions that shape the future of technology.
-            </p>
-          </div>
-          <div>
-            <h4 className="text-white font-semibold mb-2">Quick Links</h4>
-            <ul className="space-y-1 text-sm">
-              <li><a href="/" className="hover:text-white">Home</a></li>
-              <li><a href="/about" className="hover:text-white">About Us</a></li>
-              <li><a href="/portfolio" className="hover:text-white">Portfolio</a></li>
-              <li><a href="/products" className="hover:text-white">Products</a></li>
-              <li><a href="/careers" className="hover:text-white">Careers</a></li>
-              <li><a href="/contact" className="hover:text-white">Contact</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-white font-semibold mb-2">Solutions</h4>
-            <ul className="space-y-1 text-sm">
-              <li><a href="#" className="hover:text-white">Network Inventory & Auto-Discovery</a></li>
-              <li><a href="#" className="hover:text-white">OSS/BSS Integration & Automation</a></li>
-              <li><a href="#" className="hover:text-white">Geospatial & GIS Solutions</a></li>
-              <li><a href="#" className="hover:text-white">Custom Software Development</a></li>
-              <li><a href="#" className="hover:text-white">IT & AI Consulting</a></li>
-              <li><a href="#" className="hover:text-white">Technical Support & Managed Services</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-white font-semibold mb-2">Let's Connect</h4>
-            <p className="text-sm">
-              Jl. Manglid, Komplek Grand Kopo Parahayangan Blok A No 20, Margahayu Selatan, Margahayu Kab, Bandung Jawa Barat
-            </p>
-            <p className="text-sm mt-2">
-              <a href="mailto:hr@aitiserve.co.id" className="hover:text-white">hr@aitiserve.co.id</a>
-            </p>
-          </div>
-        </div>
-        <div className="text-center text-gray-500 mt-8 text-sm">
-          <hr className="border-gray-700 mb-4"/>
-          <p>
-            Copyright © PT AITISERVE DJAYA NARAYA (AITISERVE) 2025. All Rights Reserved. 
-            <a href="/privacy" className="underline hover:text-white ml-2">Privacy Policy</a> | 
-            <a href="/terms" className="underline hover:text-white ml-1">Terms of Service</a>
-          </p>
-        </div>
-      </footer>
     </div>
   );
 };
