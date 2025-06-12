@@ -45,10 +45,10 @@ const blogPosts = [
 
 const BlogPage: React.FC = () => {
   return (
-    <div className="bg-white min-h-screen w-full py-16 px-4">
-      <div className="container mx-auto">
+    <div className="bg-white min-h-screen w-full py-24 px-4">
+      <div className="container mx-auto py-24">
         <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-8 text-center">Blog</h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 py-24 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {blogPosts.map((post, idx) => (
             <div key={idx} className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
               <img src={post.image} alt={post.title} className="w-full h-48 object-cover" />
