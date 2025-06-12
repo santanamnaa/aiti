@@ -292,8 +292,8 @@ const HomePage: React.FC = () => {
                 ease: 'linear',
               }}
             >
-              <img src="/images/techstack2.svg" alt="Figma" className="inline-block h-56" />
-              <img src="/images/techstack2.svg" alt="Figma" className="inline-block h-56" />
+              <img src="/images/techstack.svg" alt="Figma" className="inline-block h-auto" />
+              <img src="/images/techstack.svg" alt="Figma" className="inline-block h-auto" />
             </motion.div>
           </motion.div>
         </div>
