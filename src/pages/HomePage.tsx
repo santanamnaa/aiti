@@ -1,29 +1,433 @@
 import React, { useEffect } from 'react';
-import HeroSection from '../components/home/HeroSection';
-import ServicesSection from '../components/home/ServicesSection';
-import PortfolioSection from '../components/home/PortfolioSection';
-import CtaSection from '../components/home/CtaSection';
-import About from '../components/home/AboutSection';
-import CoreValuesSection from '../components/home/CoreValuesSection';
-import TechCompetenceSection from '../components/home/TechCompetenceSection';
+import { motion } from 'framer-motion';
 
+const blogPosts = [
+  {
+    image: '/images/blog1.png',
+    category: 'Full-Stack Web Development',
+    title: 'Terke.corp',
+    description: 'Membangun platform web modern untuk kolaborasi tim dan otomasi bisnis dengan stack JavaScript full-stack.',
+    icons: ['/images/figma.png', '/images/github.png', '/images/javascript.png', '/images/nodejs.png', '/images/mongo.png'],
+    link: '#',
+  },
+  {
+    image: '/images/blog2.png',
+    category: 'Flutter Development',
+    title: 'MeetsUp App',
+    description: 'Aplikasi mobile lintas platform untuk event dan komunitas, dibangun dengan Flutter dan Firebase.',
+    icons: ['/images/figma.png', '/images/github.png', '/images/flutter.png', '/images/firebase.png'],
+    link: '#',
+  },
+  {
+    image: '/images/blog3.png',
+    category: 'Full-Stack JavaScript Development',
+    title: 'Orka StartUp',
+    description: 'Solusi startup digital dengan integrasi Node.js, MongoDB, dan React untuk pertumbuhan bisnis.',
+    icons: ['/images/figma.png', '/images/github.png', '/images/js.png', '/images/nodejs.png', '/images/mongo.png'],
+    link: '#',
+  },
+  {
+    image: '/images/blog4.png',
+    category: 'AI & Machine Learning',
+    title: 'SmartVision AI',
+    description: 'Implementasi computer vision untuk analisis data visual di industri manufaktur.',
+    icons: ['/images/python.png', '/images/github.png', '/images/tensorflow.png'],
+    link: '#',
+  },
+  {
+    image: '/images/blog5.png',
+    category: 'Cloud Infrastructure',
+    title: 'CloudOps Platform',
+    description: 'Otomasi deployment dan monitoring cloud dengan DevOps tools modern.',
+    icons: ['/images/aws.png', '/images/docker.png', '/images/github.png'],
+    link: '#',
+  },
+];
 
 const HomePage: React.FC = () => {
   useEffect(() => {
-    // Update page title
     document.title = 'AITI - Innovative Technology Services';
   }, []);
 
   return (
-    <>
-      <HeroSection />
-      <About />
-      <CoreValuesSection />
-      <ServicesSection />
-      <TechCompetenceSection />
-      <PortfolioSection />
-      <CtaSection />
-    </>
+    <div className="bg-[#18202B] min-h-screen w-full overflow-x-hidden">
+      {/* HERO SECTION */}
+      <div className="relative min-h-screen flex items-center bg-[#18202B] overflow-hidden" style={{ backgroundImage: 'url(/images/BG_WEB.webp)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+        {/* Decorative background shapes */}
+
+
+
+
+        <div className="container mx-auto px-4 relative z-10 pt-16 pb-8">
+          <div className="max-w-3xl">
+            <motion.h1
+              className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              Digital Transformation<br />Solutions
+            </motion.h1>
+            <motion.p
+              className="text-base md:text-lg text-gray-200 mb-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              Mitra terpercaya Anda dalam solusi teknologi cerdas berbasis AI dan TI untuk masa depan yang berkelanjutan.
+            </motion.p>
+            <motion.div
+              className="flex flex-wrap gap-4 mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              <a
+                href="#services"
+                className="bg-secondary hover:bg-secondary text-white font-semibold px-6 py-2 rounded-full shadow transition"
+              >
+                Lihat Layanan
+              </a>
+              <a
+                href="#contact"
+                className="border border-secondary text-secondary hover:bg-secondary hover:text-white font-semibold px-6 py-2 rounded-full transition"
+              >
+                Konsultasi Gratis
+              </a>
+            </motion.div>
+            <motion.div
+              className="text-2xl md:text-3xl font-medium text-white flex items-center gap-2"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+            >
+              Shaping a <span className="text-secondary font-bold ml-2">Brighter Future</span>
+            </motion.div>
+          </div>
+        </div>
+      </div>
+
+      {/* MAIN CONTENT WRAPPER: About, Services, Portfolio/Team, Teknologi & Kompetensi Inti */}
+      <div className="relative bg-white overflow-hidden">
+        {/* Ornamen lingkaran besar gelap dan secondary kiri bawah */}
+
+        <img src="/images/Ellipse.png" alt="ornamen" className="hidden md:block absolute left-40 bottom-24 w-[300px] h-auto z-0 pointer-events-none select-none" aria-hidden="true" />
+        {/* Ornamen lingkaran transparan dan foto kanan atas */}
+        <img src="/images/Subtract.png" alt="decor" className="hidden md:block absolute top-0 right-0 w-[420px] h-auto z-0 pointer-events-none select-none" style={{ maxWidth: '50vw' }} aria-hidden="true" />
+        {/* ABOUT */}
+        <div className="container mx-auto px-4 relative z-10 flex flex-col items-start pt-16 pb-8">
+          <div className="w-full max-w-2xl text-left">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-700 mb-4">
+              SEKILAS TENTANG <span className="text-secondary">AITISERVE</span>
+            </h2>
+            <p className="text-base md:text-lg mb-2 font-bold text-secondary">PT AITISERVE DJAYA NARAYA</p>
+            <p className="text-base md:text-lg text-gray-800 mb-6">
+              adalah perusahaan teknologi yang berdiri pada tahun 2024, fokus menghadirkan solusi digital berbasis kecerdasan buatan (AI) dan teknologi informasi (TI). Kami hadir sebagai mitra transformasi digital untuk masa depan Indonesia yang lebih cerdas dan berkelanjutan.
+            </p>
+            <a
+              href="/about"
+              className="bg-secondary hover:bg-secondary text-white font-semibold px-8 py-2 rounded-lg shadow transition text-base w-fit block mb-8"
+              style={{ boxShadow: '0 4px 16px 0 rgba(0, 204, 204, 0.15)' }}
+            >
+              Selengkapnya
+            </a>
+          </div>
+          {/* Ilustrasi gedung dan ornamen bulat kecil */}
+          <div className="relative w-full flex justify-center mt-4 mb-0">
+            <div className="relative w-[260px] md:w-[300px] lg:w-[360px]">
+              <img
+                src="/images/cuate.png"
+                alt="Gedung"
+                className="w-full h-auto drop-shadow-xl relative z-10"
+                draggable="false"
+              />
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-6 h-6 bg-secondary rounded-full opacity-60 z-0" />
+              <div className="absolute -top-2 right-0 w-4 h-4 bg-secondary rounded-full opacity-40 z-0" />
+              <div className="absolute -top-6 left-4 w-5 h-5 bg-secondary rounded-full opacity-40 z-0" />
+            </div>
+          </div>
+        </div>
+        {/* SERVICES */}
+        <div className="container mx-auto px-4 relative z-10 pt-0 pb-8">
+          <div className="relative flex flex-col items-center w-full mt-2 mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-700 mb-2 text-center">
+              RUANG LINGKUP <span className="text-secondary">LAYANAN</span>
+            </h2>
+            <p className="text-gray-700 mb-10 max-w-2xl mx-auto text-center text-base md:text-lg">
+              Sebagai perusahaan yang mengintegrasikan kecerdasan buatan dan teknologi informasi, AITISERVE menyediakan layanan lengkap yang dirancang untuk menjawab tantangan era digital. Ruang lingkup layanan kami meliputi:
+            </p>
+          </div>
+          <div className="w-full flex justify-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-40 gap-y-8">
+              <ServiceCard
+                icon={<img src="/images/service1.png" alt="icon" className="w-24 h-24" />} 
+                title={<span className="font-bold text-secondary">Konsultasi IT dan AI</span>} 
+                description="Pendampingan strategis untuk transformasi digital Anda." 
+                delay={0}
+              />
+              <ServiceCard
+                icon={<img src="/images/service2.png" alt="icon" className="w-24 h-24" />} 
+                title={<span className="font-bold text-secondary">Pengembangan Aplikasi Web</span>} 
+                description="Aplikasi web modern dengan desain responsif dan performa optimal." 
+                delay={1}
+              />
+              <ServiceCard
+                icon={<img src="/images/service3.png" alt="icon" className="w-24 h-24" />} 
+                title={<span className="font-bold text-secondary">Pengembangan Aplikasi Mobile</span>} 
+                description="Aplikasi lintas platform berbasis AI untuk pengalaman unggul." 
+                delay={2}
+              />
+              <ServiceCard
+                icon={<img src="/images/service4.png" alt="icon" className="w-24 h-24" />} 
+                title={<span className="font-bold text-secondary">Pengembangan Aplikasi Desktop</span>} 
+                description="Solusi desktop tangguh dan terintegrasi." 
+                delay={3}
+              />
+              <ServiceCard
+                icon={<img src="/images/service5.png" alt="icon" className="w-24 h-24" />} 
+                title={<span className="font-bold text-secondary">Pengembangan Sistem Informasi Geografis (GIS)</span>} 
+                description="Analisis spasial dan visualisasi lokasi untuk pengambilan keputusan cerdas." 
+                delay={4}
+              />
+              <ServiceCard
+                icon={<img src="/images/service6.png" alt="icon" className="w-24 h-24" />} 
+                title={<span className="font-bold text-secondary">Dukungan Teknis</span>} 
+                description="Layanan bantuan 24/7 untuk sistem Anda." 
+                delay={5}
+              />
+            </div>
+          </div>
+        </div>
+        {/* PORTOFOLIO/TEAM SECTION */}
+        <div className="relative bg-white overflow-hidden min-h-[600px] flex items-center py-20">
+          {/* Ornamen kiri */}
+          <img
+            src="/images/SubtractPlain.png"
+            alt="ornamen"
+            className="absolute -left-0 top-0 w-[320px] z-0 pointer-events-none select-none"
+            aria-hidden="true"
+          />
+          <img
+            src="/images/Ellipse.png"
+            alt="ornamen"
+            className="absolute -left-24 bottom-0 w-[180px] z-0 pointer-events-none select-none opacity-50"
+            aria-hidden="true"
+          />
+
+          {/* Konten utama di kanan, rata tengah */}
+          <div className="relative z-8 flex flex-1 justify-end w-full pr-4 md:pr-56">
+            <div className="flex flex-col items-center justify-center w-full max-w-xl text-center ml-auto mr-2 md:mr-8">
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-700 mb-4">
+                PORTOFOLIO <span className="text-secondary">TEAM</span>
+              </h2>
+              <p className="text-gray-800 mb-10 text-lg md:text-xl leading-relaxed">
+                Kekuatan kami terletak pada pengalaman profesional pendiri dan tim utama yang telah teruji dalam berbagai proyek berskala besar, mulai dari otomasi jaringan, sistem informasi geografis, hingga integrasi sistem enterprise untuk industri telekomunikasi nasional. Fondasi teknis yang kokoh ini menjadikan AITISERVE siap bersaing di era transformasi digital.
+              </p>
+              <a
+                href="/portfolio"
+                className="bg-secondary hover:bg-secondary text-white font-semibold px-8 py-2 rounded-lg shadow transition text-base mb-8"
+                style={{ boxShadow: '0 4px 16px 0 rgba(0, 204, 204, 0.15)' }}
+              >
+                Selengkapnya
+              </a>
+              <img
+                src="/images/cuate2.png"
+                alt="Team Illustration"
+                className="w-[250px] md:w-[320px] h-auto drop-shadow-xl mx-auto"
+                draggable="false"
+              />
+            </div>
+          </div>
+        </div>
+        {/* TEKNOLOGI DAN KOMPETENSI INTI */}
+        <div className="container mx-auto px-4 relative z-10 pt-8 pb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-700 mb-4 text-center">
+            TEKNOLOGI DAN <span className="text-secondary">KOMPETENSI INTI</span>
+          </h2>
+          <p className="text-gray-700 mb-10 max-w-2xl mx-auto text-center text-lg md:text-xl">
+            AITISERVE mengandalkan beragam teknologi terdepan untuk menghadirkan solusi digital yang tangguh, efisien, dan adaptif terhadap kebutuhan industri. Dengan pendekatan berbasis AI dan IT modern, berikut adalah ekosistem teknologi yang mendukung layanan kami:
+          </p>
+          <div className="max-w-4xl mx-auto flex flex-col gap-16">
+            {/* Blok 1: Ikon kiri */}
+            <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
+              <div className="flex-shrink-0 w-24 h-24 flex items-center justify-center mr-6 self-center">
+                <img src="/images/IconTech1.png" alt="icon" className="w-24 h-24" />
+              </div>
+              <div className="flex-1 mt-4 md:mt-0">
+                <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">Arsitektur Sistem & Pengembangan Solusi</h3>
+                <p className="text-gray-700 text-base md:text-lg">
+                  Termasuk rancangan sistem Telco & IT, OSS/BSS, serta penerapan AI berbasis Retrieval-Augmented Generation (RAG). Tim kami menguasai pengembangan full-stack menggunakan Java, Kotlin, Python, Go, Node.js, serta pengembangan antarmuka modern dengan React Native, Flutter, dan berbagai framework frontend.
+                </p>
+              </div>
+            </div>
+            {/* Blok 2: Ikon kanan */}
+            <div className="flex flex-col md:flex-row-reverse items-center md:items-start gap-6">
+              <div className="flex-shrink-0 w-24 h-24 flex items-center justify-center mr-6 self-center">
+                <img src="/images/IconTech2.png" alt="icon" className="w-24 h-24" />
+              </div>
+              <div className="flex-1 mt-4 md:mt-0">
+                <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">Basis Data & Infrastruktur</h3>
+                <p className="text-gray-700 text-base md:text-lg">
+                  Mencakup pengelolaan database relasional dan graph (Oracle, PostgreSQL, Neo4j), pemanfaatan cloud dan vector database seperti Supabase dan Pinecone, serta dukungan server dan storage berbasis Linux, NGINX, dan MinIO. Untuk kebutuhan spasial, kami menggunakan GeoServer.
+                </p>
+              </div>
+            </div>
+            {/* Blok 3: Ikon kiri */}
+            <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
+              <div className="flex-shrink-0 w-24 h-24 flex items-center justify-center mr-6 self-center">
+                <img src="/images/IconTech3.png" alt="icon" className="w-24 h-24" />
+              </div>
+              <div className="flex-1 mt-4 md:mt-0">
+                <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">DevOps & Keamanan Sistem</h3>
+                <p className="text-gray-700 text-base md:text-lg">
+                  Meliputi manajemen server Linux, scripting, penggunaan container (Docker), orkestrasi (Kafka), serta pipeline CI/CD dengan GitLab, Jenkins, dan metodologi Agile. Keamanan sistem dijaga melalui standar OWASP, enkripsi SSL/TLS, dan protokol aman seperti SSH dan SFTP.
+                </p>
+              </div>
+            </div>
+            {/* Blok 4: Ikon kanan */}
+            <div className="flex flex-col md:flex-row-reverse items-center md:items-start gap-6">
+              <div className="flex-shrink-0 w-24 h-24 flex items-center justify-center mr-6 self-center">
+                <img src="/images/IconTech4.png" alt="icon" className="w-24 h-24" />
+              </div>
+              <div className="flex-1 mt-4 md:mt-0">
+                <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">Desain & Antarmuka Pengguna</h3>
+                <p className="text-gray-700 text-base md:text-lg">
+                  Difokuskan pada pengembangan UI/UX menggunakan Figma dan pengembangan aplikasi mobile lintas platform berbasis AI dengan Flutter dan React Native.
+                </p>
+                {/* Logo Node kecil, di tengah */}
+                <div className="flex flex-row gap-8 mt-6 justify-center">
+                  <img src="/images/nodejs.png" alt="Node" className="w-20 h-20" />
+                  <img src="/images/nodejs.png" alt="Node" className="w-20 h-20" />
+                  <img src="/images/nodejs.png" alt="Node" className="w-20 h-20" />
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* Logo JS besar, di tengah, di bawah semua blok */}
+          <div className="flex flex-row gap-12 mt-10 justify-center">
+            <img src="/images/javascript.png" alt="JS" className="w-20 h-20" />
+            <img src="/images/javascript.png" alt="JS" className="w-20 h-20" />
+            <img src="/images/javascript.png" alt="JS" className="w-20 h-20" />
+          </div>
+        </div>
+      </div>
+
+      {/* OUR BLOG SECTION */}
+      <div className="relative bg-white overflow-hidden py-16 md:py-24">
+        <div className="container mx-auto px-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-700 mb-8 text-center">
+            OUR <span className="text-secondary">BLOG</span>
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {blogPosts.slice(0, 3).map((post, idx) => (
+              <div key={idx} className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
+                <img src={post.image} alt={post.title} className="w-full h-40 object-cover" />
+                <div className="p-6 flex flex-col flex-1">
+                  <p className="text-sm text-gray-500 mb-2">{post.category}</p>
+                  <h3 className="text-lg font-semibold text-gray-800 mb-2">{post.title}</h3>
+                  <p className="text-gray-700 mb-4 flex-1">{post.description}</p>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {post.icons.map((icon, i) => (
+                      <img key={i} src={icon} alt={`icon_${i}`} className="w-6 h-6 object-contain" />
+                    ))}
+                  </div>
+                  <a href={post.link} className="text-secondary font-semibold hover:underline mt-auto">Read More</a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* CONTACT & FOOTER */}
+      <div className="relative bg-[#18202B] overflow-hidden py-16">
+        <div className="container mx-auto px-4 text-center text-white">
+          <h2 className="text-2xl md:text-3xl font-bold mb-4">Hubungi Kami</h2>
+          <p className="mb-6 text-base md:text-lg">
+            Untuk konsultasi lebih lanjut, hubungi kami melalui email atau kunjungi situs web kami.
+          </p>
+          <a
+            href="/contact"
+            className="inline-block border border-white text-white hover:bg-white hover:text-[#18202B] font-semibold px-6 py-2 rounded-full transition"
+          >
+            Hubungi Kami
+          </a>
+        </div>
+      </div>
+      <footer className="bg-[#15212C] text-gray-400 py-10">
+        <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <img src="/images/aiti-logo-footer.png" alt="AITI Logo" className="w-24 mb-4" />
+            <p className="text-sm">
+              AITISERVE DJAYA NARAYA combines AI and IT to deliver innovative, results-driven digital solutions that shape the future of technology.
+            </p>
+          </div>
+          <div>
+            <h4 className="text-white font-semibold mb-2">Quick Links</h4>
+            <ul className="space-y-1 text-sm">
+              <li><a href="/" className="hover:text-white">Home</a></li>
+              <li><a href="/about" className="hover:text-white">About Us</a></li>
+              <li><a href="/portfolio" className="hover:text-white">Portfolio</a></li>
+              <li><a href="/products" className="hover:text-white">Products</a></li>
+              <li><a href="/careers" className="hover:text-white">Careers</a></li>
+              <li><a href="/contact" className="hover:text-white">Contact</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="text-white font-semibold mb-2">Solutions</h4>
+            <ul className="space-y-1 text-sm">
+              <li><a href="#" className="hover:text-white">Network Inventory & Auto-Discovery</a></li>
+              <li><a href="#" className="hover:text-white">OSS/BSS Integration & Automation</a></li>
+              <li><a href="#" className="hover:text-white">Geospatial & GIS Solutions</a></li>
+              <li><a href="#" className="hover:text-white">Custom Software Development</a></li>
+              <li><a href="#" className="hover:text-white">IT & AI Consulting</a></li>
+              <li><a href="#" className="hover:text-white">Technical Support & Managed Services</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="text-white font-semibold mb-2">Let's Connect</h4>
+            <p className="text-sm">
+              Jl. Manglid, Komplek Grand Kopo Parahayangan Blok A No 20, Margahayu Selatan, Margahayu Kab, Bandung Jawa Barat
+            </p>
+            <p className="text-sm mt-2">
+              <a href="mailto:hr@aitiserve.co.id" className="hover:text-white">hr@aitiserve.co.id</a>
+            </p>
+          </div>
+        </div>
+        <div className="text-center text-gray-500 mt-8 text-sm">
+          <hr className="border-gray-700 mb-4"/>
+          <p>
+            Copyright © PT AITISERVE DJAYA NARAYA (AITISERVE) 2025. All Rights Reserved. 
+            <a href="/privacy" className="underline hover:text-white ml-2">Privacy Policy</a> | 
+            <a href="/terms" className="underline hover:text-white ml-1">Terms of Service</a>
+          </p>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+// ServiceCard component for use in Services section
+const ServiceCard = ({ icon, title, description, delay }: { icon: React.ReactNode; title: React.ReactNode; description: string; delay: number }) => {
+  return (
+    <a href="/services" className="block group">
+      <motion.div
+        className="flex flex-row items-center bg-white border border-gray-200 rounded-xl px-10 py-8 min-w-[480px] w-full shadow-[0_2px_12px_0_rgba(0,0,0,0.06)] transition-all duration-300 ease-in-out cursor-pointer group-hover:shadow-2xl gap-8"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7, delay: delay * 0.1 }}
+        tabIndex={0}
+      >
+        <div className="flex-shrink-0 w-24 h-24 flex items-center justify-center mr-6">
+          {icon}
+        </div>
+        <div className="flex flex-col justify-center h-full">
+          <div className="text-lg md:text-xl font-bold text-secondary mb-1 leading-tight">{title}</div>
+          <div className="text-gray-900 text-base md:text-lg leading-snug">{description}</div>
+        </div>
+      </motion.div>
+    </a>
   );
 };
 

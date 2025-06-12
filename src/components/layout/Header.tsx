@@ -57,6 +57,9 @@ const Header: React.FC = () => {
           <NavLink to="/portfolio" className={({ isActive }) => isActive ? 'nav-link nav-link-active' : 'nav-link'}>
             {t('nav.portfolio')}
           </NavLink>
+          <NavLink to="/blog" className={({ isActive }) => isActive ? 'nav-link nav-link-active' : 'nav-link'}>
+            Blog
+          </NavLink>
           <NavLink to="/products" className={({ isActive }) => isActive ? 'nav-link nav-link-active' : 'nav-link'}>
             {t('nav.products')}
           </NavLink>
@@ -99,6 +102,9 @@ const Header: React.FC = () => {
             </NavLink>
             <NavLink to="/portfolio" className={({ isActive }) => `py-3 ${isActive ? 'nav-link nav-link-active' : 'nav-link'}`}>
               {t('nav.portfolio')}
+            </NavLink>
+            <NavLink to="/blog" className={({ isActive }) => `py-3 ${isActive ? 'nav-link nav-link-active' : 'nav-link'}`}>
+              Blog
             </NavLink>
             <NavLink to="/products" className={({ isActive }) => `py-3 ${isActive ? 'nav-link nav-link-active' : 'nav-link'}`}>
               {t('nav.products')}

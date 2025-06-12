@@ -1,86 +1,65 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronRight } from 'lucide-react';
-import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 
 const HeroSection: React.FC = () => {
-  const { t } = useTranslation();
-  
   return (
-    <section className="relative min-h-screen flex items-center bg-primary overflow-hidden">
-      {/* Background with diagonal overlay */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-fixed"
-        style={{ backgroundImage: "url('/images/BG_WEB.webp')" }}
-      >
-      </div>
-      
+    <section className="relative min-h-screen flex items-center bg-[#18202B] overflow-hidden">
+      {/* Decorative background shapes */}
+      <div className="absolute -top-32 -left-32 w-[400px] h-[400px] bg-cyan-400 opacity-30 rounded-full z-0" />
+      <div className="absolute top-1/2 right-0 w-[300px] h-[300px] bg-cyan-300 opacity-20 rounded-full z-0" />
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[200px] bg-cyan-200 opacity-10 rounded-full z-0" />
+
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-3xl">
-          <motion.h1 
-            className="text-5xl md:text-7xl font-heading font-bold text-white mb-6 leading-tight"
+          <motion.h1
+            className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            PT AITISERVE DJAYA NARAYA
+            Digital Transformation<br />Solutions
           </motion.h1>
-          
-          <motion.p 
-            className="text-xl text-gray-300 mb-8"
+
+          <motion.p
+            className="text-base md:text-lg text-gray-200 mb-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Menyediakan Solusi Digital Terdepan
+            Mitra terpercaya Anda dalam solusi teknologi cerdas berbasis AI dan TI untuk masa depan yang berkelanjutan.
           </motion.p>
-          
-          <motion.div 
-            className="flex flex-wrap gap-4"
+
+          <motion.div
+            className="flex flex-wrap gap-4 mb-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <Link 
-              to="/services" 
-              className="btn btn-primary group"
+            <Link
+              to="/services"
+              className="bg-cyan-400 hover:bg-cyan-500 text-white font-semibold px-6 py-2 rounded-full shadow transition"
             >
               Lihat Layanan
-              <ChevronRight className="ml-2 h-5 w-5 transform group-hover:translate-x-1 transition-transform" />
             </Link>
-            
-            <Link 
-              to="/contact" 
-              className="btn btn-outline"
+            <Link
+              to="/contact"
+              className="border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-white font-semibold px-6 py-2 rounded-full transition"
             >
-              Hubungi Kami
+              Konsultasi Gratis
             </Link>
+          </motion.div>
+
+          <motion.div
+            className="text-2xl md:text-3xl font-medium text-white flex items-center gap-2"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+          >
+            Shaping a <span className="text-cyan-400 font-bold ml-2">Brighter Future</span>
           </motion.div>
         </div>
       </div>
-
-      {/* Scroll indicator */}
-      <motion.div 
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 1 }}
-      >
-        <div className="w-8 h-12 border-2 border-white/30 rounded-full flex justify-center">
-          <motion.span 
-            className="w-1 h-3 bg-white/50 rounded-full mt-2"
-            animate={{ 
-              y: [0, 12, 0],
-            }}
-            transition={{ 
-              duration: 1.5,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          />
-        </div>
-      </motion.div>
     </section>
   );
 };

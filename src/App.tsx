@@ -11,6 +11,7 @@ import CompanyProfilePage from './pages/CompanyProfilePage';
 import NotFoundPage from './pages/NotFoundPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import TermsOfServicePage from './pages/TermsOfServicePage';
+import BlogPage from './pages/BlogPage';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route index element={<HomePage />} />
         <Route path="services" element={<ServicesPage />} />
         <Route path="portfolio" element={<PortfolioPage />} />
+        <Route path="blog" element={<BlogPage />} />
         <Route path="products" element={<ProductsPage />} />
         <Route path="about" element={<AboutPage />} />
         <Route path="careers" element={<CareersPage />} />
