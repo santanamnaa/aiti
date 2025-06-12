@@ -28,6 +28,40 @@ const blogPosts = [
   },
 ];
 
+const TechBlock = ({
+  iconSrc,
+  title,
+  desc,
+  reverse = false,
+}: {
+  iconSrc: string;
+  title: string;
+  desc: string;
+  reverse?: boolean;
+}) => (
+  <div className={`flex flex-col md:flex-row${reverse ? '-reverse' : ''} items-center md:items-start gap-6`}>
+    <motion.div
+      className="flex-shrink-0 w-24 h-24 flex items-center justify-center mr-6 self-center"
+      initial={{ opacity: 0, x: reverse ? 60 : -60 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.7 }}
+    >
+      <img src={iconSrc} alt="icon" className="w-24 h-24" />
+    </motion.div>
+    <motion.div
+      className="flex-1 mt-4 md:mt-0"
+      initial={{ opacity: 0, x: reverse ? -60 : 60 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.7, delay: 0.1 }}
+    >
+      <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">{title}</h3>
+      <p className="text-gray-700 text-base md:text-lg">{desc}</p>
+    </motion.div>
+  </div>
+);
+
 const HomePage: React.FC = () => {
   useEffect(() => {
     document.title = 'AITI - Innovative Technology Services';
@@ -219,61 +253,49 @@ const HomePage: React.FC = () => {
             AITISERVE mengandalkan beragam teknologi terdepan untuk menghadirkan solusi digital yang tangguh, efisien, dan adaptif terhadap kebutuhan industri. Dengan pendekatan berbasis AI dan IT modern, berikut adalah ekosistem teknologi yang mendukung layanan kami:
           </p>
           <div className="max-w-4xl mx-auto flex flex-col gap-16">
-            {/* Blok 1: Ikon kiri */}
-            <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
-              <div className="flex-shrink-0 w-24 h-24 flex items-center justify-center mr-6 self-center">
-                <img src="/images/IconTech1.png" alt="icon" className="w-24 h-24" />
-              </div>
-              <div className="flex-1 mt-4 md:mt-0">
-                <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">Arsitektur Sistem & Pengembangan Solusi</h3>
-                <p className="text-gray-700 text-base md:text-lg">
-                  Termasuk rancangan sistem Telco & IT, OSS/BSS, serta penerapan AI berbasis Retrieval-Augmented Generation (RAG). Tim kami menguasai pengembangan full-stack menggunakan Java, Kotlin, Python, Go, Node.js, serta pengembangan antarmuka modern dengan React Native, Flutter, dan berbagai framework frontend.
-                </p>
-              </div>
-            </div>
-            {/* Blok 2: Ikon kanan */}
-            <div className="flex flex-col md:flex-row-reverse items-center md:items-start gap-6">
-              <div className="flex-shrink-0 w-24 h-24 flex items-center justify-center mr-6 self-center">
-                <img src="/images/IconTech2.png" alt="icon" className="w-24 h-24" />
-              </div>
-              <div className="flex-1 mt-4 md:mt-0">
-                <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">Basis Data & Infrastruktur</h3>
-                <p className="text-gray-700 text-base md:text-lg">
-                  Mencakup pengelolaan database relasional dan graph (Oracle, PostgreSQL, Neo4j), pemanfaatan cloud dan vector database seperti Supabase dan Pinecone, serta dukungan server dan storage berbasis Linux, NGINX, dan MinIO. Untuk kebutuhan spasial, kami menggunakan GeoServer.
-                </p>
-              </div>
-            </div>
-            {/* Blok 3: Ikon kiri */}
-            <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
-              <div className="flex-shrink-0 w-24 h-24 flex items-center justify-center mr-6 self-center">
-                <img src="/images/IconTech3.png" alt="icon" className="w-24 h-24" />
-              </div>
-              <div className="flex-1 mt-4 md:mt-0">
-                <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">DevOps & Keamanan Sistem</h3>
-                <p className="text-gray-700 text-base md:text-lg">
-                  Meliputi manajemen server Linux, scripting, penggunaan container (Docker), orkestrasi (Kafka), serta pipeline CI/CD dengan GitLab, Jenkins, dan metodologi Agile. Keamanan sistem dijaga melalui standar OWASP, enkripsi SSL/TLS, dan protokol aman seperti SSH dan SFTP.
-                </p>
-              </div>
-            </div>
-            {/* Blok 4: Ikon kanan */}
-            <div className="flex flex-col md:flex-row-reverse items-center md:items-start gap-6">
-              <div className="flex-shrink-0 w-24 h-24 flex items-center justify-center mr-6 self-center">
-                <img src="/images/IconTech4.png" alt="icon" className="w-24 h-24" />
-              </div>
-              <div className="flex-1 mt-4 md:mt-0">
-                <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">Desain & Antarmuka Pengguna</h3>
-                <p className="text-gray-700 text-base md:text-lg mb-8">
-                  Difokuskan pada pengembangan UI/UX menggunakan Figma dan pengembangan aplikasi mobile lintas platform berbasis AI dengan Flutter dan React Native.
-                </p>
-              </div>
-            </div>
+            <TechBlock
+              iconSrc="/images/IconTech1.png"
+              title="Arsitektur Sistem & Pengembangan Solusi"
+              desc="Termasuk rancangan sistem Telco & IT, OSS/BSS, serta penerapan AI berbasis Retrieval-Augmented Generation (RAG). Tim kami menguasai pengembangan full-stack menggunakan Java, Kotlin, Python, Go, Node.js, serta pengembangan antarmuka modern dengan React Native, Flutter, dan berbagai framework frontend."
+              reverse={false}
+            />
+            <TechBlock
+              iconSrc="/images/IconTech2.png"
+              title="Basis Data & Infrastruktur"
+              desc="Mencakup pengelolaan database relasional dan graph (Oracle, PostgreSQL, Neo4j), pemanfaatan cloud dan vector database seperti Supabase dan Pinecone, serta dukungan server dan storage berbasis Linux, NGINX, dan MinIO. Untuk kebutuhan spasial, kami menggunakan GeoServer."
+              reverse={true}
+            />
+            <TechBlock
+              iconSrc="/images/IconTech3.png"
+              title="DevOps & Keamanan Sistem"
+              desc="Meliputi manajemen server Linux, scripting, penggunaan container (Docker), orkestrasi (Kafka), serta pipeline CI/CD dengan GitLab, Jenkins, dan metodologi Agile. Keamanan sistem dijaga melalui standar OWASP, enkripsi SSL/TLS, dan protokol aman seperti SSH dan SFTP."
+              reverse={false}
+            />
+            <TechBlock
+              iconSrc="/images/IconTech4.png"
+              title="Desain & Antarmuka Pengguna"
+              desc="Difokuskan pada pengembangan UI/UX menggunakan Figma dan pengembangan aplikasi mobile lintas platform berbasis AI dengan Flutter dan React Native."
+              reverse={true}
+            />
           </div>
           {/* Barisan ikon teknologi - berjalan horizontal */}
-          <div className="overflow-hidden w-full  mt-20">            
-            <img src="/images/1.svg" alt="Figma"  />
-            <img src="/images/2.svg" alt="JS"  />
-          </div>
-
+          <motion.div
+            className="overflow-hidden w-full mt-20"
+            style={{ whiteSpace: 'nowrap' }}
+          >
+            <motion.div
+              style={{ display: 'inline-block' }}
+              animate={{ x: ['0%', '-50%'] }}
+              transition={{
+                repeat: Infinity,
+                duration: 8,
+                ease: 'linear',
+              }}
+            >
+              <img src="/images/techstack2.svg" alt="Figma" className="inline-block h-56" />
+              <img src="/images/techstack2.svg" alt="Figma" className="inline-block h-56" />
+            </motion.div>
+          </motion.div>
         </div>
       </div>
 
