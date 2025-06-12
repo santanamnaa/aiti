@@ -3,44 +3,28 @@ import { motion } from 'framer-motion';
 
 const blogPosts = [
   {
-    image: '/images/blog1.png',
-    category: 'Full-Stack Web Development',
-    title: 'Terke.corp',
-    description: 'Membangun platform web modern untuk kolaborasi tim dan otomasi bisnis dengan stack JavaScript full-stack.',
-    icons: ['/images/figma.png', '/images/github.png', '/images/javascript.png', '/images/nodejs.png', '/images/mongo.png'],
-    link: '#',
-  },
-  {
-    image: '/images/blog2.png',
-    category: 'Flutter Development',
-    title: 'MeetsUp App',
-    description: 'Aplikasi mobile lintas platform untuk event dan komunitas, dibangun dengan Flutter dan Firebase.',
-    icons: ['/images/figma.png', '/images/github.png', '/images/flutter.png', '/images/firebase.png'],
-    link: '#',
-  },
-  {
-    image: '/images/blog3.png',
-    category: 'Full-Stack JavaScript Development',
-    title: 'Orka StartUp',
-    description: 'Solusi startup digital dengan integrasi Node.js, MongoDB, dan React untuk pertumbuhan bisnis.',
-    icons: ['/images/figma.png', '/images/github.png', '/images/js.png', '/images/nodejs.png', '/images/mongo.png'],
-    link: '#',
-  },
-  {
-    image: '/images/blog4.png',
+    image: '/images/blog/dummy1.png',
     category: 'AI & Machine Learning',
-    title: 'SmartVision AI',
-    description: 'Implementasi computer vision untuk analisis data visual di industri manufaktur.',
-    icons: ['/images/python.png', '/images/github.png', '/images/tensorflow.png'],
-    link: '#',
+    title: 'Mengenal Konsep Dasar Machine Learning',
+    description: 'Pelajari bagaimana machine learning bekerja dan mengapa ia menjadi bagian penting dalam perkembangan teknologi modern.',
+    // icons: ['/images/blog/python.png', '/images/blog/github.png', '/images/blog/tensorflow.png'],
+    link: '/blog/mengenal-konsep-dasar-machine-learning',
   },
   {
-    image: '/images/blog5.png',
-    category: 'Cloud Infrastructure',
-    title: 'CloudOps Platform',
-    description: 'Otomasi deployment dan monitoring cloud dengan DevOps tools modern.',
-    icons: ['/images/aws.png', '/images/docker.png', '/images/github.png'],
-    link: '#',
+    image: '/images/blog/dummy2.png',
+    category: 'Web Development',
+    title: 'Tren Terbaru dalam Pengembangan Web 2025',
+    description: 'Sebuah tinjauan tentang teknologi dan pendekatan terkini dalam pengembangan aplikasi web yang responsif dan dinamis.',
+    // icons: ['/images/blog/react.png', '/images/blog/nodejs.png', '/images/blog/mongo.png'],
+    link: '/blog/tren-terbaru-dalam-pengembangan-web-2025',
+  },
+  {
+    image: '/images/blog/dummy3.png',
+    category: 'Cloud Computing',
+    title: 'Mengapa Cloud Masih Jadi Pilihan Utama?',
+    description: 'Ulasan lengkap tentang keuntungan penggunaan cloud infrastructure dan layanan cloud dalam skala bisnis.',
+    // icons: ['/images/blog/aws.png', '/images/blog/docker.png', '/images/blog/github.png'],
+    link: '/blog/mengapa-cloud-masih-jadi-pilihan-utama',
   },
 ];
 
@@ -55,18 +39,15 @@ const HomePage: React.FC = () => {
       <div className="relative min-h-screen flex items-center bg-[#18202B] overflow-hidden" style={{ backgroundImage: 'url(/images/BG_WEB.webp)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
         {/* Decorative background shapes */}
 
-
-
-
         <div className="container mx-auto px-4 lg:px-8 2xl:px-0 max-w-7xl 2xl:max-w-screen-2xl relative z-10 pt-16 pb-8">
           <div className="max-w-3xl">
             <motion.h1
-              className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight"
+              className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-4 leading-tight text-center md:text-left"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              Digital Transformation<br />Solutions
+              Digital Transformation Solutions
             </motion.h1>
             <motion.p
               className="text-base md:text-lg text-gray-200 mb-4"
@@ -95,14 +76,6 @@ const HomePage: React.FC = () => {
                 Konsultasi Gratis
               </a>
             </motion.div>
-            <motion.div
-              className="text-2xl md:text-3xl font-medium text-white flex items-center gap-2"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-            >
-              Shaping a <span className="text-secondary font-bold ml-2">Brighter Future</span>
-            </motion.div>
           </div>
         </div>
       </div>
@@ -110,8 +83,6 @@ const HomePage: React.FC = () => {
       {/* MAIN CONTENT WRAPPER: About, Services, Portfolio/Team, Teknologi & Kompetensi Inti */}
       <div className="relative bg-white overflow-hidden">
         {/* Ornamen lingkaran besar gelap dan secondary kiri bawah */}
-
-        <img src="/images/Ellipse.png" alt="ornamen" className="hidden md:block absolute left-40 bottom-24 w-[300px] h-auto z-0 pointer-events-none select-none" aria-hidden="true" />
         {/* Ornamen lingkaran transparan dan foto kanan atas */}
         <img src="/images/Subtract.png" alt="decor" className="hidden md:block absolute top-0 right-0 w-[420px] h-auto z-0 pointer-events-none select-none" style={{ maxWidth: '50vw' }} aria-hidden="true" />
         {/* ABOUT */}
@@ -158,7 +129,7 @@ const HomePage: React.FC = () => {
             </p>
           </div>
           <div className="w-full flex justify-center px-2 md:px-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-8 md:gap-x-20 lg:gap-x-40 w-full max-w-6xl">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-6 md:gap-x-12 md:gap-y-8 lg:gap-x-20 w-full max-w-6xl items-stretch">
               <ServiceCard
                 icon={<img src="/images/service1.png" alt="icon" className="w-24 h-24" />} 
                 title={<span className="font-bold text-secondary">Konsultasi IT dan AI</span>} 
@@ -291,24 +262,18 @@ const HomePage: React.FC = () => {
               </div>
               <div className="flex-1 mt-4 md:mt-0">
                 <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">Desain & Antarmuka Pengguna</h3>
-                <p className="text-gray-700 text-base md:text-lg">
+                <p className="text-gray-700 text-base md:text-lg mb-8">
                   Difokuskan pada pengembangan UI/UX menggunakan Figma dan pengembangan aplikasi mobile lintas platform berbasis AI dengan Flutter dan React Native.
                 </p>
-                {/* Logo Node kecil, di tengah */}
-                <div className="flex flex-row gap-8 mt-6 justify-center">
-                  <img src="/images/nodejs.png" alt="Node" className="w-20 h-20" />
-                  <img src="/images/nodejs.png" alt="Node" className="w-20 h-20" />
-                  <img src="/images/nodejs.png" alt="Node" className="w-20 h-20" />
-                </div>
               </div>
             </div>
           </div>
-          {/* Logo JS besar, di tengah, di bawah semua blok */}
-          <div className="flex flex-row gap-12 mt-10 justify-center">
-            <img src="/images/javascript.png" alt="JS" className="w-20 h-20" />
-            <img src="/images/javascript.png" alt="JS" className="w-20 h-20" />
-            <img src="/images/javascript.png" alt="JS" className="w-20 h-20" />
+          {/* Barisan ikon teknologi - berjalan horizontal */}
+          <div className="overflow-hidden w-full  mt-20">            
+            <img src="/images/1.svg" alt="Figma"  />
+            <img src="/images/2.svg" alt="JS"  />
           </div>
+
         </div>
       </div>
 
@@ -326,11 +291,11 @@ const HomePage: React.FC = () => {
                   <p className="text-sm text-gray-500 mb-2">{post.category}</p>
                   <h3 className="text-lg font-semibold text-gray-800 mb-2">{post.title}</h3>
                   <p className="text-gray-700 mb-4 flex-1">{post.description}</p>
-                  <div className="flex flex-wrap gap-2 mb-4">
+                  {/* <div className="flex flex-wrap gap-2 mb-4">
                     {post.icons.map((icon, i) => (
                       <img key={i} src={icon} alt={`icon_${i}`} className="w-6 h-6 object-contain" />
                     ))}
-                  </div>
+                  </div> */}
                   <a href={post.link} className="text-secondary font-semibold hover:underline mt-auto">Read More</a>
                 </div>
               </div>
@@ -363,17 +328,17 @@ const ServiceCard = ({ icon, title, description, delay }: { icon: React.ReactNod
   return (
     <a href="/services" className="block group">
       <motion.div
-        className="flex flex-row items-center bg-white border border-gray-200 rounded-xl px-4 md:px-8 lg:px-10 py-6 md:py-8 min-w-0 w-full shadow-[0_2px_12px_0_rgba(0,0,0,0.06)] transition-all duration-300 ease-in-out cursor-pointer group-hover:shadow-2xl gap-4 md:gap-8"
+        className="flex flex-row items-center bg-white border border-gray-200 rounded-xl px-3 sm:px-6 md:px-8 lg:px-10 py-4 sm:py-6 md:py-8 min-w-0 w-full h-full shadow-[0_2px_12px_0_rgba(0,0,0,0.06)] transition-all duration-300 ease-in-out cursor-pointer group-hover:shadow-2xl gap-3 sm:gap-6 md:gap-8 flex-col"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.7, delay: delay * 0.1 }}
         tabIndex={0}
       >
-        <div className="flex-shrink-0 w-24 h-24 flex items-center justify-center mr-6">
+        <div className="flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 flex items-center justify-center mr-4 sm:mr-6">
           {icon}
         </div>
-        <div className="flex flex-col justify-center h-full">
+        <div className="flex flex-col justify-center h-full flex-1">
           <div className="text-lg md:text-xl font-bold text-secondary mb-1 leading-tight">{title}</div>
           <div className="text-gray-900 text-base md:text-lg leading-snug">{description}</div>
         </div>

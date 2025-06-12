@@ -11,7 +11,10 @@ import CompanyProfilePage from './pages/CompanyProfilePage';
 import NotFoundPage from './pages/NotFoundPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import TermsOfServicePage from './pages/TermsOfServicePage';
-import BlogPage from './pages/BlogPage';
+import BlogIndex from './pages/blog/index';
+import MengenalKonsepDasarMachineLearning from './pages/blog/mengenal-konsep-dasar-machine-learning';
+import TrenTerbaruDalamPengembanganWeb2025 from './pages/blog/tren-terbaru-dalam-pengembangan-web-2025';
+import MengapaCloudMasihJadiPilihanUtama from './pages/blog/mengapa-cloud-masih-jadi-pilihan-utama';
 
 function App() {
   return (
@@ -20,7 +23,10 @@ function App() {
         <Route index element={<HomePage />} />
         <Route path="services" element={<ServicesPage />} />
         <Route path="portfolio" element={<PortfolioPage />} />
-        <Route path="blog" element={<BlogPage />} />
+        <Route path="blog" element={<BlogIndex />} />
+        <Route path="blog/mengenal-konsep-dasar-machine-learning" element={<MengenalKonsepDasarMachineLearning />} />
+        <Route path="blog/tren-terbaru-dalam-pengembangan-web-2025" element={<TrenTerbaruDalamPengembanganWeb2025 />} />
+        <Route path="blog/mengapa-cloud-masih-jadi-pilihan-utama" element={<MengapaCloudMasihJadiPilihanUtama />} />
         <Route path="products" element={<ProductsPage />} />
         <Route path="about" element={<AboutPage />} />
         <Route path="careers" element={<CareersPage />} />
