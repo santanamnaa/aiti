@@ -58,7 +58,7 @@ const HomePage: React.FC = () => {
 
 
 
-        <div className="container mx-auto px-4 relative z-10 pt-16 pb-8">
+        <div className="container mx-auto px-4 lg:px-8 2xl:px-0 max-w-7xl 2xl:max-w-screen-2xl relative z-10 pt-16 pb-8">
           <div className="max-w-3xl">
             <motion.h1
               className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight"
@@ -115,7 +115,7 @@ const HomePage: React.FC = () => {
         {/* Ornamen lingkaran transparan dan foto kanan atas */}
         <img src="/images/Subtract.png" alt="decor" className="hidden md:block absolute top-0 right-0 w-[420px] h-auto z-0 pointer-events-none select-none" style={{ maxWidth: '50vw' }} aria-hidden="true" />
         {/* ABOUT */}
-        <div className="container mx-auto px-4 relative z-10 flex flex-col items-start pt-16 pb-8">
+        <div className="container mx-auto px-4 lg:px-8 2xl:px-0 max-w-7xl 2xl:max-w-screen-2xl relative z-10 flex flex-col items-start pt-16 pb-8">
           <div className="w-full max-w-2xl text-left">
             <h2 className="text-2xl md:text-3xl font-bold text-gray-700 mb-4">
               SEKILAS TENTANG <span className="text-secondary">AITISERVE</span>
@@ -148,7 +148,7 @@ const HomePage: React.FC = () => {
           </div>
         </div>
         {/* SERVICES */}
-        <div className="container mx-auto px-4 relative z-10 pt-0 pb-8">
+        <div className="container mx-auto px-4 lg:px-8 2xl:px-0 max-w-7xl 2xl:max-w-screen-2xl relative z-10 pt-0 pb-8">
           <div className="relative flex flex-col items-center w-full mt-2 mb-12">
             <h2 className="text-2xl md:text-3xl font-bold text-gray-700 mb-2 text-center">
               RUANG LINGKUP <span className="text-secondary">LAYANAN</span>
@@ -157,8 +157,8 @@ const HomePage: React.FC = () => {
               Sebagai perusahaan yang mengintegrasikan kecerdasan buatan dan teknologi informasi, AITISERVE menyediakan layanan lengkap yang dirancang untuk menjawab tantangan era digital. Ruang lingkup layanan kami meliputi:
             </p>
           </div>
-          <div className="w-full flex justify-center">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-40 gap-y-8">
+          <div className="w-full flex justify-center px-2 md:px-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-8 md:gap-x-20 lg:gap-x-40 w-full max-w-6xl">
               <ServiceCard
                 icon={<img src="/images/service1.png" alt="icon" className="w-24 h-24" />} 
                 title={<span className="font-bold text-secondary">Konsultasi IT dan AI</span>} 
@@ -240,7 +240,7 @@ const HomePage: React.FC = () => {
           </div>
         </div>
         {/* TEKNOLOGI DAN KOMPETENSI INTI */}
-        <div className="container mx-auto px-4 relative z-10 pt-8 pb-16">
+        <div className="container mx-auto px-4 lg:px-8 2xl:px-0 max-w-7xl 2xl:max-w-screen-2xl relative z-10 pt-8 pb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-700 mb-4 text-center">
             TEKNOLOGI DAN <span className="text-secondary">KOMPETENSI INTI</span>
           </h2>
@@ -314,14 +314,14 @@ const HomePage: React.FC = () => {
 
       {/* OUR BLOG SECTION */}
       <div className="relative bg-white overflow-hidden py-16 md:py-24">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 lg:px-8 2xl:px-0 max-w-7xl 2xl:max-w-screen-2xl">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-700 mb-8 text-center">
             OUR <span className="text-secondary">BLOG</span>
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {blogPosts.slice(0, 3).map((post, idx) => (
               <div key={idx} className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
-                <img src={post.image} alt={post.title} className="w-full h-40 object-cover" />
+                <img src={post.image} alt={post.title} className="w-full h-40 md:h-48 object-cover" />
                 <div className="p-6 flex flex-col flex-1">
                   <p className="text-sm text-gray-500 mb-2">{post.category}</p>
                   <h3 className="text-lg font-semibold text-gray-800 mb-2">{post.title}</h3>
@@ -341,7 +341,7 @@ const HomePage: React.FC = () => {
 
       {/* CONTACT & FOOTER */}
       <div className="relative bg-primary overflow-hidden py-16">
-        <div className="container mx-auto px-4 text-center text-white">
+        <div className="container mx-auto px-4 lg:px-8 2xl:px-0 max-w-7xl 2xl:max-w-screen-2xl text-center text-white">
           <h2 className="text-2xl md:text-3xl font-bold mb-4">Hubungi Kami</h2>
           <p className="mb-6 text-base md:text-lg">
             Untuk konsultasi lebih lanjut, hubungi kami melalui email atau kunjungi situs web kami.
@@ -363,7 +363,7 @@ const ServiceCard = ({ icon, title, description, delay }: { icon: React.ReactNod
   return (
     <a href="/services" className="block group">
       <motion.div
-        className="flex flex-row items-center bg-white border border-gray-200 rounded-xl px-10 py-8 min-w-[480px] w-full shadow-[0_2px_12px_0_rgba(0,0,0,0.06)] transition-all duration-300 ease-in-out cursor-pointer group-hover:shadow-2xl gap-8"
+        className="flex flex-row items-center bg-white border border-gray-200 rounded-xl px-4 md:px-8 lg:px-10 py-6 md:py-8 min-w-0 w-full shadow-[0_2px_12px_0_rgba(0,0,0,0.06)] transition-all duration-300 ease-in-out cursor-pointer group-hover:shadow-2xl gap-4 md:gap-8"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
