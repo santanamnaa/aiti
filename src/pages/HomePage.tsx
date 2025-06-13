@@ -288,12 +288,12 @@ const HomePage: React.FC = () => {
               animate={{ x: ['0%', '-50%'] }}
               transition={{
                 repeat: Infinity,
-                duration: 8,
+                duration: 12,
                 ease: 'linear',
               }}
             >
-              <img src="/images/techstack.svg" alt="Figma" className="inline-block h-auto" />
-              <img src="/images/techstack.svg" alt="Figma" className="inline-block h-auto" />
+              <img src="/images/techstack.svg" alt="Tech Stack" className="inline-block h-52 md:h-64 object-contain" />
+              <img src="/images/techstack.svg" alt="Tech Stack" className="inline-block h-52 md:h-64 object-contain" />
             </motion.div>
           </motion.div>
         </div>
