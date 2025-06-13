@@ -3,7 +3,7 @@ import Layout from './components/layout/Layout';
 import HomePage from './pages/HomePage';
 import ServicesPage from './pages/ServicesPage';
 import PortfolioPage from './pages/PortfolioPage';
-import ProductsPage from './pages/ProductsPage';
+// import ProductsPage from './pages/ProductsPage';
 import AboutPage from './pages/AboutPage';
 import CareersPage from './pages/CareersPage';
 import ContactPage from './pages/ContactPage';
@@ -27,7 +27,7 @@ function App() {
         <Route path="blog/mengenal-konsep-dasar-machine-learning" element={<MengenalKonsepDasarMachineLearning />} />
         <Route path="blog/tren-terbaru-dalam-pengembangan-web-2025" element={<TrenTerbaruDalamPengembanganWeb2025 />} />
         <Route path="blog/mengapa-cloud-masih-jadi-pilihan-utama" element={<MengapaCloudMasihJadiPilihanUtama />} />
-        <Route path="products" element={<ProductsPage />} />
+        {/* <Route path="products" element={<ProductsPage />} /> */}
         <Route path="about" element={<AboutPage />} />
         <Route path="careers" element={<CareersPage />} />
         <Route path="contact" element={<ContactPage />} />

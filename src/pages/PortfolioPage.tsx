@@ -146,11 +146,6 @@ const PortfolioPage: React.FC = () => {
         <div className="flex flex-col lg:flex-row justify-between gap-12 mb-20">
           {/* Profil */}
           <div className="bg-white border border-gray-200 rounded-2xl p-8 shadow-xl flex flex-col items-center w-full max-w-xs mx-auto hover:shadow-2xl transition-all duration-300">
-            <img
-              src={profile.image}
-              alt={profile.name}
-              className="w-40 h-40 object-cover rounded-full border-4 border-secondary mb-6 shadow-md"
-            />
             <div className="text-2xl font-bold text-neutral-900 mb-1 flex items-center gap-2"><User className="w-6 h-6 text-secondary" />{profile.name}</div>
             <div className="text-neutral-600 text-lg mb-2 text-center">{profile.title}</div>
             <div className="text-secondary font-medium text-sm flex items-center gap-1"><ExternalLink className="w-4 h-4" />{profile.location}</div>
