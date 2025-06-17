@@ -51,7 +51,7 @@ export default function PortfolioPage() {
     title: 'Solution Architect | IT & Telecommunications Expert',
     location: 'Bandung, Indonesia',
     overview:
-      'AITISERVE dibangun oleh para profesional berpengalaman dengan keahlian mendalam di bidang teknologi. Dengan pemahaman kuat terhadap kebutuhan industri, kami hadir sebagai mitra terpercaya dalam menyediakan solusi digital yang inovatif dan berdampak.',
+      '',
     summary:
       'Seorang Solution Architect berpengalaman dengan lebih dari 20 tahun kiprah di bidang teknologi informasi dan telekomunikasi. Memiliki spesialisasi dalam merancang dan mengimplementasikan solusi berskala enterprise, modernisasi sistem legacy, serta transformasi digital berbasis AI dan sistem terdistribusi. Menguasai berbagai bahasa pemrograman dan arsitektur sistem modern dengan fokus pada efisiensi, skalabilitas, dan keberlanjutan.',
     skills: [
@@ -291,7 +291,7 @@ export default function PortfolioPage() {
           }`}
           onClick={() => setActiveTab('direksi')}
         >
-          Direksi
+          {direksi.title}
         </button>
         <button
           className={`px-6 py-2 rounded-t-lg border-b-2 ${
@@ -315,10 +315,10 @@ export default function PortfolioPage() {
             <p className="text-gray-500 text-base md:text-lg">{direksi.location}</p>
           </div>
           {/* Overview */}
-          <div>
+          {/* <div>
             <h3 className="text-lg sm:text-xl font-semibold text-gray-800">Portofolio Direksi</h3>
             <p className="text-gray-700 mt-2 text-base sm:text-lg">{direksi.overview}</p>
-          </div>
+          </div> */}
           {/* Ringkasan Profesional */}
           <div>
             <h3 className="text-lg sm:text-xl font-semibold text-gray-800">Ringkasan Profesional</h3>
