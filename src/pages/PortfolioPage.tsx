@@ -263,11 +263,19 @@ export default function PortfolioPage() {
           </div>
           <div className="w-full bg-primary rounded-3xl px-6 py-12 shadow-lg relative z-10">
             <h2 className="text-5xl md:text-6xl font-semibold text-white text-center tracking-tight drop-shadow-lg relative">
-              Portofolio <span className="text-secondary">AITISERVE</span>
+              {activeTab === 'direksi' ? (
+                <>
+                  <span className="text-secondary">DIREKSI</span>
+                </>
+              ) : (
+                <>
+                  <span className="text-secondary">PROJECT MANAGER</span>
+                </>
+              )}
               <span className="block mx-auto mt-4 w-32 h-1 rounded-full bg-gradient-to-r from-secondary via-white to-secondary opacity-80 animate-pulse-slow"></span>
             </h2>
             <p className="text-white/90 mt-8 mb-0 text-lg md:text-xl text-center max-w-3xl mx-auto font-light">
-              Jelajahi pengalaman dan keahlian profesional tim kami. Pilih tab untuk melihat detail portofolio Direksi atau Project Manager, serta proyek-proyek inovatif yang telah kami selesaikan.
+            AITISERVE dibangun oleh para profesional berpengalaman dengan keahlian mendalam di bidang teknologi. Dengan pemahaman kuat terhadap kebutuhan industri, kami hadir sebagai mitra terpercaya dalam menyediakan solusi digital yang inovatif dan berdampak.
             </p>
           </div>
         </div>
@@ -362,18 +370,6 @@ export default function PortfolioPage() {
             <ul className="mt-2 space-y-1 text-secondary text-base sm:text-lg">
               {direksi.certifications.map((c, i) => <li key={i}>{c}</li>)}
             </ul>
-          </div>
-          {/* Teknologi & Tools */}
-          <div>
-            <h3 className="text-lg sm:text-xl font-semibold text-gray-800">Teknologi & Tools yang dikuasai</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
-              {direksi.tools.map((group, i) => (
-                <div key={i} className="bg-gray-50 rounded p-3">
-                  <p className="font-semibold text-gray-800 text-base sm:text-lg">{group.category}</p>
-                  <p className="text-gray-700 text-sm sm:text-base">{group.items.join(', ')}</p>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       ) : (

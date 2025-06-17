@@ -72,18 +72,10 @@ const Header: React.FC = () => {
           <NavLink to="/contact" className={({ isActive }) => isActive ? 'nav-link nav-link-active' : 'nav-link'}>
             {t('nav.contact')}
           </NavLink>
-
-          <button onClick={toggleLanguage} className="flex items-center text-gray-200 hover:text-white">
-            <Globe className="w-5 h-5 mr-1" />
-            <span>{i18n.language === 'en' ? 'EN' : 'ID'}</span>
-          </button>
         </nav>
 
         {/* Mobile Navigation Toggle */}
         <div className="lg:hidden flex items-center">
-          <button onClick={toggleLanguage} className="text-gray-200 hover:text-white mr-4">
-            <Globe className="w-5 h-5" />
-          </button>
           <button onClick={toggleMenu} className="text-gray-200 hover:text-white">
             {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
