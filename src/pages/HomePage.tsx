@@ -1,443 +1,306 @@
-import React, { useEffect } from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef, useEffect } from 'react';
+import { motion } from "framer-motion";
+import { FaBrain, FaDesktop, FaMobileAlt, FaLaptop, FaMapMarkedAlt, FaHeadphones } from "react-icons/fa";
 
-const blogPosts = [
+const solutions = [
   {
-    image: '/images/blog/dummy1.png',
-    category: 'AI & Machine Learning',
-    title: 'Mengenal Konsep Dasar Machine Learning',
-    description: 'Pelajari bagaimana machine learning bekerja dan mengapa ia menjadi bagian penting dalam perkembangan teknologi modern.',
-    // icons: ['/images/blog/python.png', '/images/blog/github.png', '/images/blog/tensorflow.png'],
-    link: '/blog/mengenal-konsep-dasar-machine-learning',
+    icon: <FaBrain size={36} className="text-[#08C2C1]" />,
+    title: 'IT & AI CONSULTANT',
+    desc: 'Providing Strategic Assistance In Digital Transformation, Including Technology Needs Mapping, AI-Based System Planning, And ...',
   },
   {
-    image: '/images/blog/dummy2.png',
-    category: 'Web Development',
-    title: 'Tren Terbaru dalam Pengembangan Web 2025',
-    description: 'Sebuah tinjauan tentang teknologi dan pendekatan terkini dalam pengembangan aplikasi web yang responsif dan dinamis.',
-    // icons: ['/images/blog/react.png', '/images/blog/nodejs.png', '/images/blog/mongo.png'],
-    link: '/blog/tren-terbaru-dalam-pengembangan-web-2025',
+    icon: <FaDesktop size={32} className="text-[#08C2C1]" />,
+    title: 'WEBSITE APPLICATION DEVELOPMENT',
+    desc: 'Building Modern Web Applications With Responsive Design, Optimal Performance, ...',
   },
   {
-    image: '/images/blog/dummy3.png',
-    category: 'Cloud Computing',
-    title: 'Mengapa Cloud Masih Jadi Pilihan Utama?',
-    description: 'Ulasan lengkap tentang keuntungan penggunaan cloud infrastructure dan layanan cloud dalam skala bisnis.',
-    // icons: ['/images/blog/aws.png', '/images/blog/docker.png', '/images/blog/github.png'],
-    link: '/blog/mengapa-cloud-masih-jadi-pilihan-utama',
+    icon: <FaMobileAlt size={32} className="text-[#08C2C1]" />,
+    title: 'MOBILE APPLICATION DEVELOPMENT',
+    desc: 'Designing And Developing AI-Based Mobile Applications With Superior User Experience.',
+  },
+  {
+    icon: <FaLaptop size={32} className="text-[#08C2C1]" />,
+    title: 'DESKTOP APPLICATION DEVELOPMENT',
+    desc: 'Develop Robust, Secure, And Integrated Desktop Software According To The Specific Needs.',
+  },
+  {
+    icon: <FaMapMarkedAlt size={32} className="text-[#08C2C1]" />,
+    title: 'GEOGRAPHIC INFORMATION SYSTEM (GIS) DEVELOPMENT',
+    desc: 'Provide GIS Solutions For Location Visualization, Spatial Analysis, And Decision Making.',
+  },
+  {
+    icon: <FaHeadphones size={32} className="text-[#08C2C1]" />,
+    title: 'TECHNICAL SUPPORT',
+    desc: 'Provide 24/7 Professional Technical Assistance Services To Ensure Smooth System Operations And Minimal Disruption.',
   },
 ];
 
-const TechBlock = ({
-  iconSrc,
-  title,
-  desc,
-  reverse = false,
-}: {
-  iconSrc: string;
-  title: string;
-  desc: string;
-  reverse?: boolean;
-}) => (
-  <div className={`flex flex-col md:flex-row${reverse ? '-reverse' : ''} items-center md:items-start gap-6`}>
-    <motion.div
-      className="flex-shrink-0 w-24 h-24 flex items-center justify-center mr-6 self-center"
-      initial={{ opacity: 0, x: reverse ? 60 : -60 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.7 }}
-    >
-      <img src={iconSrc} alt="icon" className="w-24 h-24" />
-    </motion.div>
-    <motion.div
-      className="flex-1 mt-4 md:mt-0"
-      initial={{ opacity: 0, x: reverse ? -60 : 60 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.7, delay: 0.1 }}
-    >
-      <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">{title}</h3>
-      <p className="text-gray-700 text-base md:text-lg">{desc}</p>
-    </motion.div>
-  </div>
-);
 
 const HomePage: React.FC = () => {
+  const solutionsRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    document.title = 'AITI - Innovative Technology Services';
+    // Scroll ke paling kanan saat mount
+    if (solutionsRef.current) {
+      solutionsRef.current.scrollLeft = solutionsRef.current.scrollWidth;
+    }
   }, []);
 
   return (
-    <div className="bg-[#18202B] min-h-screen w-full overflow-x-hidden">
-      {/* HERO SECTION */}
-      <div className="relative min-h-screen flex items-center bg-[#18202B] overflow-hidden" style={{ backgroundImage: 'url(/images/BG_WEB.webp)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
-        {/* Decorative background shapes */}
-
-        <div className="container mx-auto px-4 lg:px-8 2xl:px-0 max-w-7xl 2xl:max-w-screen-2xl relative z-10 pt-16 pb-8">
-          <div className="max-w-3xl">
-            <motion.h1
-              className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-4 leading-tight text-center md:text-left"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              Digital Transformation Solutions
-            </motion.h1>
-            <motion.p
-              className="text-base md:text-lg text-gray-200 mb-4"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              Mitra terpercaya Anda dalam solusi teknologi cerdas berbasis AI dan TI untuk masa depan yang berkelanjutan.
-            </motion.p>
-            <motion.div
-              className="flex flex-wrap gap-4 mb-6"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              <a
-                href="#services"
-                className="bg-secondary hover:bg-secondary text-white font-semibold px-6 py-2 rounded-full shadow transition"
-              >
-                Lihat Layanan
-              </a>
-              <a
-                href="#contact"
-                className="border border-secondary text-secondary hover:bg-secondary hover:text-white font-semibold px-6 py-2 rounded-full transition"
-              >
-                Konsultasi Gratis
-              </a>
-            </motion.div>
-          </div>
-        </div>
-      </div>
-
-      {/* MAIN CONTENT WRAPPER: About, Services, Portfolio/Team, Teknologi & Kompetensi Inti */}
-      <div className="relative bg-white overflow-hidden">
-        {/* Ornamen lingkaran besar gelap dan secondary kiri bawah */}
-        {/* Ornamen lingkaran transparan dan foto kanan atas */}
-        <img src="/images/Subtract.png" alt="decor" className="hidden md:block absolute top-0 right-0 w-[420px] h-auto z-0 pointer-events-none select-none" style={{ maxWidth: '50vw' }} aria-hidden="true" />
-        {/* ABOUT */}
-        <div className="container mx-auto px-4 lg:px-8 2xl:px-0 max-w-7xl 2xl:max-w-screen-2xl relative z-10 flex flex-col items-start pt-16 pb-8">
-          <div className="w-full max-w-2xl text-left">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-700 mb-4">
-              SEKILAS TENTANG <span className="text-secondary">AITISERVE</span>
-            </h2>
-            <p className="text-base md:text-lg mb-2 font-bold text-secondary">PT AITISERVE DJAYA NARAYA</p>
-            <p className="text-base md:text-lg text-gray-800 mb-6">
-              adalah perusahaan teknologi yang berdiri pada tahun 2024, fokus menghadirkan solusi digital berbasis kecerdasan buatan (AI) dan teknologi informasi (TI). Kami hadir sebagai mitra transformasi digital untuk masa depan Indonesia yang lebih cerdas dan berkelanjutan.
-            </p>
-            <a
-              href="/about"
-              className="bg-secondary hover:bg-secondary text-white font-semibold px-8 py-2 rounded-lg shadow transition text-base w-fit block mb-8"
-              style={{ boxShadow: '0 4px 16px 0 rgba(0, 204, 204, 0.15)' }}
-            >
-              Selengkapnya
-            </a>
-          </div>
-          {/* Ilustrasi gedung dan ornamen bulat kecil */}
-          <div className="relative w-full flex justify-center mt-4 mb-0">
-            <div className="relative w-[260px] md:w-[300px] lg:w-[360px]">
-              <img
-                src="/images/cuate.png"
-                alt="Gedung"
-                className="w-full h-auto drop-shadow-xl relative z-10"
-                draggable="false"
-              />
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-6 h-6 bg-secondary rounded-full opacity-60 z-0" />
-              <div className="absolute -top-2 right-0 w-4 h-4 bg-secondary rounded-full opacity-40 z-0" />
-              <div className="absolute -top-6 left-4 w-5 h-5 bg-secondary rounded-full opacity-40 z-0" />
-            </div>
-          </div>
-        </div>
-        {/* SERVICES */}
-        <div className="container mx-auto px-4 lg:px-8 2xl:px-0 max-w-7xl 2xl:max-w-screen-2xl relative z-10 pt-0 pb-8">
-          <div className="relative flex flex-col items-center w-full mt-2 mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-700 mb-2 text-center">
-              RUANG LINGKUP <span className="text-secondary">LAYANAN</span>
-            </h2>
-            <p className="text-gray-700 mb-10 max-w-2xl mx-auto text-center text-base md:text-lg">
-              Sebagai perusahaan yang mengintegrasikan kecerdasan buatan dan teknologi informasi, AITISERVE menyediakan layanan lengkap yang dirancang untuk menjawab tantangan era digital. Ruang lingkup layanan kami meliputi:
-            </p>
-          </div>
-          <div className="w-full flex justify-center px-2 md:px-4">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-6 md:gap-x-12 md:gap-y-8 lg:gap-x-20 w-full max-w-6xl items-stretch">
-              <ServiceCard
-                icon={<img src="/images/service1.png" alt="icon" className="w-24 h-24" />} 
-                title={<span className="font-bold text-secondary">Konsultasi IT dan AI</span>} 
-                description="Pendampingan strategis untuk transformasi digital Anda." 
-                delay={0}
-              />
-              <ServiceCard
-                icon={<img src="/images/service2.png" alt="icon" className="w-24 h-24" />} 
-                title={<span className="font-bold text-secondary">Pengembangan Aplikasi Web</span>} 
-                description="Aplikasi web modern dengan desain responsif dan performa optimal." 
-                delay={1}
-              />
-              <ServiceCard
-                icon={<img src="/images/service3.png" alt="icon" className="w-24 h-24" />} 
-                title={<span className="font-bold text-secondary">Pengembangan Aplikasi Mobile</span>} 
-                description="Aplikasi lintas platform berbasis AI untuk pengalaman unggul." 
-                delay={2}
-              />
-              <ServiceCard
-                icon={<img src="/images/service4.png" alt="icon" className="w-24 h-24" />} 
-                title={<span className="font-bold text-secondary">Pengembangan Aplikasi Desktop</span>} 
-                description="Solusi desktop tangguh dan terintegrasi." 
-                delay={3}
-              />
-              <ServiceCard
-                icon={<img src="/images/service5.png" alt="icon" className="w-24 h-24" />} 
-                title={<span className="font-bold text-secondary">Pengembangan Sistem Informasi Geografis (GIS)</span>} 
-                description="Analisis spasial dan visualisasi lokasi untuk pengambilan keputusan cerdas." 
-                delay={4}
-              />
-              <ServiceCard
-                icon={<img src="/images/service6.png" alt="icon" className="w-24 h-24" />} 
-                title={<span className="font-bold text-secondary">Dukungan Teknis</span>} 
-                description="Layanan bantuan 24/7 untuk sistem Anda." 
-                delay={5}
-              />
-            </div>
-          </div>
-        </div>
-        {/* PORTOFOLIO/TEAM SECTION */}
-        <div className="relative bg-white overflow-hidden min-h-[600px] flex items-center py-20">
-          {/* Ornamen kiri */}
-          <img
-            src="/images/SubtractPlain.png"
-            alt="ornamen"
-            className="absolute -left-0 top-0 w-[320px] z-0 pointer-events-none select-none"
-            aria-hidden="true"
-          />
-          <img
-            src="/images/Ellipse.png"
-            alt="ornamen"
-            className="absolute -left-24 bottom-0 w-[180px] z-0 pointer-events-none select-none opacity-50"
-            aria-hidden="true"
-          />
-
-          {/* Konten utama rata tengah */}
-          <div className="relative z-8 flex flex-1 justify-center w-full">
-            <div className="flex flex-col items-center justify-center w-full max-w-xl text-center">
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-700 mb-4">
-                PORTOFOLIO <span className="text-secondary">TEAM</span>
-              </h2>
-              <p className="text-gray-800 mb-10 text-lg md:text-xl leading-relaxed">
-                Kekuatan kami terletak pada pengalaman profesional pendiri dan tim utama yang telah teruji dalam berbagai proyek berskala besar, mulai dari otomasi jaringan, sistem informasi geografis, hingga integrasi sistem enterprise untuk industri telekomunikasi nasional. Fondasi teknis yang kokoh ini menjadikan AITISERVE siap bersaing di era transformasi digital.
-              </p>
-              <a
-                href="/portfolio"
-                className="bg-secondary hover:bg-secondary text-white font-semibold px-8 py-2 rounded-lg shadow transition text-base mb-8"
-                style={{ boxShadow: '0 4px 16px 0 rgba(0, 204, 204, 0.15)' }}
-              >
-                Selengkapnya
-              </a>
-              <img
-                src="/images/cuate2.png"
-                alt="Team Illustration"
-                className="w-[250px] md:w-[320px] h-auto drop-shadow-xl mx-auto"
-                draggable="false"
-              />
-            </div>
-          </div>
-        </div>
-        {/* TEKNOLOGI DAN KOMPETENSI INTI */}
-        <div className="container mx-auto px-4 lg:px-8 2xl:px-0 max-w-7xl 2xl:max-w-screen-2xl relative z-10 pt-8 pb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-700 mb-4 text-center">
-            TEKNOLOGI DAN <span className="text-secondary">KOMPETENSI INTI</span>
-          </h2>
-          <p className="text-gray-700 mb-10 max-w-2xl mx-auto text-center text-lg md:text-xl">
-            AITISERVE mengandalkan beragam teknologi terdepan untuk menghadirkan solusi digital yang tangguh, efisien, dan adaptif terhadap kebutuhan industri. Dengan pendekatan berbasis AI dan IT modern, berikut adalah ekosistem teknologi yang mendukung layanan kami:
+    <main className="bg-gradient-to-b from-[#12192C] to-[#0A0E18] min-h-screen font-poppins" style={{ fontFamily: 'Poppins, sans-serif' }}>
+      {/* HERO + OUR SOLUTIONS SECTION - Figma Presisi */}
+      <section className="relative w-full min-h-[600px] sm:min-h-[700px] md:min-h-[900px] flex flex-col items-start justify-start overflow-hidden px-4 sm:px-6 md:px-0" style={{paddingTop: '64px'}}>
+        {/* Background utama (foto VR) */}
+        <img src="/images/figma/hero-bg.png" alt="Hero Background" className="absolute inset-0 w-full h-full object-cover object-center z-0" />
+        {/* Konten utama HERO */}
+        <div className="relative z-10 flex flex-col items-start justify-center w-full max-w-[1200px] mx-auto px-2 sm:px-4 md:px-0" style={{height: 'calc(60vh + 120px)', minHeight: 400}}>
+          <h1 className="text-white text-[32px] sm:text-[44px] md:text-[80px] font-extrabold uppercase tracking-tight text-left leading-[1.08] mb-4 sm:mb-6" style={{letterSpacing: '-0.04em'}}>
+            Scalable Tech.<br />
+            <span className="text-[#08C2C1]">Global Impact.</span>
+          </h1>
+          <p className="text-white text-[16px] sm:text-[18px] md:text-[22px] font-normal text-left max-w-xl sm:max-w-2xl mb-6 sm:mb-8 leading-snug md:leading-normal">
+            We Design Robust Digital Platforms And Custom Solutions That Grow With Your Business—<b>Locally And Globally.</b>
           </p>
-          <div className="max-w-4xl mx-auto flex flex-col gap-16">
-            {/* Blok 1: Icon kiri, teks kanan */}
-            <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
-              <motion.div
-                className="flex-shrink-0 w-24 h-24 flex items-center justify-center mr-6 self-center"
-                initial={{ opacity: 0, x: -60 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7 }}
-              >
-                <img src="/images/IconTech1.png" alt="icon" className="w-24 h-24" />
-              </motion.div>
-              <motion.div
-                className="flex-1 mt-4 md:mt-0"
-                initial={{ opacity: 0, x: 60 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: 0.1 }}
-              >
-                <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">Arsitektur Sistem & Pengembangan Solusi</h3>
-                <p className="text-gray-700 text-base md:text-lg">
-                  Termasuk rancangan sistem Telco & IT, OSS/BSS, serta penerapan AI berbasis Retrieval-Augmented Generation (RAG). Tim kami menguasai pengembangan full-stack menggunakan Java, Kotlin, Python, Go, Node.js, serta pengembangan antarmuka modern dengan React Native, Flutter, dan berbagai framework frontend.
-                </p>
-              </motion.div>
-            </div>
-            {/* Blok 2: Icon kanan, teks kiri */}
-            <div className="flex flex-col md:flex-row-reverse items-center md:items-start gap-6">
-              <motion.div
-                className="flex-shrink-0 w-24 h-24 flex items-center justify-center ml-6 self-center"
-                initial={{ opacity: 0, x: 60 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7 }}
-              >
-                <img src="/images/IconTech2.png" alt="icon" className="w-24 h-24" />
-              </motion.div>
-              <motion.div
-                className="flex-1 mt-4 md:mt-0"
-                initial={{ opacity: 0, x: -60 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: 0.1 }}
-              >
-                <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">Basis Data & Infrastruktur</h3>
-                <p className="text-gray-700 text-base md:text-lg">
-                  Mencakup pengelolaan database relasional dan graph (Oracle, PostgreSQL, Neo4j), pemanfaatan cloud dan vector database seperti Supabase dan Pinecone, serta dukungan server dan storage berbasis Linux, NGINX, dan MinIO. Untuk kebutuhan spasial, kami menggunakan GeoServer.
-                </p>
-              </motion.div>
-            </div>
-            {/* Blok 3: Icon kiri, teks kanan */}
-            <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
-              <motion.div
-                className="flex-shrink-0 w-24 h-24 flex items-center justify-center mr-6 self-center"
-                initial={{ opacity: 0, x: -60 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7 }}
-              >
-                <img src="/images/IconTech3.png" alt="icon" className="w-24 h-24" />
-              </motion.div>
-              <motion.div
-                className="flex-1 mt-4 md:mt-0"
-                initial={{ opacity: 0, x: 60 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: 0.1 }}
-              >
-                <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">DevOps & Keamanan Sistem</h3>
-                <p className="text-gray-700 text-base md:text-lg">
-                  Meliputi manajemen server Linux, scripting, penggunaan container (Docker), orkestrasi (Kafka), serta pipeline CI/CD dengan GitLab, Jenkins, dan metodologi Agile. Keamanan sistem dijaga melalui standar OWASP, enkripsi SSL/TLS, dan protokol aman seperti SSH dan SFTP.
-                </p>
-              </motion.div>
-            </div>
-            {/* Blok 4: Icon kanan, teks kiri */}
-            <div className="flex flex-col md:flex-row-reverse items-center md:items-start gap-6">
-              <motion.div
-                className="flex-shrink-0 w-24 h-24 flex items-center justify-center ml-6 self-center"
-                initial={{ opacity: 0, x: 60 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7 }}
-              >
-                <img src="/images/IconTech4.png" alt="icon" className="w-24 h-24" />
-              </motion.div>
-              <motion.div
-                className="flex-1 mt-4 md:mt-0"
-                initial={{ opacity: 0, x: -60 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: 0.1 }}
-              >
-                <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">Desain & Antarmuka Pengguna</h3>
-                <p className="text-gray-700 text-base md:text-lg">
-                  Difokuskan pada pengembangan UI/UX menggunakan Figma dan pengembangan aplikasi mobile lintas platform berbasis AI dengan Flutter dan React Native.
-                </p>
-              </motion.div>
-            </div>
-          </div>
-          {/* Barisan ikon teknologi - berjalan horizontal */}
-          <motion.div
-            className="overflow-hidden w-full mt-20"
-            style={{ whiteSpace: 'nowrap' }}
-          >
-            <motion.div
-              style={{ display: 'inline-block' }}
-              animate={{ x: ['0%', '-50%'] }}
-              transition={{
-                repeat: Infinity,
-                duration: 12,
-                ease: 'linear',
-              }}
-            >
-              <img src="/images/techstack.svg" alt="Tech Stack" className="inline-block h-52 md:h-64 object-contain" />
-              <img src="/images/techstack.svg" alt="Tech Stack" className="inline-block h-52 md:h-64 object-contain" />
-            </motion.div>
-          </motion.div>
-        </div>
-      </div>
-
-      {/* OUR BLOG SECTION */}
-      <div className="relative bg-white overflow-hidden py-16 md:py-24">
-        <div className="container mx-auto px-4 lg:px-8 2xl:px-0 max-w-7xl 2xl:max-w-screen-2xl">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-700 mb-8 text-center">
-            OUR <span className="text-secondary">BLOG</span>
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {blogPosts.slice(0, 3).map((post, idx) => (
-              <div key={idx} className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
-                <img src={post.image} alt={post.title} className="w-full h-40 md:h-48 object-cover" />
-                <div className="p-6 flex flex-col flex-1">
-                  <p className="text-sm text-gray-500 mb-2">{post.category}</p>
-                  <h3 className="text-lg font-semibold text-gray-800 mb-2">{post.title}</h3>
-                  <p className="text-gray-700 mb-4 flex-1">{post.description}</p>
-                  {/* <div className="flex flex-wrap gap-2 mb-4">
-                    {post.icons.map((icon, i) => (
-                      <img key={i} src={icon} alt={`icon_${i}`} className="w-6 h-6 object-contain" />
-                    ))}
-                  </div> */}
-                  <a href={post.link} className="text-secondary font-semibold hover:underline mt-auto">Read More</a>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* CONTACT & FOOTER */}
-      <div className="relative bg-primary overflow-hidden py-16">
-        <div className="container mx-auto px-4 lg:px-8 2xl:px-0 max-w-7xl 2xl:max-w-screen-2xl text-center text-white">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4">Hubungi Kami</h2>
-          <p className="mb-6 text-base md:text-lg">
-            Untuk konsultasi lebih lanjut, hubungi kami melalui email atau kunjungi situs web kami.
-          </p>
-          <a
-            href="/contact"
-            className="inline-block border border-white text-white hover:bg-white hover:text-[#18202B] font-semibold px-6 py-2 rounded-full transition"
-          >
-            Hubungi Kami
+          <a href="#solutions" className="inline-flex items-center bg-[#08C2C1] text-white hover:bg-[#0E1423] px-5 sm:px-6 py-2.5 sm:py-3 rounded-[10px] text-[16px] sm:text-[18px] font-medium shadow-md hover:shadow-lg transition-all duration-200">
+            Get Started
+            <span className="ml-2 text-[20px] sm:text-[22px]">→</span>
           </a>
         </div>
-      </div>
-    </div>
-  );
-};
+        {/* OUR SOLUTIONS - Overlap Card */}
+        <div className="relative z-20 w-full max-w- mx-auto px-2 sm:px-4 md:px-0 -mt-10 sm:-mt-16" id="solutions">
+          <div className="flex flex-col md:flex-row items-end gap-6 md:gap-10 lg:gap-16">
+            {/* Judul kiri, rata bawah dengan card pertama */}
+            <div className="flex flex-col w-[200px] self-end pb-10 md:pb-24 mb-4 md:mb-0 ml-20 sm:ml-22 md:ml-24 lg:ml-28">
+              <span className="text-white text-[18px] sm:text-[22px] font-bold uppercase tracking-widest mb-1">OUR</span>
+              <span className="text-[#08C2C1] text-[32px] sm:text-[40px] font-bold uppercase leading-tight">SOLUTIONS</span>
+            </div>
+            {/* Card-card solutions */}
+            <div
+              className="flex-1 flex gap-4 md:gap-6 overflow-x-auto pb-2 hide-scrollbar"
+              ref={solutionsRef}
+              style={{ WebkitOverflowScrolling: 'touch', scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            >
+              {solutions.map((item, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, x: 100 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: idx * 0.15 }}
+                  className="flex-shrink-0 min-w-[260px] sm:min-w-[300px] md:min-w-[320px] max-w-[340px] bg-gradient-to-br from-[#0A1A2F]/80 to-[#0A1A2F]/60 border border-[#08C2C1]/30 rounded-[18px] p-4 sm:p-6 shadow-lg backdrop-blur-md flex flex-col gap-2 sm:gap-3"
+                  style={{ backdropFilter: 'blur(8px)' }}
+                >
+                  <div className="mb-2">{item.icon}</div>
+                  <div className="text-[16px] sm:text-[18px] font-bold text-[#08C2C1] mb-1 uppercase leading-tight">{item.title}</div>
+                  <div className="text-white text-[14px] sm:text-[15px] font-medium leading-relaxed">{item.desc}</div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* BRIGHTER FUTURE SECTION - Figma Presisi */}
+      <section className="relative  flex flex-col items-center justify-center w-full px-4 py-12 sm:py-16 md:py-20 bg-[#F8FAFC]" style={{minHeight: 332}}>
+        <div className="flex flex-col items-center gap-6 max-w-[920px] w-full">
+          <div className="flex flex-col items-center w-full max-w-[540px]">
+            <span className="w-full text-[24px] sm:text-[32px] md:text-[44px] font-medium text-[#7E7E7E] uppercase text-center leading-[1.1] tracking-[-0.02em] mb-[6px]" style={{textShadow: '0px 1px 3px rgba(28,32,43,0.05), 0px 1px 2px rgba(28,32,43,0.04)'}}>Shaping a</span>
+            <span className="w-full text-[24px] sm:text-[32px] md:text-[44px] font-semibold text-[#08C2C1] uppercase text-center leading-[1.1] tracking-[-0.02em]" style={{textShadow: '0px 1px 3px rgba(28,32,43,0.05), 0px 1px 2px rgba(28,32,43,0.04)'}}>brighter future</span>
+          </div>
+          <div className="w-full max-w-[920px] text-[16px] md:text-[18px] font-medium text-[#0E1423] text-center leading-[2] capitalize" style={{minHeight: 64}}>
+            AITISERVE specializes in software development and digital platform services, including programming, web portal management, as well as IT consulting and technical support. Our expertise spans AI-powered web and mobile applications, geographic information systems (GIS), and desktop solutions tailored to various business sectors and organizations.
+          </div>
+        </div>
+      </section>
+      {/* TECHNOLOGY & CORE COMPETENCIES - Figma Presisi */}
+      <section className="w-full py-12 sm:py-20 md:py-[100px] bg-[#F8FAFC]">
+        <div className="w-full max-w-[1200px] mx-auto flex flex-col md:flex-row gap-8 md:gap-12 px-2 sm:px-4 md:px-0">
+          {/* KIRI: Judul dan deskripsi, sticky di desktop, lebar fix 360px */}
+          <div className="md:w-[360px] w-full flex-shrink-0 flex flex-col justify-start md:sticky md:top-32 mb-6 md:mb-0 text-center md:text-left">
+            <h2 className="text-[#7E7E7E] text-[24px] sm:text-[32px] md:text-[44px] font-medium uppercase tracking-tight mb-1 sm:mb-2 leading-tight" style={{letterSpacing: '-0.02em'}}>TECHNOLOGY &</h2>
+            <h2 className="text-[#08C2C1] text-[24px] sm:text-[32px] md:text-[44px] font-semibold uppercase tracking-tight mb-4 sm:mb-6 leading-tight" style={{letterSpacing: '-0.02em'}}>CORE COMPETENCIES</h2>
+            <p className="text-[#12192C] text-[16px] sm:text-[18px] font-medium leading-relaxed max-w-xs md:max-w-none">Our expertise covers a wide range of technology stacks and core competencies to deliver the best digital solutions for your business.</p>
+          </div>
+          {/* KANAN: Card scrollable vertical, tinggi fix 520px, gap sesuai Figma */}
+          <div className="flex-1 max-h-[420px] sm:max-h-[520px] overflow-y-auto hide-scrollbar flex flex-col gap-6 sm:gap-8 pb-2 md:pb-0 pr-1 sm:pr-2">
+            <div className="flex flex-col gap-6 sm:gap-8">
+              {/* Card 1 */}
+              <div className="flex flex-col items-start bg-white rounded-[18px] sm:rounded-[22px] shadow-lg p-5 sm:p-8 border border-[#08C2C1]/30 min-w-[260px] sm:min-w-[340px] flex-shrink-0 transition-all duration-200 hover:shadow-xl hover:border-[#08C2C1]">
+                <img src="/images/figma/tech-competence-1.svg" alt="Tech 1" className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain mb-3 sm:mb-4" />
+                <div className="text-[#08C2C1] text-[16px] sm:text-[18px] font-extrabold uppercase mb-1 sm:mb-2 leading-tight tracking-tight" style={{letterSpacing: '-0.01em'}}>System Architecture & Solution Development</div>
+                <div className="text-[#12192C] text-[15px] sm:text-[16px] font-medium leading-relaxed">Including Telco & IT system design, OSS/BSS, and AI implementation based on Retrieval-Augmented Generation (RAG). Our team masters full-stack development using Java, Kotlin, Python, Go, Node.js, as well as modern interface development with React Native, Flutter, and various frontend frameworks.</div>
+              </div>
+              {/* Card 2 */}
+              <div className="flex flex-col items-start bg-white rounded-[18px] sm:rounded-[22px] shadow-lg p-5 sm:p-8 border border-[#08C2C1]/30 min-w-[260px] sm:min-w-[340px] flex-shrink-0 transition-all duration-200 hover:shadow-xl hover:border-[#08C2C1]">
+                <img src="/images/figma/tech-competence-2.svg" alt="Tech 2" className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain mb-3 sm:mb-4" />
+                <div className="text-[#08C2C1] text-[16px] sm:text-[18px] font-extrabold uppercase mb-1 sm:mb-2 leading-tight tracking-tight" style={{letterSpacing: '-0.01em'}}>Database & Infrastructure</div>
+                <div className="text-[#12192C] text-[15px] sm:text-[16px] font-medium leading-relaxed">Including relational and graph database management (Oracle, PostgreSQL, Neo4j), cloud and vector database utilization such as Supabase and Pinecone, as well as server and storage support based on Linux, NGINX, and MiniO. For spatial needs, we use GeoServer.</div>
+              </div>
+              {/* Card 3 */}
+              <div className="flex flex-col items-start bg-white rounded-[18px] sm:rounded-[22px] shadow-lg p-5 sm:p-8 border border-[#08C2C1]/30 min-w-[260px] sm:min-w-[340px] flex-shrink-0 transition-all duration-200 hover:shadow-xl hover:border-[#08C2C1]">
+                <img src="/images/figma/tech-competence-3.svg" alt="Tech 3" className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain mb-3 sm:mb-4" />
+                <div className="text-[#08C2C1] text-[16px] sm:text-[18px] font-extrabold uppercase mb-1 sm:mb-2 leading-tight tracking-tight" style={{letterSpacing: '-0.01em'}}>DevOps & System Security</div>
+                <div className="text-[#12192C] text-[15px] sm:text-[16px] font-medium leading-relaxed">Including Linux server management, scripting, container usage (Docker), orchestration (Kafka), and CI/CD pipelines with GitLab, Jenkins, and Agile methodology. System security is maintained through OWASP standards, SSL/TLS encryption, and secure protocols such as SSH and SFTP.</div>
+              </div>
+              {/* Card 4 */}
+              <div className="flex flex-col items-start bg-white rounded-[18px] sm:rounded-[22px] shadow-lg p-5 sm:p-8 border border-[#08C2C1]/30 min-w-[260px] sm:min-w-[340px] flex-shrink-0 transition-all duration-200 hover:shadow-xl hover:border-[#08C2C1]">
+                <img src="/images/figma/tech-competence-4.svg" alt="Tech 4" className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain mb-3 sm:mb-4" />
+                <div className="text-[#08C2C1] text-[16px] sm:text-[18px] font-extrabold uppercase mb-1 sm:mb-2 leading-tight tracking-tight" style={{letterSpacing: '-0.01em'}}>Design & User Interface</div>
+                <div className="text-[#12192C] text-[15px] sm:text-[16px] font-medium leading-relaxed">Focused on UI/UX development using Figma and AI-based cross-platform mobile application development with Flutter and React Native.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-// ServiceCard component for use in Services section
-const ServiceCard = ({ icon, title, description, delay }: { icon: React.ReactNode; title: React.ReactNode; description: string; delay: number }) => {
-  return (
-    <a href="/services" className="block group">
-      <motion.div
-        className="flex flex-row items-center bg-white border border-gray-200 rounded-xl px-3 sm:px-6 md:px-8 lg:px-10 py-4 sm:py-6 md:py-8 min-w-0 w-full h-full shadow-[0_2px_12px_0_rgba(0,0,0,0.06)] transition-all duration-300 ease-in-out cursor-pointer group-hover:shadow-2xl gap-3 sm:gap-6 md:gap-8 flex-col"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.7, delay: delay * 0.1 }}
-        tabIndex={0}
-      >
-        <div className="flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 flex items-center justify-center mr-4 sm:mr-6">
-          {icon}
+      {/* TEAM/PORTFOLIO */}
+      <section className="w-full py-12 sm:py-20 bg-[#F8FAFC]">
+        <div className="w-full max-w-[1200px] mx-auto px-2 sm:px-5 md:px-0 flex flex-col items-center">
+          <div className="flex flex-col items-center w-full max-w-[657px] mb-8 sm:mb-10">
+            <h2
+              className="w-full text-[24px] sm:text-[32px] md:text-[44px] font-medium uppercase text-[#7E7E7E] text-center leading-[1.1] tracking-[-0.02em] mb-[-8px]"
+              style={{
+                textShadow: '0px 1px 3px rgba(28,32,43,0.05), 0px 1px 2px rgba(28,32,43,0.04)',
+                letterSpacing: '-0.02em',
+              }}
+            >
+              IDEAS THAT
+            </h2>
+            <h2
+              className="w-full text-[24px] sm:text-[32px] md:text-[44px] font-semibold uppercase text-[#08C2C1] text-center leading-[1.1] tracking-[-0.02em]"
+              style={{
+                textShadow: '0px 1px 3px rgba(28,32,43,0.05), 0px 1px 2px rgba(28,32,43,0.04)',
+                letterSpacing: '-0.02em',
+              }}
+            >
+              TURNED INTO IMPACT
+            </h2>
+          </div>
+          <div className="w-full max-w-[920px] text-[16px] md:text-[18px] font-medium text-[#0E1423] text-center leading-[2] capitalize mb-8" style={{minHeight: 64}}>
+            AITISERVE specializes in software development and digital platform services, including programming, web portal management, as well as IT consulting and technical support. Our expertise spans AI-powered web and mobile applications, geographic information systems (GIS), and desktop solutions tailored to various business sectors and organizations.
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 sm:gap-4 max-w-[920px] w-full">
+            {/* Team 1 */}
+            <div className="relative bg-white/10 backdrop-blur-[13px] rounded-[24px] shadow-xl overflow-hidden flex flex-col items-center p-0 min-h-[250px] max-w-full sm:max-w-full mx-auto">
+              <img src="/images/figma/team1.png" alt="Team 1" className="h-full w-full object-cover" />
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#0E1423] to-transparent p-4 sm:p-6 flex flex-col items-start" style={{height: 120}}>
+                <div className="text-[20px] sm:text-[32px] font-bold text-[#08C2C1] leading-[32px] sm:leading-[48px] capitalize">Lincoln Curtis</div>
+                <div className="text-white text-[14px] sm:text-[16px] font-medium leading-[20px] sm:leading-[24px] capitalize">Solution Architect | IT & Telecommunications Expert</div>
+              </div>
+            </div>
+            {/* Team 2 */}
+            <div className="relative bg-white/10 backdrop-blur-[13px] rounded-[24px] shadow-xl overflow-hidden flex flex-col items-center p-0 min-h-[250px] max-w-full sm:max-w-full mx-auto">
+              <img src="/images/figma/team2.png" alt="Team 2" className="h-full w-full object-cover" />
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#0E1423] to-transparent p-4 sm:p-6 flex flex-col items-start" style={{height: 100}}>
+                <div className="text-[20px] sm:text-[32px] font-bold text-[#08C2C1] leading-[32px] sm:leading-[48px] capitalize">Kaiya Korsgaard</div>
+                <div className="text-white text-[14px] sm:text-[16px] font-medium leading-[20px] sm:leading-[24px] capitalize">Product Manager</div>
+              </div>
+            </div>
+            {/* Team 3 */}
+            <div className="relative bg-white/10 backdrop-blur-[13px] rounded-[24px] shadow-xl overflow-hidden flex flex-col items-center p-0 min-h-[250px] max-w-full sm:max-w-full mx-auto">
+              <img src="/images/figma/team3.png" alt="Team 3" className="h-full w-full object-cover" />
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#0E1423] to-transparent p-4 sm:p-6 flex flex-col items-start" style={{height: 100}}>
+                <div className="text-[20px] sm:text-[32px] font-bold text-[#08C2C1] leading-[32px] sm:leading-[48px] capitalize">Rayna Bator</div>
+                <div className="text-white text-[14px] sm:text-[16px] font-medium leading-[20px] sm:leading-[24px] capitalize">Product Designer</div>
+              </div>
+            </div>
+            {/* Team 4 */}
+            <div className="relative bg-white/10 backdrop-blur-[13px] rounded-[24px] shadow-xl overflow-hidden flex flex-col items-center p-0 min-h-[250px] max-w-full sm:max-w-full mx-auto">
+              <img src="/images/figma/team4.png" alt="Team 4" className="h-full w-full object-cover" />
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#0E1423] to-transparent p-4 sm:p-6 flex flex-col items-start" style={{height: 100}}>
+                <div className="text-[20px] sm:text-[32px] font-bold text-[#08C2C1] leading-[32px] sm:leading-[48px] capitalize">Corey Culhane</div>
+                <div className="text-white text-[14px] sm:text-[16px] font-medium leading-[20px] sm:leading-[24px] capitalize">Senior Engineer</div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col justify-center h-full flex-1">
-          <div className="text-lg md:text-xl font-bold text-secondary mb-1 leading-tight">{title}</div>
-          <div className="text-gray-900 text-base md:text-lg leading-snug">{description}</div>
+      </section>
+
+      {/* BLOG/INSIGHTS */}
+      <section className="w-full flex flex-col items-center justify-center py-12 sm:py-20 bg-[#F8FAFC] gap-[50px]">
+        {/* Title and Description Row */}
+        <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-[1392px] px-2 sm:px-5 md:px-0 gap-[40px] md:gap-[100px]">
+          {/* Title */}
+          <div className="flex flex-col justify-center items-start w-full md:w-[595px] h-auto md:h-[180px]">
+            <span
+              className="text-[#7E7E7E] font-poppins font-medium uppercase text-[32px] sm:text-[40px] md:text-[56px] lg:text-[64px] leading-[1.1] tracking-[-0.02em] mb-[-8px]"
+              style={{ textShadow: '0px 1px 3px rgba(28,32,43,0.05), 0px 1px 2px rgba(28,32,43,0.04)' }}
+            >
+              TECH INSIGHTS &
+            </span>
+            <span
+              className="text-[#08C2C1] font-poppins font-semibold uppercase text-[32px] sm:text-[40px] md:text-[56px] lg:text-[64px] leading-[1.1] tracking-[-0.02em]"
+              style={{ textShadow: '0px 1px 3px rgba(28,32,43,0.05), 0px 1px 2px rgba(28,32,43,0.04)' }}
+            >
+              INDUSTRY UPDATES
+            </span>
+          </div>
+          {/* Description */}
+          <div className="w-full md:w-[697px] min-h-[48px] flex items-center">
+            <span className="font-poppins font-medium text-[15px] sm:text-[16px] leading-[28px] sm:leading-[32px] text-[#0E1423] capitalize">
+              AITISERVE specializes in software development and digital platform services, including programming, web portal management, as well as IT consulting and technical support. Our expertise spans AI-powered web and mobile applications, geographic information systems (GIS), and desktop solutions tailored to various business sectors and organizations.
+            </span>
+          </div>
         </div>
-      </motion.div>
-    </a>
+        {/* Blog Cards Row */}
+        <div className="w-full max-w-[1200px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-[24px] lg:gap-[24px] px-2 sm:px-4 md:px-0">
+          {/* Blog 1 */}
+          <div className="flex flex-col items-start bg-white shadow-lg overflow-hidden min-w-0 max-w-full w-full h-[420px] sm:h-[497px] border border-[#E5E7EB] transition-transform duration-200 hover:-translate-y-2 hover:shadow-2xl">
+            <div className="w-full h-[180px] sm:h-[240px] bg-white bg-opacity-[0.09] backdrop-blur-[13px] relative">
+              <img src="/images/figma/blog1.png" alt="Blog 1" className="absolute inset-0 w-full h-full object-cover" />
+            </div>
+            <div className="flex flex-col items-start p-[12px] gap-[16px] sm:gap-[24px] w-full flex-1">
+              <div className="flex flex-col gap-[6px] sm:gap-[8px] w-full">
+                <div className="text-[#08C2C1] font-bold uppercase text-[14px] sm:text-[16px] leading-[28px] sm:leading-[32px] mb-0">June, 24 2025</div>
+                <div className="text-[#08C2C1] font-bold uppercase text-[18px] sm:text-[24px] leading-[28px] sm:leading-[41px] tracking-tight mb-0">Advanced Java Concurrency: Patterns and Best Practices</div>
+                <div className="text-[#0E1423] font-medium text-[14px] sm:text-[16px] leading-[22px] sm:leading-[29px] capitalize mb-0">Concurrency is a cornerstone of modern software development, enabling applications to perform multiple tasks simultaneously and make efficient ...</div>
+                <div className="text-[#7E7E7E] font-medium text-[14px] sm:text-[16px] leading-[28px] sm:leading-[32px] capitalize">Read more →</div>
+              </div>
+            </div>
+          </div>
+          {/* Blog 2 */}
+          <div className="flex flex-col items-start bg-white shadow-lg overflow-hidden min-w-0 max-w-full w-full h-[420px] sm:h-[497px] border border-[#E5E7EB] transition-transform duration-200 hover:-translate-y-2 hover:shadow-2xl">
+            <div className="w-full h-[180px] sm:h-[240px] bg-white bg-opacity-[0.09] backdrop-blur-[13px] relative">
+              <img src="/images/figma/blog2.png" alt="Blog 2" className="absolute inset-0 w-full h-full object-cover" />
+            </div>
+            <div className="flex flex-col items-start p-[12px] gap-[16px] sm:gap-[24px] w-full flex-1">
+              <div className="flex flex-col gap-[6px] sm:gap-[8px] w-full">
+                <div className="text-[#08C2C1] font-bold uppercase text-[14px] sm:text-[16px] leading-[28px] sm:leading-[32px] mb-0">June, 23 2025</div>
+                <div className="text-[#08C2C1] font-bold uppercase text-[18px] sm:text-[24px] leading-[28px] sm:leading-[41px] tracking-tight mb-0">Google UX Design Certificate in 2025</div>
+                <div className="text-[#0E1423] font-medium text-[14px] sm:text-[16px] leading-[22px] sm:leading-[29px] capitalize mb-0">Will the Google UX Certificate get you a UX designer job in 2025? How to take the most advantage of the course curriculum.</div>
+                <div className="text-[#7E7E7E] font-medium text-[14px] sm:text-[16px] leading-[28px] sm:leading-[32px] capitalize">Read more →</div>
+              </div>
+            </div>
+          </div>
+          {/* Blog 3 */}
+          <div className="flex flex-col items-start bg-white shadow-lg overflow-hidden min-w-0 max-w-full w-full h-[420px] sm:h-[497px] border border-[#E5E7EB] transition-transform duration-200 hover:-translate-y-2 hover:shadow-2xl">
+            <div className="w-full h-[180px] sm:h-[240px] bg-white bg-opacity-[0.09] backdrop-blur-[13px] relative">
+              <img src="/images/figma/blog3.png" alt="Blog 3" className="absolute inset-0 w-full h-full object-cover" />
+            </div>
+            <div className="flex flex-col items-start p-[12px] gap-[16px] sm:gap-[24px] w-full flex-1">
+              <div className="flex flex-col gap-[6px] sm:gap-[8px] w-full">
+                <div className="text-[#08C2C1] font-bold uppercase text-[14px] sm:text-[16px] leading-[28px] sm:leading-[32px] mb-0">June, 22 2025</div>
+                <div className="text-[#08C2C1] font-bold uppercase text-[18px] sm:text-[24px] leading-[28px] sm:leading-[41px] tracking-tight mb-0">How Thinking Like a Product Designer Changed My Design ...</div>
+                <div className="text-[#0E1423] font-medium text-[14px] sm:text-[16px] leading-[22px] sm:leading-[29px] capitalize mb-0">Five lessons I've learned about deliverables that Junior Designer Me could've never imagined.</div>
+                <div className="text-[#7E7E7E] font-medium text-[14px] sm:text-[16px] leading-[28px] sm:leading-[32px] capitalize">Read more →</div>
+              </div>
+            </div>
+          </div>
+          {/* Blog 4 */}
+          <div className="flex flex-col items-start bg-white shadow-lg overflow-hidden min-w-0 max-w-full w-full h-[420px] sm:h-[497px] border border-[#E5E7EB] transition-transform duration-200 hover:-translate-y-2 hover:shadow-2xl">
+            <div className="w-full h-[180px] sm:h-[240px] bg-white bg-opacity-[0.09] backdrop-blur-[13px] relative">
+              <img src="/images/figma/blog4.png" alt="Blog 4" className="absolute inset-0 w-full h-full object-cover" />
+            </div>
+            <div className="flex flex-col items-start p-[12px] gap-[16px] sm:gap-[24px] w-full flex-1">
+              <div className="flex flex-col gap-[6px] sm:gap-[8px] w-full">
+                <div className="text-[#08C2C1] font-bold uppercase text-[14px] sm:text-[16px] leading-[28px] sm:leading-[32px] mb-0">June, 25 2025</div>
+                <div className="text-[#08C2C1] font-bold uppercase text-[18px] sm:text-[24px] leading-[28px] sm:leading-[41px] tracking-tight mb-0">The Future of AI in Everyday Life</div>
+                <div className="text-[#0E1423] font-medium text-[14px] sm:text-[16px] leading-[22px] sm:leading-[29px] capitalize mb-0">Discover how artificial intelligence is seamlessly integrating into daily routines, from smart homes to personalized healthcare solutions.</div>
+                <div className="text-[#7E7E7E] font-medium text-[14px] sm:text-[16px] leading-[28px] sm:leading-[32px] capitalize">Read more →</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
   );
 };
 

@@ -34,10 +34,13 @@ export default {
           light: '#f87171',
           dark: '#dc2626',
         },
+        cyanFigma: '#08C2C1',
+        darkFigma: '#12192C',
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
         heading: ['Poppins', 'system-ui', 'sans-serif'],
+        poppins: ['Poppins', 'sans-serif'],
       },
       backgroundImage: {
         'hero-pattern': "linear-gradient(rgba(18, 25, 44, 0.85), rgba(18, 25, 44, 0.85)), url('/images/01-good.webp')",

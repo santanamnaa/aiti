@@ -1,144 +1,121 @@
-import React, { useEffect } from 'react';
-import { ServerCog, Share2, Map, Smartphone, Monitor, Users, RefreshCw, LifeBuoy, Database, Network, Layers, Check } from 'lucide-react';
-import CtaSection from '../components/home/CtaSection';
+import React from 'react';
 
-const serviceList = [
+const services = [
   {
-    icon: <Network className="w-8 h-8 text-secondary" />, 
-    title: 'Network Inventory & Auto-Discovery',
-    desc: 'Platform inventarisasi jaringan fiber, Metro Ethernet, WiFi, dan auto-discovery perangkat untuk efisiensi provisioning dan monitoring real-time.',
-    id: 'network-inventory',
+    id: 1,
+    label: 'Service 1',
+    title: 'IT & AI CONSULTANT',
+    desc1: 'AI Based Planning • Digital Transformation',
+    desc2: 'Providing strategic assistance in digital transformation, including mapping technology needs, AI-based system planning, and developing a sustainable technology roadmap.',
+    button: 'Learn More',
   },
   {
-    icon: <ServerCog className="w-8 h-8 text-primary" />, 
-    title: 'OSS/BSS Integration & Automation',
-    desc: 'Integrasi dan otomasi sistem OSS/BSS (OSM/UIM/ASAP, Clarity OSS) untuk provisioning layanan enterprise dan peningkatan SLA.',
-    id: 'oss-bss',
+    id: 2,
+    label: 'Service 2',
+    title: 'Web Application Development',
+    desc1: 'Design • Performance • High-Scalability',
+    desc2: 'Building modern web applications with responsive design, optimal performance, and high scalability to support current digital business needs.',
+    button: 'Learn More',
   },
   {
-    icon: <Map className="w-8 h-8 text-secondary" />, 
-    title: 'Geospatial & GIS Solutions',
-    desc: 'Pengembangan aplikasi GIS, digitalisasi data pertanahan, dan solusi pemetaan digital untuk enterprise dan pemerintahan.',
-    id: 'gis',
+    id: 3,
+    label: 'Service 3',
+    title: 'MOBILE Application Development',
+    desc1: 'Android • iOS',
+    desc2: 'Designing and developing AI-based mobile applications with excellent user experience (UX) and cross-platform compatibility (Android & iOS).',
+    button: 'Learn More',
   },
   {
-    icon: <Monitor className="w-8 h-8 text-primary" />, 
-    title: 'Custom Software Development',
-    desc: 'Aplikasi web, mobile, dan desktop untuk enterprise, modernisasi sistem legacy, dan solusi bisnis berbasis AI.',
-    id: 'custom-software',
+    id: 4,
+    label: 'Service 4',
+    title: 'DESKTOP Application Development',
+    desc1: 'Secure • Integrated',
+    desc2: 'Developing robust, secure, and integrated desktop software tailored to the specific needs of organizations or institutions.',
+    button: 'Learn More',
   },
   {
-    icon: <Users className="w-8 h-8 text-secondary" />, 
-    title: 'IT & AI Consulting',
-    desc: 'Konsultasi strategis transformasi digital, audit infrastruktur, dan pengembangan roadmap teknologi berbasis AI.',
-    id: 'consulting',
+    id: 5,
+    label: 'Service 5',
+    title: 'Geographic Information System (GIS) Development',
+    desc1: 'Spatial Analyst • Visualization',
+    desc2: 'Providing GIS solutions for location visualization, spatial analysis, and decision-making based on accurate and interactive geospatial data.',
+    button: 'Learn More',
   },
   {
-    icon: <RefreshCw className="w-8 h-8 text-primary" />, 
-    title: 'System Integration & Modernization',
-    desc: 'Integrasi sistem lama ke platform modern, migrasi data, dan modernisasi workflow bisnis.',
-    id: 'integration',
-  },
-  {
-    icon: <LifeBuoy className="w-8 h-8 text-secondary" />, 
-    title: 'Technical Support & Managed Services',
-    desc: 'Dukungan teknis, pemeliharaan sistem, dan layanan managed service berbasis SLA untuk kelancaran operasional.',
-    id: 'support',
-  },
-];
-
-const projectHighlights = [
-  {
-    icon: <Network className="w-7 h-7 text-secondary" />,
-    title: 'UIMAX-ISP & UIMAX-OSP',
-    desc: 'Platform inventarisasi jaringan fiber dan auto-discovery untuk Telkom Indonesia, migrasi data Oracle ke Neo4j Graph Database.',
-    client: 'PT Exalogic Integrasi Communication',
-    date: '2018–2023',
-  },
-  {
-    icon: <ServerCog className="w-7 h-7 text-primary" />,
-    title: 'OSS/BSS Enterprise Integration',
-    desc: 'Integrasi OSM/UIM/ASAP untuk layanan Metro Ethernet, VPN IP, VSAT, Indihome, meningkatkan SLA dan efisiensi provisioning.',
-    client: 'PT Telkomsigma (Telkom Group)',
-    date: '2016–2018',
-  },
-  {
-    icon: <Map className="w-7 h-7 text-secondary" />,
-    title: 'GIS & Land Registration System',
-    desc: 'Sistem GIS dan aplikasi pendaftaran bidang tanah untuk digitalisasi data pertanahan nasional (BPN).',
-    client: 'PT. Jasindo Abadi Utama',
-    date: '2005–2009',
-  },
-  {
-    icon: <Monitor className="w-7 h-7 text-primary" />,
-    title: 'OSS Discovery Module',
-    desc: 'Modul OSS discovery untuk Telkomsel dan Telkom Indonesia, memperluas visibilitas dan pengelolaan layanan jaringan.',
-    client: 'Clarity OSS / Synchronoss Technologies',
-    date: '2012–2015',
+    id: 6,
+    label: 'Service 6',
+    title: 'TECHNICAL SUPPORT',
+    desc1: '24/7 • System Operation',
+    desc2: 'Providing professional 24/7 technical assistance to ensure smooth system operations with minimal disruption.',
+    button: 'Learn More',
   },
 ];
 
 const ServicesPage: React.FC = () => {
-  useEffect(() => {
-    document.title = 'Layanan - AITISERVE';
-  }, []);
-
   return (
-    <>
-      {/* Services Grid Modern & Clean */}
-      <section className="py-24 bg-gray-50 min-h-screen relative overflow-hidden">
-        <div className="container mx-auto px-6 scrollbar-none relative z-10">
-          {/* Header */}
-          <div className="mb-14 flex flex-col items-center justify-center relative">
-            {/* Blurred Gradient Background - larger and more offset */}
-            <div className="absolute -top-10 left-1/2 -translate-x-1/2 -z-10 w-[120%] h-[160%] flex items-center justify-center pointer-events-none select-none">
-              <div className="w-full h-full bg-gradient-to-r from-secondary/30 via-primary/20 to-secondary/30 blur-3xl rounded-3xl opacity-50"></div>
-            </div>
-            <div className="w-full bg-primary rounded-3xl px-6 py-12 shadow-lg relative z-10">
-              <h2 className="text-5xl md:text-6xl font-semibold text-white text-center tracking-tight drop-shadow-lg relative">
-                Layanan <span className="text-secondary">AITISERVE</span>
-                <span className="block mx-auto mt-4 w-32 h-1 rounded-full bg-gradient-to-r from-secondary via-white to-secondary opacity-80 animate-pulse-slow"></span>
-              </h2>
-              <p className="text-white/90 mt-8 mb-0 text-lg md:text-xl text-center max-w-3xl mx-auto font-light">
-                Temukan layanan enterprise, OSS/BSS, GIS, integrasi sistem, dan transformasi digital berbasis pengalaman nyata dari <span className='text-secondary font-semibold'>AITISERVE</span> untuk mendukung efisiensi dan inovasi bisnis Anda.
-              </p>
-            </div>
-          </div>
+    <div className="w-full min-h-screen bg-white flex flex-col items-start px-4 md:px-6">
+      {/* Section Title */}
+      <div className="mt-32 mb-12 w-full max-w-[920px] flex flex-col gap-6 items-start px-4 md:px-0">
+        <div className="flex flex-col gap-0">
+          <span className="text-[64px] leading-[96px] font-medium text-[#7E7E7E] uppercase font-poppins -mb-3">
+            powering
+          </span>
+          <span className="text-[64px] leading-[96px] font-semibold text-[#08C2C1] uppercase font-poppins">
+            the Future Through Tech
+          </span>
         </div>
-        <div className="container mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl font-bold text-primary mb-12 text-center">Ruang Lingkup Layanan</h2>
-          <div className="divide-y divide-gray-200">
-            {serviceList.map((service, idx) => (
-              <div key={service.id} className="flex flex-col items-center text-center gap-4 py-10 group hover:bg-secondary/5 transition-all duration-300">
-                <div className="mb-2 scale-110 group-hover:scale-125 transition-transform duration-300">{service.icon}</div>
-                <div className="font-extrabold text-xl md:text-2xl text-primary mb-2 group-hover:text-secondary transition-colors duration-300 tracking-tight">{service.title}</div>
-                <div className="text-neutral-700 text-lg md:text-xl font-medium max-w-2xl mx-auto leading-relaxed">{service.desc}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+        <p className="text-[16px] leading-[32px] font-medium text-[#0E1423] capitalize font-poppins w-[920px]">
+          We provide a wide range of technology services to help your business thrive in the digital era.
+        </p>
+      </div>
 
-      {/* Project Highlights */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl font-bold text-primary mb-12 text-center">Project Highlights</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {projectHighlights.map((proj, idx) => (
-              <div key={idx} className="bg-gradient-to-br from-secondary/5 via-primary/10 to-white rounded-3xl shadow-lg p-8 flex flex-col items-start border-t-4 border-b-4 border-transparent hover:border-primary/60 hover:shadow-2xl transition-all duration-300 group card-hover relative overflow-hidden">
-                <div className="mb-4">{proj.icon}</div>
-                <div className="font-bold text-lg text-primary mb-1 group-hover:text-secondary transition-colors duration-300">{proj.title}</div>
-                <div className="text-neutral-600 text-base font-light mb-2">{proj.desc}</div>
-                <div className="mt-auto text-sm text-neutral-500">{proj.client} <span className="mx-1">•</span> {proj.date}</div>
+      {/* Services List */}
+      <div className="w-full flex flex-col items-center gap-0">
+        {services.map((service, idx) => (
+          <React.Fragment key={service.id}>
+            <div
+              className={`w-[1392px] h-[140px] bg-white/5 flex flex-row items-start p-8 gap-[480px] mb-0 transition-all duration-300 group
+                          hover:h-[283px] hover:bg-[rgba(8,194,193,0.05)] hover:backdrop-blur-[13px] hover:shadow-lg`}
+            >
+              {/* Label */}
+              <div className="flex flex-col items-start">
+                <span className="w-[24px] h-[27px] text-[18px] leading-[27px] font-medium uppercase text-[#7E7E7E] font-poppins">
+                  {service.label}
+                </span>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <CtaSection />
-    </>
+              {/* Content */}
+              <div className="flex flex-col gap-6 w-[824px]">
+                <div className="flex flex-col gap-2">
+                  <span className="w-[824px] h-[36px] text-[24px] leading-[36px] font-bold uppercase text-[#08C2C1] font-poppins">
+                    {service.title}
+                  </span>
+                  <span className="w-[824px] h-[32px] text-[16px] leading-[32px] font-medium capitalize text-[#7E7E7E] font-poppins">
+                    {service.desc1}
+                  </span>
+                  {/* desc2 and button: Only show on hover, with transition */}
+                  <span
+                    className={`w-[824px] h-[64px] text-[16px] leading-[32px] font-medium capitalize text-[#0E1423] font-poppins transition-opacity duration-300 opacity-0 group-hover:opacity-100`}
+                  >
+                    {service.desc2}
+                  </span>
+                </div>
+                {/* Button is now always present in data, but its visibility is controlled by hover */}
+                <button
+                  className="w-[196px] h-[47px] flex justify-center items-center px-6 py-2.5 gap-2 border border-[#08C2C1] rounded-[12px] bg-white text-[#08C2C1] text-[18px] leading-[27px] font-medium capitalize font-poppins
+                             transition-opacity duration-300 opacity-0 group-hover:opacity-100"
+                >
+                  {service.button}
+                </button>
+              </div>
+            </div>
+            {/* Divider (skip after last service) */}
+            {idx < services.length - 1 && (
+              <div className="w-[1392px] border-t border-[#7E7E7E] opacity-30" />
+            )}
+          </React.Fragment>
+        ))}
+      </div>
+    </div>
   );
 };
 

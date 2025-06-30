@@ -1,155 +1,61 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, Mail, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
-import { useTranslation } from 'react-i18next';
-import Logo from '../common/Logo';
 
 const Footer: React.FC = () => {
-  const { t } = useTranslation();
-  
   return (
-    <footer className="bg-primary text-white pt-4 pb-2">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
-          {/* About */}
-          <div>
-            <div className="mb-6">
-              <Logo />
-            </div>
-            <p className="text-gray-200 text-sm mb-2 font-light">
-              {t('footer.about_description')}
-            </p>
-            <div className="flex space-x-4 mt-4">
-              {/* Uncomment and update with real links if available */}
-              {/* <a href="#" className="text-gray-200 hover:text-secondary transition-colors">
-                <Facebook className="w-6 h-6" />
-              </a>
-              <a href="#" className="text-gray-200 hover:text-secondary transition-colors">
-                <Twitter className="w-6 h-6" />
-              </a>
-              <a href="#" className="text-gray-200 hover:text-secondary transition-colors">
-                <Linkedin className="w-6 h-6" />
-              </a>
-              <a href="#" className="text-gray-200 hover:text-secondary transition-colors">
-                <Instagram className="w-6 h-6" />
-              </a> */}
-            </div>
+    <footer className="bg-[#12192C] text-white font-poppins pt-16 pb-16 px-4 md:px-0 min-h-[50vh]">
+      <div className="w-full max-w-[1200px] mx-auto flex flex-wrap justify-between gap-4 sm:gap-6 md:gap-8 px-4 sm:px-6 md:px-12">
+        
+        {/* Brand & Slogan */}
+        <div className="flex-1 min-w-0 sm:min-w-[180px] md:min-w-[220px] w-full max-w-full mb-6 md:mb-0">
+          <div className="flex items-center gap-3 mb-4">
+            <span className="text-2xl font-bold tracking-tight">AITISERVE</span>
           </div>
-          
-          {/* Quick Links */}
-          <div>
-            <h3 className="text-lg font-bold mb-4">{t('footer.links')}</h3>
-            <ul className="space-y-4">
-              <li>
-                <Link to="/" className="text-gray-200 text-sm hover:text-secondary font-light transition-colors">
-                  {t('nav.home')}
-                </Link>
-              </li>
-              <li>
-                <Link to="/about" className="text-gray-200 text-sm hover:text-secondary font-light transition-colors">
-                  {t('nav.about')}
-                </Link>
-              </li>
-              <li>
-                <Link to="/portfolio" className="text-gray-200 text-sm hover:text-secondary font-light transition-colors">
-                  {t('nav.portfolio')}
-                </Link>
-              </li>
-              <li>
-                <Link to="/products" className="text-gray-200 text-sm hover:text-secondary font-light transition-colors">
-                  {t('nav.products')}
-                </Link>
-              </li>
-              <li>
-                <Link to="/careers" className="text-gray-200 text-sm hover:text-secondary font-light transition-colors">
-                  {t('nav.careers')}
-                </Link>
-              </li>
-              <li>
-                <Link to="/contact" className="text-gray-200 text-sm hover:text-secondary font-light transition-colors">
-                  {t('nav.contact')}
-                </Link>
-              </li>
-            </ul>
-          </div>
-          
-          {/* Services */}
-          <div>
-            <h3 className="text-lg font-bold mb-4">{t('footer.services')}</h3>
-            <ul className="space-y-4">
-              <li>
-                <Link to="/services#network-inventory" className="text-gray-200 text-sm hover:text-secondary font-light transition-colors">
-                  Network Inventory & Auto-Discovery
-                </Link>
-              </li>
-              <li>
-                <Link to="/services#oss-bss" className="text-gray-200 text-sm hover:text-secondary font-light transition-colors">
-                  OSS/BSS Integration & Automation
-                </Link>
-              </li>
-              <li>
-                <Link to="/services#gis" className="text-gray-200 text-sm hover:text-secondary font-light transition-colors">
-                  Geospatial & GIS Solutions
-                </Link>
-              </li>
-              <li>
-                <Link to="/services#custom-software" className="text-gray-200 text-sm hover:text-secondary font-light transition-colors">
-                  Custom Software Development
-                </Link>
-              </li>
-              <li>
-                <Link to="/services#consulting" className="text-gray-200 text-sm hover:text-secondary font-light transition-colors">
-                  IT & AI Consulting
-                </Link>
-              </li>
-              <li>
-                <Link to="/services#integration" className="text-gray-200 text-sm hover:text-secondary font-light transition-colors">
-                  System Integration & Modernization
-                </Link>
-              </li>
-              <li>
-                <Link to="/services#support" className="text-gray-200 text-sm hover:text-secondary font-light transition-colors">
-                  Technical Support & Managed Services
-                </Link>
-              </li>
-            </ul>
-          </div>
-          
-          {/* Contact */}
-          <div>
-            <h3 className="text-xl font-bold mb-6">{t('contact.title')}</h3>
-            <ul className="space-y-6">
-              <li className="flex items-center justify-start">
-                <MapPin className="w-5 h-5 text-secondary mr-3 flex-shrink-0" />
-                <span className="text-gray-200 text-sm font-medium">
-                  <a href="https://maps.app.goo.gl/2Qn6Qw2v8Qw1v1vA7" target="_blank" rel="noopener noreferrer" className="hover:underline">
-                    Jl. Manglid, Komplek Grand Kopo Parahyangan Blok A No 20, Margahayu Selatan, Margahayu Kab. Bandung Jawa Barat
-                  </a>
-                </span>
-              </li>
-              <li className="flex items-center justify-start">
-                <Mail className="w-5 h-5 text-secondary mr-3 flex-shrink-0" />
-                <span className="text-gray-200 text-sm font-medium">
-                  <a href="mailto:hr@aitiserve.co.id" target="_blank" rel="noopener noreferrer" className="hover:underline">hr@aitiserve.co.id</a>
-                </span>
-              </li>
-            </ul>
+          <div className="text-neutral-light text-base max-w-xs leading-relaxed opacity-80 break-words">
+            Empowering Your Digital Transformation
           </div>
         </div>
-        
-        {/* Bottom Footer */}
-        <div className="border-t border-white/20 mt-6 pt-4 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-300 text-sm mb-1 md:mb-0 font-light">
-            Copyright © PT AITISERVE DJAYA NARAYA (AITISERVE) 2025. All Rights Reserved.
-          </p>
-          <div className="flex space-x-4">
-            <Link to="/privacy-policy" className="text-gray-200 text-xs hover:text-secondary font-light transition-colors">
-              {t('footer.privacy')}
-            </Link>
-            <Link to="/terms-of-service" className="text-gray-200 text-xs hover:text-secondary font-light transition-colors">
-              {t('footer.terms')}
-            </Link>
+
+        {/* Navigation */}
+        <div className="flex-1 min-w-0 sm:min-w-[180px] md:min-w-[220px] w-full max-w-full mb-6 md:mb-0">
+          <div className="mb-3 font-semibold text-lg tracking-tight">Navigation</div>
+          <ul className="space-y-2 text-base">
+            <li><Link to="/" className="hover:text-[#08C2C1] transition">Home</Link></li>
+            <li><Link to="/services" className="hover:text-[#08C2C1] transition">Services</Link></li>
+            <li><Link to="/portfolio" className="hover:text-[#08C2C1] transition">Portfolio</Link></li>
+            <li><Link to="/blog" className="hover:text-[#08C2C1] transition">Blog</Link></li>
+            <li><Link to="/about" className="hover:text-[#08C2C1] transition">About</Link></li>
+            <li><Link to="/contact" className="hover:text-[#08C2C1] transition">Contact</Link></li>
+          </ul>
+        </div>
+
+        {/* Contact Info */}
+        <div className="flex-1 min-w-0 sm:min-w-[180px] md:min-w-[220px] w-full max-w-full mb-6 md:mb-0">
+          <div className="mb-3 font-semibold text-lg tracking-tight">Contact</div>
+          <ul className="space-y-2 text-base opacity-80 break-words">
+            <li>+62 852 5151 9897</li>
+            <li>hr@aitiserve.co.id</li>
+            <li>Jl. Manglid, Komplek Grand Kopo Parahyangan Blok A No.20 Margahayu Selatan, Margahayu, Kab. Bandung, Jawa Barat</li>
+          </ul>
+        </div>
+
+        {/* Social Media */}
+        <div className="flex-1 min-w-0 sm:min-w-[180px] md:min-w-[220px] max-w-xs mb-6 md:mb-0 w-full max-w-full">
+          <div className="mb-3 font-semibold text-lg tracking-tight">Follow Us</div>
+          <div className="flex gap-4 items-center flex-wrap">
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#08C2C1] transition">LinkedIn</a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#08C2C1] transition">Instagram</a>
+            <a href="https://threads.net" target="_blank" rel="noopener noreferrer" className="hover:text-[#08C2C1] transition">Threads</a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#08C2C1] transition">YouTube</a>
           </div>
+        </div>
+      </div>
+
+      <div className="border-t border-gray-700 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400 px-6 md:px-12">
+        <div>© 2025 AITISERVE. All Rights Reserved.</div>
+        <div className="flex gap-4 mt-2 md:mt-0">
+          <Link to="/terms-of-service" className="hover:text-[#08C2C1] transition">Terms and Conditions</Link>
+          <Link to="/privacy-policy" className="hover:text-[#08C2C1] transition">Privacy Policy</Link>
         </div>
       </div>
     </footer>
