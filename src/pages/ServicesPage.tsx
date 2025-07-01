@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const services = [
   {
@@ -74,7 +75,7 @@ const ServicesPage: React.FC = () => {
         {services.map((service, idx) => (
           <React.Fragment key={service.id}>
             <div
-              className={`w-[1392px] h-[140px] bg-white/5 flex flex-row items-start p-8 gap-[480px] mb-0 transition-all duration-300 group
+              className={`group w-[1392px] h-[140px] bg-white/5 flex flex-row items-start p-8 gap-[480px] mb-0 transition-all duration-300
                           hover:h-[283px] hover:bg-[rgba(8,194,193,0.05)] hover:backdrop-blur-[13px] hover:shadow-lg`}
             >
               {/* Label */}
@@ -94,18 +95,27 @@ const ServicesPage: React.FC = () => {
                   </span>
                   {/* desc2 and button: Only show on hover, with transition */}
                   <span
-                    className={`w-[824px] h-[64px] text-[16px] leading-[32px] font-medium capitalize text-[#0E1423] font-poppins transition-opacity duration-300 opacity-0 group-hover:opacity-100`}
+                    className="w-[824px] h-[64px] text-[16px] leading-[32px] font-medium capitalize text-[#0E1423] font-poppins transition-opacity duration-300 opacity-0 group-hover:opacity-100"
                   >
                     {service.desc2}
                   </span>
                 </div>
                 {/* Button is now always present in data, but its visibility is controlled by hover */}
-                <button
-                  className="w-[196px] h-[47px] flex justify-center items-center px-6 py-2.5 gap-2 border border-[#08C2C1] rounded-[12px] bg-white text-[#08C2C1] text-[18px] leading-[27px] font-medium capitalize font-poppins
-                             transition-opacity duration-300 opacity-0 group-hover:opacity-100"
-                >
-                  {service.button}
-                </button>
+                {service.id === 1 ? (
+                  <Link
+                    to="/services/ITConsultantDetailPage"
+                    className="w-[196px] h-[47px] flex justify-center items-center px-6 py-2.5 gap-2 border border-[#08C2C1] rounded-[12px] bg-white text-[#08C2C1] text-[18px] leading-[27px] font-medium capitalize font-poppins transition-opacity duration-300 opacity-0 group-hover:opacity-100"
+                  >
+                    {service.button}
+                  </Link>
+                ) : (
+                  <button
+                    className="w-[196px] h-[47px] flex justify-center items-center px-6 py-2.5 gap-2 border border-[#08C2C1] rounded-[12px] bg-white text-[#08C2C1] text-[18px] leading-[27px] font-medium capitalize font-poppins transition-opacity duration-300 opacity-0 group-hover:opacity-100 cursor-not-allowed"
+                    disabled
+                  >
+                    {service.button}
+                  </button>
+                )}
               </div>
             </div>
             {/* Divider (skip after last service) */}

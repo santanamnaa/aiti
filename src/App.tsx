@@ -15,6 +15,7 @@ import BlogIndex from './pages/blog/index';
 import MengenalKonsepDasarMachineLearning from './pages/blog/mengenal-konsep-dasar-machine-learning';
 import TrenTerbaruDalamPengembanganWeb2025 from './pages/blog/tren-terbaru-dalam-pengembangan-web-2025';
 import MengapaCloudMasihJadiPilihanUtama from './pages/blog/mengapa-cloud-masih-jadi-pilihan-utama';
+import ITConsultantDetailPage from './pages/services/ITConsultantDetailPage';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route path="company-profile" element={<CompanyProfilePage />} />
         <Route path="privacy-policy" element={<PrivacyPolicyPage />} />
         <Route path="terms-of-service" element={<TermsOfServicePage />} />
+        <Route path="services/ITConsultantDetailPage" element={<ITConsultantDetailPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
