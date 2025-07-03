@@ -1,106 +1,159 @@
-import React from 'react';
+import React, { useState } from 'react';
+
+const sections = [
+  {
+    id: 'summary',
+    label: 'Summary',
+    content: (
+      <div className="space-y-4">
+        <p>
+          <b>PT AITISERVE DJAYA NARAYA (AITISERVE)</b> is a technology company established on August 27, 2024, in Bandung, Indonesia. As a legally registered limited liability company, AITISERVE was founded with a vision to integrate Artificial Intelligence (AI) and Information Technology (IT) to deliver adaptive, efficient, and impactful digital solutions.
+        </p>
+        <p>
+          AITISERVE specializes in software development and digital platform services, including programming, web portal management, as well as IT consulting and technical support. Our expertise spans AI-powered web and mobile applications, geographic information systems (GIS), and desktop solutions tailored to various business sectors and organizations.
+        </p>
+        <p>
+          The name "AITISERVE DJAYA NARAYA" reflects our core values—synergy between intelligence, technology, and service—symbolizing innovation, progress, and sustainability as the foundation for shaping a smarter and more meaningful digital future.
+        </p>
+      </div>
+    ),
+  },
+  {
+    id: 'vision-mission',
+    label: 'Vision And Mission',
+    content: (
+      <div className="space-y-4">
+        <div>
+          <span className="block text-[#08C2C1] font-semibold mb-1">Vision</span>
+          <p>
+            To be a trusted partner in superior and innovative digital transformation, as well as a leading technology company that delivers artificial intelligence and information technology-based solutions for a sustainable and impactful future.
+          </p>
+        </div>
+        <div>
+          <span className="block text-[#08C2C1] font-semibold mb-1">Mission</span>
+          <ul className="list-disc pl-6 space-y-1">
+            <li>Delivering efficient, value-added, and future-oriented AI and IT solutions.</li>
+            <li>Supporting digital transformation through consulting services, technology implementation, and strategic partnerships.</li>
+            <li>Improving the quality of human resources by instilling an innovative culture and sustainable competency development.</li>
+          </ul>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: 'company-values',
+    label: 'Company Values',
+    content: (
+      <div className="flex flex-col gap-4">
+        {[
+          {
+            letter: 'T',
+            title: 'Transformasi',
+            desc: 'Committed to positive and sustainable change in the face of challenges.',
+          },
+          {
+            letter: 'A',
+            title: 'Amanah',
+            desc: 'Upholding integrity, responsibility, and trust.',
+          },
+          {
+            letter: 'N',
+            title: 'Nyata',
+            desc: 'Focusing on concrete, measurable results that provide real impact.',
+          },
+          {
+            letter: 'G',
+            title: 'Gigih',
+            desc: 'Consistent and resilient in facing challenges and achieving targets.',
+          },
+          {
+            letter: 'G',
+            title: 'Gesit',
+            desc: 'Adaptive to change, responsive in making decisions.',
+          },
+          {
+            letter: 'U',
+            title: 'Unggul',
+            desc: 'Results-oriented with high quality standards.',
+          },
+          {
+            letter: 'H',
+            title: 'Harmonis',
+            desc: 'Establishing good relationships between teams, partners, and all stakeholders.',
+          },
+        ].map((v, i) => (
+          <div key={i} className="flex items-start gap-6">
+            <span className="text-[#08C2C1] font-bold text-5xl w-12 text-center font-poppins">{v.letter}</span>
+            <div>
+              <span className="block font-semibold text-[#08C2C1] text-lg font-poppins">{v.title.toUpperCase()}</span>
+              <span className="block text-[#0E1423] text-base font-poppins">{v.desc}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    ),
+  },
+];
 
 const AboutPage: React.FC = () => {
+  // All sections open by default
+  const [openSections, setOpenSections] = useState(sections.map(() => true));
+
+  const toggleSection = (idx: number) => {
+    setOpenSections((prev) => {
+      const updated = [...prev];
+      updated[idx] = !updated[idx];
+      return updated;
+    });
+  };
+
   return (
-    <section className="bg-gray-50 py-24 min-h-screen relative overflow-hidden">
-      <div className="container mx-auto px-6 scrollbar-none relative z-10">
-        {/* Header */}
-        <div className="mb-10 flex flex-col items-center justify-center relative">
-          {/* Blurred Gradient Background - larger and more offset */}
-          <div className="absolute -top-10 left-1/2 -translate-x-1/2 -z-10 w-[120%] h-[160%] flex items-center justify-center pointer-events-none select-none">
-            <div className="w-full h-full bg-gradient-to-r from-secondary/30 via-primary/20 to-secondary/30 blur-3xl rounded-3xl opacity-50"></div>
-          </div>
-          <div className="w-full bg-primary rounded-3xl px-6 py-12 shadow-lg relative z-10">
-            <h2 className="text-5xl md:text-6xl font-semibold text-white text-center tracking-tight drop-shadow-lg relative">
-              Tentang <span className="text-secondary">AITISERVE</span>
-              <span className="block mx-auto mt-4 w-32 h-1 rounded-full bg-gradient-to-r from-secondary via-white to-secondary opacity-80 animate-pulse-slow"></span>
-            </h2>
-            <p className="text-white/90 mt-8 mb-0 text-lg md:text-xl text-center max-w-6xl mx-auto font-light">
-              <span className="text-secondary font-semibold">AITISERVE DJAYA NARAYA</span> adalah perusahaan teknologi yang lahir dari semangat inovasi dan komitmen untuk membentuk masa depan digital yang lebih cerdas dan berkelanjutan. Didirikan pada <span className="text-secondary font-semibold">27 Agustus 2024</span> di Kota <span className="text-secondary font-semibold">Bandung</span>, AITISERVE hadir sebagai startup visioner yang menggabungkan kecanggihan <span className="text-secondary font-semibold">Kecerdasan Buatan (AI)</span> dan <span className="text-secondary font-semibold">Teknologi Informasi (TI)</span> untuk menghadirkan solusi yang adaptif, efisien, dan berdampak langsung bagi dunia usaha dan masyarakat luas.
-            </p>
-          </div>
-        </div>
-        {/* Main Content */}
-        <div className="max-w-4xl text-justify  mx-auto">
-          <p className="text-base md:text-lg text-neutral-700 mb-6 leading-relaxed">
-            <span className="text-secondary font-bold uppercase">PT. AITISERVE DJAYA NARAYA</span>, dikenal secara luas dengan nama <span className="text-secondary font-bold">AITISERVE</span>, adalah perusahaan teknologi yang lahir dari semangat inovasi dan komitmen untuk membentuk masa depan digital yang lebih cerdas dan berkelanjutan. Didirikan pada tanggal <span className="text-secondary font-bold">27 Agustus 2024</span> di Kota Bandung, <span className="text-secondary font-bold">AITISERVE</span> hadir sebagai startup visioner yang menggabungkan kecanggihan Kecerdasan Buatan (AI) dan Teknologi Informasi (TI) untuk menghadirkan solusi yang adaptif, efisien, dan berdampak langsung bagi dunia usaha dan masyarakat luas. Berbadan hukum Perseroan Terbatas berdasarkan Akta Pendirian dan telah disahkan melalui Surat Keputusan Menteri Hukum dan Hak Asasi Manusia Republik Indonesia Nomor AHU-0065986.AH.01.01.TAHUN 2024, <span className="text-secondary font-bold">AITISERVE</span> menempatkan inovasi dan layanan sebagai inti dari setiap langkahnya.
-          </p>
-          <p className="text-base md:text-lg text-neutral-700 mb-6 leading-relaxed">
-            <span className="text-secondary font-bold">AITISERVE</span> bergerak di bidang pengembangan perangkat lunak dan platform digital komersial, mencakup aktivitas pemrograman komputer, pengelolaan portal web, serta penyediaan layanan teknologi informasi dan jasa komputer lainnya. Dengan keahlian dalam pengembangan aplikasi web dan mobile berbasis AI, sistem informasi geografis (GIS), aplikasi desktop, layanan konsultasi IT & AI, serta dukungan teknis, <span className="text-secondary font-bold">AITISERVE</span> berkomitmen menjadi mitra transformasi digital terpercaya bagi pelaku bisnis, institusi, dan organisasi di berbagai sektor.
-          </p>
-        </div>
+    <section className="min-h-screen bg-white flex flex-col justify-between">
+      {/* Header & Nav */}
+      <div className="max-w-[1200px] mx-auto w-full pt-32 pb-4 px-6">
         
-
-        {/* Sejarah & Visi Misi */}
-        <div className="mb-16 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-          <div className="bg-white rounded-2xl shadow-md p-8">
-            <h2 className="text-2xl font-bold text-primary mb-4">Sejarah Singkat</h2>
-            <p className="text-neutral-700 text-base mb-2">
-              Didirikan oleh para profesional berpengalaman, AITISERVE berawal dari kebutuhan akan solusi digital yang <span className="text-secondary font-semibold">inovatif</span> dan <span className="text-secondary font-semibold">berkelanjutan</span> di era transformasi digital. Sejak awal, kami berkomitmen untuk menjadi mitra strategis bagi pelaku bisnis, institusi, dan organisasi di berbagai sektor.
+        <div className="flex flex-col md:flex-row gap-12 md:gap-20">
+          {/* Left Nav */}
+          <div className="w-full md:w-1/3 flex flex-col gap-6">
+            <div>
+              <span className="block text-[40px] md:text-[48px] font-medium uppercase text-[#7E7E7E] font-poppins leading-[1.1]">Shaping a</span>
+              <span className="block text-[40px] md:text-[48px] font-bold uppercase text-[#08C2C1] font-poppins leading-[1.1]">Brighter Future</span>
+            </div>
+            <p className="mt-4 text-[#0E1423] text-base md:text-lg font-poppins max-w-xs">
+              We're a team of creators, engineers, and problem-solvers committed to designing technology that moves the world forward—one solution at a time.
             </p>
-            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Visi</h2>
-            <p className="text-neutral-700 text-base mb-2">
-              Menjadi mitra terpercaya dalam transformasi digital yang unggul dan inovatif, serta perusahaan teknologi terdepan yang menghadirkan solusi berbasis kecerdasan buatan dan teknologi informasi untuk masa depan yang berkelanjutan dan berdampak nyata.
-            </p>
-            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Misi</h2>
-            <ul className="list-disc pl-6 text-neutral-700 text-base space-y-2">
-              <li>Menghadirkan solusi AI dan TI yang efisien, bernilai tambah, dan berorientasi pada masa depan.</li>
-              <li>Mendukung transformasi digital melalui layanan konsultasi, implementasi teknologi, dan kemitraan strategis.</li>
-              <li>Meningkatkan kualitas sumber daya manusia dengan menanamkan budaya inovatif dan pengembangan kompetensi berkelanjutan.</li>
-            </ul>
-          </div>
-          {/* Nilai-nilai Perusahaan */}
-          <div className="bg-gradient-to-br from-secondary/10 via-white to-primary/10 rounded-2xl shadow-md p-8">
-            <h2 className="text-2xl font-bold text-primary mb-4">Nilai-nilai Perusahaan</h2>
-            <ul className="list-disc pl-6 text-neutral-700 text-base space-y-2">
-              <li><span className="text-secondary font-semibold">TRANSFORMASI</span>: Berkomitmen pada perubahan positif dan berkelanjutan dalam menghadapi tantangan.</li>
-              <li><span className="text-secondary font-semibold">AMANAH</span>: Menjunjung tinggi integritas, tanggung jawab, dan kepercayaan.</li>
-              <li><span className="text-secondary font-semibold">NYATA</span>: Fokus pada hasil yang konkret, terukur, dan memberikan dampak nyata.</li>
-              <li><span className="text-secondary font-semibold">GIGIH</span>: Konsisten dan tangguh dalam menghadapi tantangan dan mencapai target.</li>
-              <li><span className="text-secondary font-semibold">GESIT</span>: Adaptif terhadap perubahan, cepat tanggap dalam mengambil keputusan.</li>
-              <li><span className="text-secondary font-semibold">UNGGUL</span>: Berorientasi hasil dengan standar kualitas tinggi.</li>
-              <li><span className="text-secondary font-semibold">HARMONIS</span>: Menjalin hubungan baik antar tim, mitra, dan seluruh pemangku kepentingan.</li>
-            </ul>
-          </div>
-        </div>
-
-        {/* Keunggulan & Layanan Utama */}
-        <div className="mb-16">
-          <h2 className="text-2xl font-bold text-primary mb-6 text-center">Keunggulan & Layanan Utama</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white rounded-2xl shadow-md p-6">
-              <h3 className="text-lg font-semibold text-secondary mb-2">Konsultasi IT & AI</h3>
-              <p className="text-neutral-700 text-base">Pendampingan strategis dalam transformasi digital, pemetaan kebutuhan teknologi, dan pengembangan roadmap berbasis AI.</p>
-            </div>
-            <div className="bg-white rounded-2xl shadow-md p-6">
-              <h3 className="text-lg font-semibold text-secondary mb-2">Pengembangan Aplikasi Web & Mobile</h3>
-              <p className="text-neutral-700 text-base">Membangun aplikasi modern, responsif, dan scalable untuk berbagai kebutuhan bisnis dan institusi.</p>
-            </div>
-            <div className="bg-white rounded-2xl shadow-md p-6">
-              <h3 className="text-lg font-semibold text-secondary mb-2">Sistem Informasi Geografis (GIS)</h3>
-              <p className="text-neutral-700 text-base">Solusi GIS untuk visualisasi lokasi, analisis spasial, dan pengambilan keputusan berbasis data geospasial.</p>
-            </div>
-            <div className="bg-white rounded-2xl shadow-md p-6">
-              <h3 className="text-lg font-semibold text-secondary mb-2">Aplikasi Desktop & Integrasi Sistem</h3>
-              <p className="text-neutral-700 text-base">Pengembangan perangkat lunak desktop yang terintegrasi dan aman sesuai kebutuhan spesifik organisasi.</p>
-            </div>
-            <div className="bg-white rounded-2xl shadow-md p-6">
-              <h3 className="text-lg font-semibold text-secondary mb-2">Dukungan Teknis 24/7</h3>
-              <p className="text-neutral-700 text-base">Layanan bantuan teknis profesional untuk memastikan operasional sistem berjalan lancar.</p>
-            </div>
-            <div className="bg-white rounded-2xl shadow-md p-6">
-              <h3 className="text-lg font-semibold text-secondary mb-2">Konsultasi & Implementasi Cloud</h3>
-              <p className="text-neutral-700 text-base">Pendampingan migrasi, integrasi, dan optimalisasi layanan cloud untuk efisiensi bisnis.</p>
+            <div className="mt-8 flex flex-col gap-2">
+              {sections.map((s, i) => (
+                <button
+                  key={s.id}
+                  className={`flex items-center gap-2 text-left text-base md:text-lg font-poppins transition-colors ${openSections[i] ? 'text-[#08C2C1] font-semibold' : 'text-[#7E7E7E]'} focus:outline-none`}
+                  onClick={() => toggleSection(i)}
+                >
+                  <span className="text-[#7E7E7E] font-mono w-8">{`0${i + 1}.`}</span>
+                  <span className="capitalize">{s.label}</span>
+                </button>
+              ))}
             </div>
           </div>
-        </div>
-
-        {/* Filosofi Nama */}
-        <div className="mb-10 bg-gradient-to-br from-secondary/10 via-white to-primary/10 rounded-2xl shadow-md p-8 max-w-3xl mx-auto">
-          <h2 className="text-2xl font-bold text-primary mb-4 text-center">Filosofi Nama</h2>
-          <p className="text-neutral-700 text-base text-center">
-            <span className="text-secondary font-semibold">"AITISERVE DJAYA NARAYA"</span> mencerminkan sinergi antara <span className="text-secondary font-semibold">kecerdasan buatan</span>, <span className="text-secondary font-semibold">teknologi informasi</span>, dan <span className="text-secondary font-semibold">layanan unggulan</span>. "DJAYA NARAYA" menggambarkan <span className="text-secondary font-semibold">kejayaan</span>, <span className="text-secondary font-semibold">harapan</span>, dan <span className="text-secondary font-semibold">kemakmuran</span> sebagai identitas dan cita-cita perusahaan dalam membentuk masa depan digital yang lebih cerdas, berkelanjutan, dan berdampak nyata.
-          </p>
+          {/* Right Content */}
+          <div className="w-full md:w-2/3 flex flex-col gap-8">
+            {sections.map((s, i) => (
+              <div key={s.id} className="mb-2">
+                <button
+                  className="flex items-center gap-2 w-full text-left group"
+                  onClick={() => toggleSection(i)}
+                >
+                  <span className={`text-lg md:text-xl font-semibold font-poppins capitalize ${openSections[i] ? 'text-[#08C2C1]' : 'text-[#7E7E7E]'}`}>{s.label}</span>
+                  <svg className={`ml-2 w-4 h-4 transition-transform ${openSections[i] ? 'rotate-180 text-[#08C2C1]' : 'text-[#7E7E7E]'}`} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                </button>
+                {openSections[i] && (
+                  <div className="mt-4 text-[#0E1423] text-base md:text-lg font-poppins border-l-4 border-[#08C2C1] pl-6 py-2 bg-[#F8F9FB] rounded-md animate-fade-in">
+                    {s.content}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

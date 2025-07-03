@@ -1,144 +1,154 @@
 import React from 'react';
-import { Users, Rocket, Lightbulb, HeartHandshake } from 'lucide-react';
-
-// const careers = [
-//   {
-//     title: 'Frontend Developer',
-//     location: 'Remote / Bandung',
-//     type: 'Full-time',
-//     description: 'Bangun antarmuka web modern dan responsif menggunakan React dan teknologi terbaru.',
-//     requirements: [
-//       'Pengalaman React/Next.js',
-//       'Familiar dengan Tailwind CSS',
-//       'Mampu bekerja kolaboratif',
-//     ],
-//   },
-//   {
-//     title: 'Backend Engineer',
-//     location: 'Remote / Bandung',
-//     type: 'Full-time',
-//     description: 'Kembangkan API dan sistem backend scalable dengan Node.js atau Go.',
-//     requirements: [
-//       'Pengalaman Node.js/Go',
-//       'Familiar dengan database SQL/NoSQL',
-//       'Paham RESTful API',
-//     ],
-//   },
-//   {
-//     title: 'AI/ML Engineer',
-//     location: 'Remote / Bandung',
-//     type: 'Full-time',
-//     description: 'Rancang dan implementasikan solusi AI/ML untuk produk digital inovatif.',
-//     requirements: [
-//       'Pengalaman Python & ML libraries',
-//       'Paham konsep AI/ML',
-//       'Senang eksplorasi teknologi baru',
-//     ],
-//   },
-// ];
-
-const whyUs = [
+import { Users, Rocket, Lightbulb, HeartHandshake, PenTool, Code2, FileCode2 } from 'lucide-react';
+const positions = [
   {
-    icon: <Users className="w-8 h-8 text-secondary" />, 
+    icon: <PenTool className="w-12 h-12 text-[#08C2C1]" />,
+    title: 'UI/UX DESIGNER',
+    desc: 'Bertanggung jawab untuk merancang tampilan dan pengalaman pengguna yang menarik, intuitif, dan fungsional pada produk digital kami.',
+    mailSubject: 'Apply%20for%20UI%2FUX%20Designer',
+  },
+  {
+    icon: <Code2 className="w-12 h-12 text-[#08C2C1]" />,
+    title: 'FRONTEND DEVELOPER',
+    desc: 'Mengembangkan antarmuka web yang responsif dan interaktif menggunakan teknologi modern sesuai kebutuhan bisnis.',
+    mailSubject: 'Apply%20for%20Frontend%20Developer',
+  },
+  {
+    icon: <FileCode2 className="w-12 h-12 text-[#08C2C1]" />,
+    title: 'BACKEND ENGINEER',
+    desc: 'Membangun dan memelihara sistem backend yang scalable, aman, dan efisien untuk mendukung aplikasi digital.',
+    mailSubject: 'Apply%20for%20Backend%20Engineer',
+  },
+  {
+    icon: <FileCode2 className="w-12 h-12 text-[#08C2C1]" />,
+    title: 'AI/ML ENGINEER',
+    desc: 'Merancang dan mengimplementasikan solusi AI/ML inovatif untuk meningkatkan kapabilitas produk digital.',
+    mailSubject: 'Apply%20for%20AI%2FML%20Engineer',
+  },
+];
+
+const benefits = [
+  {
+    icon: <Users className="w-12 h-12 text-[#08C2C1]" />,
     title: 'Tim Kolaboratif',
-    desc: 'Bekerja bersama profesional yang suportif, terbuka, dan saling menginspirasi.'
+    desc: 'Bekerja bersama profesional yang suportif, terbuka, dan saling menginspirasi.',
   },
   {
-    icon: <Lightbulb className="w-8 h-8 text-primary" />, 
+    icon: <Lightbulb className="w-12 h-12 text-[#08C2C1]" />,
     title: 'Inovasi Tanpa Batas',
-    desc: 'Budaya inovasi dan eksplorasi teknologi terbaru di setiap proyek.'
+    desc: 'Budaya inovasi dan eksplorasi teknologi terbaru di setiap proyek.',
   },
   {
-    icon: <Rocket className="w-8 h-8 text-secondary" />, 
+    icon: <Rocket className="w-12 h-12 text-[#08C2C1]" />,
     title: 'Perkembangan Karir',
-    desc: 'Dukungan pengembangan diri, pelatihan, dan peluang naik jenjang karir.'
+    desc: 'Dukungan pengembangan diri, pelatihan, dan peluang naik jenjang karir.',
   },
   {
-    icon: <HeartHandshake className="w-8 h-8 text-primary" />, 
+    icon: <HeartHandshake className="w-12 h-12 text-[#08C2C1]" />,
     title: 'Lingkungan Fleksibel',
-    desc: 'Kerja remote, hybrid, dan work-life balance yang sehat.'
+    desc: 'Kerja remote, hybrid, dan work-life balance yang sehat.',
+  },
+  {
+    icon: <PenTool className="w-12 h-12 text-[#08C2C1]" />,
+    title: 'Proyek Menantang',
+    desc: 'Terlibat dalam proyek-proyek digital yang berdampak dan menantang.',
+  },
+  {
+    icon: <Code2 className="w-12 h-12 text-[#08C2C1]" />,
+    title: 'Teknologi Terkini',
+    desc: 'Akses ke tools dan teknologi terbaru untuk pengembangan diri.',
+  },
+  {
+    icon: <FileCode2 className="w-12 h-12 text-[#08C2C1]" />,
+    title: 'Keseimbangan Hidup',
+    desc: 'Lingkungan kerja yang mendukung keseimbangan antara karir dan kehidupan pribadi.',
   },
 ];
 
 const CareersPage: React.FC = () => {
   return (
-    <section className="bg-gray-50 py-24 min-h-screen relative overflow-hidden">
-      <div className="container mx-auto px-6 scrollbar-none relative z-10">
-        {/* Header */}
-        <div className="mb-10 flex flex-col items-center justify-center relative">
-          {/* Blurred Gradient Background - larger and more offset */}
-          <div className="absolute -top-10 left-1/2 -translate-x-1/2 -z-10 w-[120%] h-[160%] flex items-center justify-center pointer-events-none select-none">
-            <div className="w-full h-full bg-gradient-to-r from-secondary/30 via-primary/20 to-secondary/30 blur-3xl rounded-3xl opacity-50"></div>
+    <section className="relative bg-white min-h-screen overflow-x-hidden">
+      <div className="container mx-auto px-6 pt-32 pb-12 relative z-10 flex flex-col lg:flex-row gap-12">
+        {/* Hero Section */}
+        <div className="flex-1">
+          {/* Tag */}
+          <div className="inline-flex items-center px-6 py-2 border border-[#08C2C1]/30 rounded-xl bg-white mb-6">
+            <span className="text-[#08C2C1] font-medium text-lg capitalize">We're hiring!</span>
           </div>
-          <div className="w-full bg-primary rounded-3xl px-6 py-12 shadow-lg relative z-10">
-            <h2 className="text-5xl md:text-6xl font-semibold text-white text-center tracking-tight drop-shadow-lg relative">
-              Karir di <span className="text-secondary">AITISERVE</span>
-              <span className="block mx-auto mt-4 w-32 h-1 rounded-full bg-gradient-to-r from-secondary via-white to-secondary opacity-80 animate-pulse-slow"></span>
-            </h2>
-            <p className="text-white/90 mt-8 mb-0 text-lg md:text-xl text-center max-w-3xl mx-auto font-light">
-              Bergabunglah bersama <span className="text-secondary font-semibold">AITISERVE</span> dan jadilah bagian dari tim inovatif yang membentuk masa depan digital Indonesia. Kami mencari talenta terbaik yang siap berkembang, berkolaborasi, dan berkontribusi dalam menciptakan solusi teknologi berdampak.
-            </p>
+          {/* Title */}
+          <div>
+            <h1 className="text-[64px] font-medium uppercase text-[#7E7E7E] leading-[96px] -mb-3">be part of</h1>
+            <h1 className="text-[64px] font-bold uppercase text-[#08C2C1] leading-[96px]">our missions!</h1>
           </div>
+          {/* Description */}
+          <p className="mt-6 text-lg font-medium text-[#0E1423] capitalize max-w-2xl">
+            Bergabunglah bersama <span className="text-[#08C2C1] font-semibold">AITISERVE</span> dan jadilah bagian dari tim inovatif yang membentuk masa depan digital Indonesia. Kami mencari talenta terbaik yang siap berkembang, berkolaborasi, dan berkontribusi dalam menciptakan solusi teknologi berdampak.
+          </p>
         </div>
-
-        {/* Careers Section
-        <div className="max-w-5xl mx-auto mt-16 mb-20">
-          <h3 className="text-2xl md:text-3xl font-bold text-primary mb-8 text-center">Lowongan Tersedia</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {careers.map((job, idx) => (
-              <div key={idx} className="bg-white rounded-2xl shadow-md p-8 flex flex-col h-full">
-                <h4 className="text-xl font-semibold text-secondary mb-2">{job.title}</h4>
-                <div className="text-sm text-neutral-500 mb-2">{job.location} &bull; {job.type}</div>
-                <p className="text-neutral-700 mb-4 flex-1">{job.description}</p>
-                <ul className="list-disc pl-5 text-neutral-600 text-sm mb-4">
-                  {job.requirements.map((req, i) => (
-                    <li key={i}>{req}</li>
-                  ))}
-                </ul>
-                <a
-                  href="mailto:hr@aitiserve.com?subject=Lamar%20{job.title}"
-                  className="mt-auto inline-block px-6 py-2 rounded-full bg-secondary text-white font-semibold text-base shadow hover:bg-primary hover:text-secondary transition-all duration-300"
-                >
-                  Lamar Sekarang
-                </a>
-              </div>
-            ))}
-          </div>
-        </div> */}
-
-        {/* Why Us Section */}
-        <div className="max-w-6xl mx-auto mb-20">
-          <h3 className="text-2xl md:text-3xl font-bold text-primary mb-6 text-center">Why Join <span className="text-secondary">AITISERVE?</span></h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-            {whyUs.map((item, idx) => (
+        {/* Positions Section */}
+        <div className="flex-1 flex flex-col items-end">
+          <div className="flex flex-col gap-8 w-full max-w-2xl ml-auto">
+            {positions.map((pos, idx) => (
               <div
                 key={idx}
-                className="bg-white rounded-3xl shadow-lg p-8 flex flex-col items-center text-center border-t-4 border-b-4 border-transparent hover:border-secondary/60 hover:shadow-2xl transition-all duration-300 group relative overflow-hidden"
+                className="flex gap-6 items-start bg-white/90 rounded-3xl p-8 border border-[#08C2C1]/30 hover:border-transparent transition-all backdrop-blur-md"
               >
-                <div className="mb-4 group-hover:scale-110 transition-transform duration-300">{item.icon}</div>
-                <div className="font-bold text-lg text-primary mb-2 group-hover:text-secondary transition-colors duration-300">{item.title}</div>
-                <div className="text-neutral-600 text-base font-light mb-2">{item.desc}</div>
-                <div className="absolute left-0 bottom-0 w-full h-2 bg-gradient-to-r from-secondary/10 via-primary/10 to-secondary/10 opacity-60 group-hover:opacity-90 transition-all duration-300"></div>
+                <div className="w-16 h-16 flex items-center justify-center">{pos.icon}</div>
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold uppercase text-[#08C2C1] mb-2">{pos.title}</h3>
+                  <p className="text-base font-medium text-[#0E1423] capitalize mb-4">{pos.desc}</p>
+                  <a
+                    href={`mailto:hr@aitiserve.com?subject=${pos.mailSubject}`}
+                    className="inline-flex items-center justify-center px-6 py-2 rounded-xl bg-[#08C2C1] text-white font-medium text-lg capitalize shadow hover:bg-[#0E1423] transition-all duration-300"
+                  >
+                    Apply Now
+                  </a>
+                </div>
               </div>
             ))}
           </div>
         </div>
-
-        {/* Come Join Us Section */}
-        <div className="max-w-3xl mx-auto mb-10 text-center">
-          <h3 className="text-2xl md:text-3xl font-bold text-primary mb-4">Come Join Us!</h3>
-          <p className="text-lg md:text-xl text-neutral-700 mb-6 font-light">
-            Tidak menemukan posisi yang cocok? <span className="text-secondary font-semibold">AITISERVE</span> selalu mencari talenta yang passionate, kreatif, dan ingin bertumbuh bersama kami.<br />
-            Ceritakan keunikan dan impianmu, serta bagaimana kamu ingin berkontribusi di dunia teknologi!
-          </p>
-          <a
-            href="mailto:hr@aitiserve.com"
-            className="inline-block px-8 py-3 rounded-full bg-gradient-to-r from-primary via-secondary to-primary text-white font-semibold text-lg shadow-md hover:scale-105 hover:shadow-xl transition-all duration-300"
-          >
-            Kirim CV & Cerita Kamu
-          </a>
-        </div>
       </div>
+
+      {/* Benefits Section */}
+      <section className="py-24 bg-white relative z-10">
+        <div className="text-center mb-12">
+          <h2 className="text-[64px] font-medium uppercase text-[#7E7E7E] leading-[96px] -mb-3">Benefits</h2>
+          <h2 className="text-[64px] font-bold uppercase text-[#08C2C1] leading-[96px]">that you will get</h2>
+          <p className="mt-6 text-lg font-medium text-[#0E1423] capitalize max-w-3xl mx-auto">
+            Nikmati berbagai benefit menarik yang mendukung perkembangan karir dan keseimbangan hidupmu di <span className="text-[#08C2C1] font-semibold">AITISERVE</span>.
+          </p>
+        </div>
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {benefits.map((item, idx) => (
+              <div
+                key={idx}
+                className="flex flex-col items-center justify-center bg-white/90 rounded-3xl p-8 border border-transparent backdrop-blur-md shadow-md h-full"
+              >
+                <div className="mb-4">{item.icon}</div>
+                <div className="font-bold text-xl uppercase text-[#08C2C1] mb-2 text-center">{item.title}</div>
+                <div className="text-[#0E1423] text-base font-medium text-center capitalize">{item.desc}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Come Join Us Section
+      <div className="max-w-3xl mx-auto mb-10 text-center">
+        <h3 className="text-2xl md:text-3xl font-bold text-[#08C2C1] mb-4 uppercase">Come Join Us!</h3>
+        <p className="text-lg md:text-xl text-[#0E1423] mb-6 font-light">
+          Tidak menemukan posisi yang cocok? <span className="text-[#08C2C1] font-semibold">AITISERVE</span> selalu mencari talenta yang passionate, kreatif, dan ingin bertumbuh bersama kami.<br />
+          Ceritakan keunikan dan impianmu, serta bagaimana kamu ingin berkontribusi di dunia teknologi!
+        </p>
+        <a
+          href="mailto:hr@aitiserve.com"
+          className="inline-block px-8 py-3 rounded-full bg-gradient-to-r from-[#08C2C1] via-[#0E1423] to-[#08C2C1] text-white font-semibold text-lg shadow-md hover:scale-105 hover:shadow-xl transition-all duration-300"
+        >
+          Kirim CV & Cerita Kamu
+        </a>
+      </div> */}
     </section>
   );
 };

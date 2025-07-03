@@ -4,6 +4,7 @@ import { useInView } from 'react-intersection-observer';
 import { Check } from 'lucide-react';
 import SectionHeader from '../components/common/SectionHeader';
 import CtaSection from '../components/home/CtaSection';
+import Container from '../components/common/Container';
 
 interface Product {
   id: string;

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
+import Logo from '../common/Logo';
 
 // TODO: Ganti menu dan struktur sesuai urutan & label di Figma
 const MENU = [
@@ -8,6 +9,7 @@ const MENU = [
   { label: 'Portfolio', to: '/portfolio' },
   { label: 'Blog', to: '/blog' },
   { label: 'About', to: '/about' },
+  { label: 'Career', to: '/career' },
   { label: 'Contact', to: '/contact' },
 ];
 

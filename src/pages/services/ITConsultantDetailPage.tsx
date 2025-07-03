@@ -72,7 +72,7 @@ const benefits: Benefit[] = [
 
 const ITConsultantDetailPage: React.FC = () => {
   return (
-    <div className="relative w-full max-w-[1512px] mx-auto bg-white font-poppins text-[#0E1423] overflow-x-hidden pt-32 pb-32">
+    <div className="relative w-full max-w-full mx-auto bg-white font-poppins text-[#0E1423] overflow-x-hidden pt-32 pb-32">
       {/* Hero Section */}
       <div className="w-full flex flex-col items-center gap-6 mb-24">
         <div className="flex flex-row items-center justify-center gap-2 bg-white border border-[#08C2C1]/30 rounded-xl px-6 py-2 mb-24">
