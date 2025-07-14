@@ -89,7 +89,7 @@ const BlogPage = () => {
 
   return (
     <main className="bg-white min-h-screen w-full font-poppins">
-      <section className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 md:px-10 pt-32 pb-8">
+      <section className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 md:px-10 pt-60 pb-8">
         <h1 className="text-[64px] leading-[96px] font-medium uppercase text-[#7E7E7E] drop-shadow-sm mb-4">TECH INSIGHTS</h1>
         <h2 className="text-[64px] leading-[96px] font-semibold uppercase text-[#08C2C1] drop-shadow-sm mb-8">& INDUSTRY UPDATES</h2>
         <p className="text-lg font-medium text-[#0E1423] capitalize leading-8 max-w-[920px] mb-8">

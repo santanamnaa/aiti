@@ -55,7 +55,7 @@ const services = [
 const ServicesPage: React.FC = () => {
   return (
     <main className="w-full min-h-screen bg-white font-poppins">
-      <section className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 md:px-10 pt-32 pb-16">
+      <section className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 md:px-10 pt-60 pb-16">
         {/* Section Title */}
         <div className="mb-8 flex flex-col gap-0">
           <span className="text-[64px] leading-[96px] font-medium text-[#7E7E7E] uppercase font-poppins mb-4">powering</span>

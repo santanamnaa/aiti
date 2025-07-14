@@ -68,7 +68,7 @@ const benefits = [
 const CareersPage: React.FC = () => {
   return (
     <main className="relative bg-white min-h-screen overflow-x-hidden font-poppins">
-      <section className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 md:px-10 pt-32 pb-12 flex flex-col lg:flex-row gap-16">
+      <section className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 md:px-10 pt-60 pb-12 flex flex-col lg:flex-row gap-16">
         {/* Hero Section */}
         <div className="flex-1">
           {/* Tag */}

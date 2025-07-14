@@ -133,7 +133,7 @@ const PortfolioPage: React.FC = () => {
   return (
     <main className="bg-gray-100 min-h-screen font-poppins">
       {/* Title Section */}
-      <section className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 md:px-10 pt-32 pb-16 flex flex-col items-center">
+      <section className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 md:px-10 pt-60 pb-16 flex flex-col items-center">
         <h2 className="text-[44px] font-medium text-[#7E7E7E] uppercase text-left w-full mb-4" style={{letterSpacing: '-0.02em'}}>IDEAS THAT</h2>
         <h2 className="text-[44px] font-semibold text-[#08C2C1] uppercase text-left w-full mb-8" style={{letterSpacing: '-0.02em'}}>TURNED INTO IMPACT</h2>
         <p className="text-[16px] font-medium text-[#222] text-left w-full mb-8 max-w-[900px]">We Design And Build Digital Products That Solve Real Problems. See How Our Solutions Are Helping Businesses Grow, Scale, And Lead In Their Industries.</p>

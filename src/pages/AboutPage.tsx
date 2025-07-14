@@ -110,7 +110,7 @@ const AboutPage: React.FC = () => {
   return (
     <section className="min-h-screen bg-white flex flex-col justify-between">
       {/* Header & Nav */}
-      <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 md:px-10 pt-32 pb-4">
+      <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 md:px-10 pt-60 pb-4">
         <div className="flex flex-col md:flex-row gap-16">
           {/* Left Nav */}
           <div className="w-full md:w-1/3 flex flex-col gap-6">
