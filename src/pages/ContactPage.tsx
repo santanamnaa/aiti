@@ -65,24 +65,24 @@ const ContactPage: React.FC = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative w-full h-[615px] flex items-center justify-center overflow-x-hidden">
+      <section className="relative w-full h-[615px] flex items-center justify-center overflow-x-hidden px-4 sm:px-6 md:px-10 pt-32">
         <div className="absolute inset-0 z-0 pointer-events-none select-none">
           <img src="/images/figma/contact-bg.png" alt="bg" className="w-full h-full object-cover opacity-60" />
         </div>
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 text-center">
-          <div className="font-poppins text-[64px] md:text-[96px] font-medium text-white drop-shadow-lg leading-none tracking-tight">
+          <div className="font-poppins text-[64px] md:text-[96px] font-medium text-white drop-shadow-lg leading-none tracking-tight mb-4">
             CONNECT WITH
           </div>
-          <div className="font-poppins text-[64px] md:text-[96px] font-semibold text-[#08C2C1] drop-shadow-lg leading-none tracking-tight -mt-4">
+          <div className="font-poppins text-[64px] md:text-[96px] font-semibold text-[#08C2C1] drop-shadow-lg leading-none tracking-tight mb-8">
             OUR EXPERT
           </div>
-          <div className="mt-4 text-white text-lg font-light">Let us know how we can help.</div>
+          <div className="text-white text-lg font-light mb-8">Let us know how we can help.</div>
         </div>
       </section>
       {/* Main Content Section */}
-      <section className="relative w-full bg-gray-100 overflow-x-hidden pt-16 pb-10">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex flex-col md:flex-row gap-10 md:gap-16 justify-center items-start">
+      <section className="relative w-full bg-gray-100 overflow-x-hidden py-16 px-4 sm:px-6 md:px-10">
+        <div className="w-full max-w-[1200px] mx-auto">
+          <div className="flex flex-col md:flex-row gap-16 justify-center items-start">
             {/* Contact Information Card */}
             <div className="bg-[rgba(8,194,193,0.05)] rounded-2xl p-10 w-full max-w-lg backdrop-blur-md shadow-lg border border-[#08C2C1]/10 flex flex-col gap-8 opacity-100">
               <div className="font-poppins text-[32px] md:text-[40px] font-medium text-[#7E7E7E] leading-none tracking-tight mb-2">
@@ -109,7 +109,7 @@ const ContactPage: React.FC = () => {
             </div>
             {/* Contact Form Card */}
             <div className="bg-white rounded-2xl shadow-xl p-10 w-full max-w-lg border-t-8 border-[#08C2C1]/80">
-              <div className="font-poppins text-[40px] font-medium text-[#7E7E7E] leading-none tracking-tight mb-2 text-center md:text-left">
+              <div className="font-poppins text-[40px] font-medium text-[#7E7E7E] leading-none tracking-tight mb-8 text-center md:text-left">
                 GET IN <span className="font-semibold text-[#08C2C1]">TOUCH</span>
               </div>
               {isSuccess && (

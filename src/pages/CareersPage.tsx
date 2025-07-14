@@ -67,8 +67,8 @@ const benefits = [
 
 const CareersPage: React.FC = () => {
   return (
-    <section className="relative bg-white min-h-screen overflow-x-hidden">
-      <div className="container mx-auto px-6 pt-32 pb-12 relative z-10 flex flex-col lg:flex-row gap-12">
+    <main className="relative bg-white min-h-screen overflow-x-hidden font-poppins">
+      <section className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 md:px-10 pt-32 pb-12 flex flex-col lg:flex-row gap-16">
         {/* Hero Section */}
         <div className="flex-1">
           {/* Tag */}
@@ -77,11 +77,11 @@ const CareersPage: React.FC = () => {
           </div>
           {/* Title */}
           <div>
-            <h1 className="text-[64px] font-medium uppercase text-[#7E7E7E] leading-[96px] -mb-3">be part of</h1>
-            <h1 className="text-[64px] font-bold uppercase text-[#08C2C1] leading-[96px]">our missions!</h1>
+            <h1 className="text-[64px] font-medium uppercase text-[#7E7E7E] leading-[96px] mb-4">be part of</h1>
+            <h1 className="text-[64px] font-bold uppercase text-[#08C2C1] leading-[96px] mb-8">our missions!</h1>
           </div>
           {/* Description */}
-          <p className="mt-6 text-lg font-medium text-[#0E1423] capitalize max-w-2xl">
+          <p className="text-lg font-medium text-[#0E1423] capitalize max-w-2xl mb-8">
             Bergabunglah bersama <span className="text-[#08C2C1] font-semibold">AITISERVE</span> dan jadilah bagian dari tim inovatif yang membentuk masa depan digital Indonesia. Kami mencari talenta terbaik yang siap berkembang, berkolaborasi, dan berkontribusi dalam menciptakan solusi teknologi berdampak.
           </p>
         </div>
@@ -108,30 +108,27 @@ const CareersPage: React.FC = () => {
             ))}
           </div>
         </div>
-      </div>
-
+      </section>
       {/* Benefits Section */}
-      <section className="py-24 bg-white relative z-10">
+      <section className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 md:px-10 py-16 bg-white">
         <div className="text-center mb-12">
-          <h2 className="text-[64px] font-medium uppercase text-[#7E7E7E] leading-[96px] -mb-3">Benefits</h2>
-          <h2 className="text-[64px] font-bold uppercase text-[#08C2C1] leading-[96px]">that you will get</h2>
-          <p className="mt-6 text-lg font-medium text-[#0E1423] capitalize max-w-3xl mx-auto">
+          <h2 className="text-[64px] font-medium uppercase text-[#7E7E7E] leading-[96px] mb-4">Benefits</h2>
+          <h2 className="text-[64px] font-bold uppercase text-[#08C2C1] leading-[96px] mb-8">that you will get</h2>
+          <p className="text-lg font-medium text-[#0E1423] capitalize max-w-3xl mx-auto mb-8">
             Nikmati berbagai benefit menarik yang mendukung perkembangan karir dan keseimbangan hidupmu di <span className="text-[#08C2C1] font-semibold">AITISERVE</span>.
           </p>
         </div>
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {benefits.map((item, idx) => (
-              <div
-                key={idx}
-                className="flex flex-col items-center justify-center bg-white/90 rounded-3xl p-8 border border-transparent backdrop-blur-md shadow-md h-full"
-              >
-                <div className="mb-4">{item.icon}</div>
-                <div className="font-bold text-xl uppercase text-[#08C2C1] mb-2 text-center">{item.title}</div>
-                <div className="text-[#0E1423] text-base font-medium text-center capitalize">{item.desc}</div>
-              </div>
-            ))}
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {benefits.map((item, idx) => (
+            <div
+              key={idx}
+              className="flex flex-col items-center justify-center bg-white/90 rounded-3xl p-8 border border-transparent backdrop-blur-md shadow-md h-full"
+            >
+              <div className="mb-4">{item.icon}</div>
+              <div className="font-bold text-xl uppercase text-[#08C2C1] mb-2 text-center">{item.title}</div>
+              <div className="text-[#0E1423] text-base font-medium text-center capitalize">{item.desc}</div>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -149,7 +146,7 @@ const CareersPage: React.FC = () => {
           Kirim CV & Cerita Kamu
         </a>
       </div> */}
-    </section>
+    </main>
   );
 };
 

@@ -110,19 +110,18 @@ const AboutPage: React.FC = () => {
   return (
     <section className="min-h-screen bg-white flex flex-col justify-between">
       {/* Header & Nav */}
-      <div className="max-w-[1200px] mx-auto w-full pt-32 pb-4 px-6">
-        
-        <div className="flex flex-col md:flex-row gap-12 md:gap-20">
+      <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 md:px-10 pt-32 pb-4">
+        <div className="flex flex-col md:flex-row gap-16">
           {/* Left Nav */}
           <div className="w-full md:w-1/3 flex flex-col gap-6">
             <div>
-              <span className="block text-[40px] md:text-[48px] font-medium uppercase text-[#7E7E7E] font-poppins leading-[1.1]">Shaping a</span>
-              <span className="block text-[40px] md:text-[48px] font-bold uppercase text-[#08C2C1] font-poppins leading-[1.1]">Brighter Future</span>
+              <span className="block text-[40px] md:text-[48px] font-medium uppercase text-[#7E7E7E] font-poppins leading-[1.1] mb-4">Shaping a</span>
+              <span className="block text-[40px] md:text-[48px] font-bold uppercase text-[#08C2C1] font-poppins leading-[1.1] mb-8">Brighter Future</span>
             </div>
-            <p className="mt-4 text-[#0E1423] text-base md:text-lg font-poppins max-w-xs">
+            <p className="text-[#0E1423] text-base md:text-lg font-poppins max-w-xs mb-8">
               We're a team of creators, engineers, and problem-solvers committed to designing technology that moves the world forward—one solution at a time.
             </p>
-            <div className="mt-8 flex flex-col gap-2">
+            <div className="flex flex-col gap-2">
               {sections.map((s, i) => (
                 <button
                   key={s.id}

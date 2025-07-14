@@ -133,12 +133,12 @@ const PortfolioPage: React.FC = () => {
   return (
     <main className="bg-gray-100 min-h-screen font-poppins">
       {/* Title Section */}
-      <section className="w-full flex flex-col items-center pt-32 pb-6 px-4">
-        <h2 className="text-[44px] font-medium text-[#7E7E7E] uppercase text-left w-full max-w-[1200px] mb-0" style={{letterSpacing: '-0.02em'}}>IDEAS THAT</h2>
-        <h2 className="text-[44px] font-semibold text-[#08C2C1] uppercase text-left w-full max-w-[1200px] mb-6" style={{letterSpacing: '-0.02em'}}>TURNED INTO IMPACT</h2>
-        <p className="text-[16px] font-medium text-[#222] text-left w-full max-w-[1200px] mb-10">We Design And Build Digital Products That Solve Real Problems. See How Our Solutions Are Helping Businesses Grow, Scale, And Lead In Their Industries.</p>
+      <section className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 md:px-10 pt-32 pb-16 flex flex-col items-center">
+        <h2 className="text-[44px] font-medium text-[#7E7E7E] uppercase text-left w-full mb-4" style={{letterSpacing: '-0.02em'}}>IDEAS THAT</h2>
+        <h2 className="text-[44px] font-semibold text-[#08C2C1] uppercase text-left w-full mb-8" style={{letterSpacing: '-0.02em'}}>TURNED INTO IMPACT</h2>
+        <p className="text-[16px] font-medium text-[#222] text-left w-full mb-8 max-w-[900px]">We Design And Build Digital Products That Solve Real Problems. See How Our Solutions Are Helping Businesses Grow, Scale, And Lead In Their Industries.</p>
         {/* Team Cards Row */}
-        <div className="w-full max-w-[1200px] flex flex-row gap-6 mb-12 overflow-x-auto flex-nowrap scrollbar-thin scrollbar-thumb-[#08C2C1]/40 scroll-smooth">
+        <div className="w-full flex flex-row gap-8 mb-12 overflow-x-auto flex-nowrap scrollbar-thin scrollbar-thumb-[#08C2C1]/40 scroll-smooth">
           {teamMembers.map((member, idx) => (
             <div
               key={member.name}
@@ -164,8 +164,8 @@ const PortfolioPage: React.FC = () => {
         </div>
       </section>
       {/* Details Section */}
-      <section className="w-full flex flex-col items-center pb-16 px-4">
-        <div className="w-full max-w-[1200px] flex flex-col md:flex-row gap-8">
+      <section className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 md:px-10 pb-16 flex flex-col items-center">
+        <div className="w-full flex flex-col md:flex-row gap-8">
           {/* Left: Circular Image Card */}
           {selectedMember && (
             <div className="flex-1 max-w-[350px] bg-white rounded-[20px] shadow-lg border-2 border-[#08C2C1] flex flex-col items-center py-8 px-6 self-start">

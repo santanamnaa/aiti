@@ -88,66 +88,64 @@ const BlogPage = () => {
   const visiblePosts = filteredPosts.slice(0, visibleCount);
 
   return (
-    <div className="bg-white min-h-screen w-full pt-[100px] pb-24">
-      {/* Hero Section */}
-      <section className="max-w-full px-10 mx-auto flex flex-col items-start gap-2 pt-16 pb-8">
-        <h1 className="text-[64px] leading-[96px] font-medium uppercase text-[#7E7E7E] drop-shadow-sm -mb-6">TECH INSIGHTS</h1>
-        <h2 className="text-[64px] leading-[96px] font-semibold uppercase text-[#08C2C1] drop-shadow-sm -mt-8">& INDUSTRY UPDATES</h2>
-        <p className="text-lg font-medium text-[#0E1423] capitalize leading-8 max-w-[920px] mt-4">
+    <main className="bg-white min-h-screen w-full font-poppins">
+      <section className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 md:px-10 pt-32 pb-8">
+        <h1 className="text-[64px] leading-[96px] font-medium uppercase text-[#7E7E7E] drop-shadow-sm mb-4">TECH INSIGHTS</h1>
+        <h2 className="text-[64px] leading-[96px] font-semibold uppercase text-[#08C2C1] drop-shadow-sm mb-8">& INDUSTRY UPDATES</h2>
+        <p className="text-lg font-medium text-[#0E1423] capitalize leading-8 max-w-[920px] mb-8">
           Explore Our Latest Thoughts, Trends, And Tips On Technology, Innovation, And Digital Transformation—Written By Our Experts.
         </p>
-      </section>
-
-      {/* Filter Buttons */}
-      <div className="flex gap-6 max-w-full mx-auto mb-12 px-10">
-        {categories.map((cat) => (
-          <button
-            key={cat}
-            onClick={() => {
-              setSelectedCategory(cat);
-              setVisibleCount(6);
-            }}
-            className={`font-medium text-[18px] px-6 py-2 rounded-xl border capitalize transition-all duration-200
-              ${selectedCategory === cat
-                ? 'bg-[#08C2C1] text-white border-[#08C2C1]'
-                : 'bg-white text-[#08C2C1] border-[#08C2C1]'}
-            `}
-          >
-            {cat}
-          </button>
-        ))}
-      </div>
-
-      {/* Blog Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-full mx-auto px-4">
-        {visiblePosts.map((post, idx) => (
-          <div
-            key={idx}
-            className="bg-white rounded-xl shadow-md flex flex-col overflow-hidden w-[448px] h-[497px] mx-auto cursor-pointer"
-            onClick={() => navigate(`/blog/${post.slug}`)}
-          >
-            <img src={post.image} alt={post.title} className="w-full h-[240px] object-cover" />
-            <div className="p-6 flex flex-col flex-1">
-              <h3 className="text-[24px] font-bold uppercase text-[#08C2C1] mb-2 leading-[41px]">{post.title}</h3>
-              <p className="text-[#0E1423] font-medium text-[16px] mb-2 capitalize leading-[29px]">{post.description}</p>
-              <span className="text-[#7E7E7E] text-[16px] font-medium mt-auto capitalize leading-[32px]">{post.date}</span>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Show More Button */}
-      {visibleCount < filteredPosts.length && (
-        <div className="flex justify-center mt-12">
-          <button
-            className="bg-white border border-[#08C2C1] text-[#08C2C1] font-medium text-[18px] px-6 py-2 rounded-xl capitalize"
-            onClick={() => setVisibleCount((prev) => prev + 3)}
-          >
-            Show More
-          </button>
+        {/* Filter Buttons */}
+        <div className="flex gap-6 mb-12">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => {
+                setSelectedCategory(cat);
+                setVisibleCount(6);
+              }}
+              className={`font-medium text-[18px] px-6 py-2 rounded-xl border capitalize transition-all duration-200
+                ${selectedCategory === cat
+                  ? 'bg-[#08C2C1] text-white border-[#08C2C1]'
+                  : 'bg-white text-[#08C2C1] border-[#08C2C1]'}
+              `}
+            >
+              {cat}
+            </button>
+          ))}
         </div>
-      )}
-    </div>
+
+        {/* Blog Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-[1200px] mx-auto px-4">
+          {visiblePosts.map((post, idx) => (
+            <div
+              key={idx}
+              className="bg-white rounded-xl shadow-md flex flex-col overflow-hidden w-[448px] h-[497px] mx-auto cursor-pointer"
+              onClick={() => navigate(`/blog/${post.slug}`)}
+            >
+              <img src={post.image} alt={post.title} className="w-full h-[240px] object-cover" />
+              <div className="p-6 flex flex-col flex-1">
+                <h3 className="text-[24px] font-bold uppercase text-[#08C2C1] mb-2 leading-[41px]">{post.title}</h3>
+                <p className="text-[#0E1423] font-medium text-[16px] mb-2 capitalize leading-[29px]">{post.description}</p>
+                <span className="text-[#7E7E7E] text-[16px] font-medium mt-auto capitalize leading-[32px]">{post.date}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Show More Button */}
+        {visibleCount < filteredPosts.length && (
+          <div className="flex justify-center mt-12">
+            <button
+              className="bg-white border border-[#08C2C1] text-[#08C2C1] font-medium text-[18px] px-6 py-2 rounded-xl capitalize"
+              onClick={() => setVisibleCount((prev) => prev + 3)}
+            >
+              Show More
+            </button>
+          </div>
+        )}
+      </section>
+    </main>
   );
 };
 
