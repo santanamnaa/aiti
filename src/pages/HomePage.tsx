@@ -1,12 +1,19 @@
 import React, { useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from "framer-motion";
 import { useTranslation } from 'react-i18next';
 import { FaBrain, FaDesktop, FaMobileAlt, FaLaptop, FaMapMarkedAlt, FaHeadphones } from "react-icons/fa";
+import { getBlogPosts } from '../utils/blogData';
 
 const HomePage: React.FC = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const solutionsRef = useRef<HTMLDivElement>(null);
+  
+  // Get blog posts data (same as BlogPage)
+  const blogPosts = getBlogPosts(t);
+  // Show only first 4 posts on homepage
+  const displayedBlogPosts = blogPosts.slice(0, 4);
 
   const solutions = [
     {
@@ -254,64 +261,32 @@ const HomePage: React.FC = () => {
             </span>
           </div>
         </div>
-        {/* Blog Cards Row */}
-        <div className="w-full max-w-[1200px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 px-0">
-          {/* Blog 1 */}
-          <div className="flex flex-col items-start bg-white shadow-lg overflow-hidden min-w-0 max-w-full w-full h-[420px] sm:h-[497px] border border-[#E5E7EB] transition-transform duration-200 hover:-translate-y-2 hover:shadow-2xl">
-            <div className="w-full h-[180px] sm:h-[240px] bg-white bg-opacity-[0.09] backdrop-blur-[13px] relative">
-              <img src="/images/figma/blog1.png" alt="Blog 1" className="absolute inset-0 w-full h-full object-cover" />
-            </div>
-            <div className="flex flex-col items-start p-[12px] gap-[16px] sm:gap-[24px] w-full flex-1">
-              <div className="flex flex-col gap-[6px] sm:gap-[8px] w-full">
-                <div className="text-[#08C2C1] font-bold uppercase text-[14px] sm:text-[16px] leading-[28px] sm:leading-[32px] mb-0">{t('home.blog.posts.0.date')}</div>
-                <div className="text-[#08C2C1] font-bold uppercase text-[18px] sm:text-[24px] leading-[28px] sm:leading-[41px] tracking-tight mb-0">{t('home.blog.posts.0.title')}</div>
-                <div className="text-[#0E1423] font-medium text-[14px] sm:text-[16px] leading-[22px] sm:leading-[29px] capitalize mb-0">{t('home.blog.posts.0.description')}</div>
-                <div className="text-[#7E7E7E] font-medium text-[14px] sm:text-[16px] leading-[28px] sm:leading-[32px] capitalize">{t('home.blog.readMore')} →</div>
+        {/* Blog Cards Row - Using same structure as BlogPage */}
+        <div className="w-full max-w-[1200px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 px-0">
+          {displayedBlogPosts.map((post, idx) => (
+            <div
+              key={idx}
+              className="bg-white rounded-xl shadow-md flex flex-col overflow-hidden w-full max-w-[448px] h-[497px] mx-auto cursor-pointer transition-all duration-300 hover:shadow-2xl hover:scale-[1.02] hover:border-2 hover:border-[#08C2C1]"
+              onClick={() => navigate(`/blog/${post.slug}`)}
+            >
+              <img src={post.image} alt={post.title} className="w-full h-[240px] object-cover" />
+              <div className="p-6 flex flex-col flex-1">
+                <h3 className="text-[24px] font-bold uppercase text-[#08C2C1] mb-2 leading-[41px]">{post.title}</h3>
+                <p className="text-[#0E1423] font-medium text-[16px] mb-2 capitalize leading-[29px]">{post.description}</p>
+                <span className="text-[#7E7E7E] text-[16px] font-medium mt-auto capitalize leading-[32px]">{post.date}</span>
               </div>
             </div>
-          </div>
-          {/* Blog 2 */}
-          <div className="flex flex-col items-start bg-white shadow-lg overflow-hidden min-w-0 max-w-full w-full h-[420px] sm:h-[497px] border border-[#E5E7EB] transition-transform duration-200 hover:-translate-y-2 hover:shadow-2xl">
-            <div className="w-full h-[180px] sm:h-[240px] bg-white bg-opacity-[0.09] backdrop-blur-[13px] relative">
-              <img src="/images/figma/blog2.png" alt="Blog 2" className="absolute inset-0 w-full h-full object-cover" />
-            </div>
-            <div className="flex flex-col items-start p-[12px] gap-[16px] sm:gap-[24px] w-full flex-1">
-              <div className="flex flex-col gap-[6px] sm:gap-[8px] w-full">
-                <div className="text-[#08C2C1] font-bold uppercase text-[14px] sm:text-[16px] leading-[28px] sm:leading-[32px] mb-0">{t('home.blog.posts.1.date')}</div>
-                <div className="text-[#08C2C1] font-bold uppercase text-[18px] sm:text-[24px] leading-[28px] sm:leading-[41px] tracking-tight mb-0">{t('home.blog.posts.1.title')}</div>
-                <div className="text-[#0E1423] font-medium text-[14px] sm:text-[16px] leading-[22px] sm:leading-[29px] capitalize mb-0">{t('home.blog.posts.1.description')}</div>
-                <div className="text-[#7E7E7E] font-medium text-[14px] sm:text-[16px] leading-[28px] sm:leading-[32px] capitalize">{t('home.blog.readMore')} →</div>
-              </div>
-            </div>
-          </div>
-          {/* Blog 3 */}
-          <div className="flex flex-col items-start bg-white shadow-lg overflow-hidden min-w-0 max-w-full w-full h-[420px] sm:h-[497px] border border-[#E5E7EB] transition-transform duration-200 hover:-translate-y-2 hover:shadow-2xl">
-            <div className="w-full h-[180px] sm:h-[240px] bg-white bg-opacity-[0.09] backdrop-blur-[13px] relative">
-              <img src="/images/figma/blog3.png" alt="Blog 3" className="absolute inset-0 w-full h-full object-cover" />
-            </div>
-            <div className="flex flex-col items-start p-[12px] gap-[16px] sm:gap-[24px] w-full flex-1">
-              <div className="flex flex-col gap-[6px] sm:gap-[8px] w-full">
-                <div className="text-[#08C2C1] font-bold uppercase text-[14px] sm:text-[16px] leading-[28px] sm:leading-[32px] mb-0">{t('home.blog.posts.2.date')}</div>
-                <div className="text-[#08C2C1] font-bold uppercase text-[18px] sm:text-[24px] leading-[28px] sm:leading-[41px] tracking-tight mb-0">{t('home.blog.posts.2.title')}</div>
-                <div className="text-[#0E1423] font-medium text-[14px] sm:text-[16px] leading-[22px] sm:leading-[29px] capitalize mb-0">{t('home.blog.posts.2.description')}</div>
-                <div className="text-[#7E7E7E] font-medium text-[14px] sm:text-[16px] leading-[28px] sm:leading-[32px] capitalize">{t('home.blog.readMore')} →</div>
-              </div>
-            </div>
-          </div>
-          {/* Blog 4 */}
-          <div className="flex flex-col items-start bg-white shadow-lg overflow-hidden min-w-0 max-w-full w-full h-[420px] sm:h-[497px] border border-[#E5E7EB] transition-transform duration-200 hover:-translate-y-2 hover:shadow-2xl">
-            <div className="w-full h-[180px] sm:h-[240px] bg-white bg-opacity-[0.09] backdrop-blur-[13px] relative">
-              <img src="/images/figma/blog4.png" alt="Blog 4" className="absolute inset-0 w-full h-full object-cover" />
-            </div>
-            <div className="flex flex-col items-start p-[12px] gap-[16px] sm:gap-[24px] w-full flex-1">
-              <div className="flex flex-col gap-[6px] sm:gap-[8px] w-full">
-                <div className="text-[#08C2C1] font-bold uppercase text-[14px] sm:text-[16px] leading-[28px] sm:leading-[32px] mb-0">{t('home.blog.posts.3.date')}</div>
-                <div className="text-[#08C2C1] font-bold uppercase text-[18px] sm:text-[24px] leading-[28px] sm:leading-[41px] tracking-tight mb-0">{t('home.blog.posts.3.title')}</div>
-                <div className="text-[#0E1423] font-medium text-[14px] sm:text-[16px] leading-[22px] sm:leading-[29px] capitalize mb-0">{t('home.blog.posts.3.description')}</div>
-                <div className="text-[#7E7E7E] font-medium text-[14px] sm:text-[16px] leading-[28px] sm:leading-[32px] capitalize">{t('home.blog.readMore')} →</div>
-              </div>
-            </div>
-          </div>
+          ))}
+        </div>
+        {/* Link to full blog page */}
+        <div className="flex justify-center mt-8">
+          <Link
+            to="/blog"
+            className="inline-flex items-center bg-[#08C2C1] text-white hover:bg-[#0E1423] px-6 sm:px-8 py-3 sm:py-4 rounded-[10px] text-[16px] sm:text-[18px] font-medium shadow-md hover:shadow-lg transition-all duration-200"
+          >
+            {t('home.blog.viewAll') || 'Lihat Semua Blog'}
+            <span className="ml-2 text-[20px] sm:text-[22px]">→</span>
+          </Link>
         </div>
       </section>
     </main>

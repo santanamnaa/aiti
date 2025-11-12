@@ -96,21 +96,14 @@ const ServicesPage: React.FC = () => {
                       {service.desc2}
                     </span>
                   </div>
-                  {/* Button is now always present in data, but its visibility is controlled by hover */}
-                  {service.id === 1 ? (
+                  {/* Button only for services with detail page */}
+                  {service.id === 1 && (
                     <Link
                       to="/services/ITConsultantDetailPage"
-                      className="w-[196px] h-[47px] flex justify-center items-center px-6 py-2.5 gap-2 border border-[#08C2C1] rounded-[12px] bg-white text-[#08C2C1] text-[18px] leading-[27px] font-medium capitalize font-poppins transition-opacity duration-300 opacity-0 group-hover:opacity-100"
+                      className="w-fit h-[36px] flex justify-center items-center px-4 py-2 gap-2 border border-[#08C2C1] rounded-[8px] bg-white text-[#08C2C1] text-[14px] leading-[21px] font-medium capitalize font-poppins transition-opacity duration-300 opacity-0 group-hover:opacity-100 hover:bg-[#08C2C1] hover:text-white"
                     >
                       {service.button}
                     </Link>
-                  ) : (
-                    <button
-                      className="w-[196px] h-[47px] flex justify-center items-center px-6 py-2.5 gap-2 border border-[#08C2C1] rounded-[12px] bg-white text-[#08C2C1] text-[18px] leading-[27px] font-medium capitalize font-poppins transition-opacity duration-300 opacity-0 group-hover:opacity-100 cursor-not-allowed"
-                      disabled
-                    >
-                      {service.button}
-                    </button>
                   )}
                 </div>
               </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import SidebarNavigation, { NavigationItem } from '../../components/common/SidebarNavigation';
 // import Footer from '../../components/layout/Footer'; // Uncomment if you want to use the global Footer
 // import Header from '../../components/layout/Header'; // Uncomment if you want to use the global Header
 
@@ -71,10 +72,23 @@ const benefits: Benefit[] = [
 ];
 
 const ITConsultantDetailPage: React.FC = () => {
+  // Create navigation items from stages
+  const navigationItems: NavigationItem[] = stages.map((stage) => ({
+    id: `stage-${stage.number}`,
+    label: stage.title,
+    number: stage.number,
+  }));
+
+  // Add other sections to navigation
+  navigationItems.push(
+    { id: 'why-choose', label: 'Why Choose Our Consulting Services?' },
+    { id: 'benefits', label: 'Benefits' }
+  );
+
   return (
     <div className="relative w-full max-w-full mx-auto bg-white font-poppins text-[#0E1423] overflow-x-hidden pt-32 pb-32">
       {/* Hero Section */}
-      <div className="w-full flex flex-col items-center gap-6 mb-24">
+      <div className="w-full flex flex-col items-center gap-6 mb-24" id="hero">
         <div className="flex flex-row items-center justify-center gap-2 bg-white border border-[#08C2C1]/30 rounded-xl px-6 py-2 mb-24">
           <span className="text-[#08C2C1] font-semibold text-[18px]">Service</span>
         </div>
@@ -91,18 +105,21 @@ const ITConsultantDetailPage: React.FC = () => {
 
       {/* Stages Section - Split Layout */}
       <div className="w-full flex flex-col items-center mb-24 min-h-screen">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-12 items-start">
-          {/* Sidebar Sticky */}
-          <div className="w-full md:w-2/5 p-0 mb-8 md:mb-0 md:sticky md:top-32 self-start h-fit">
-            <span className="text-[48px] font-medium text-[#7E7E7E] uppercase -mb-3 block">Consultation Stages</span>
-            <span className="text-[48px] font-semibold text-[#08C2C1] uppercase mb-4 block">according to SDLC</span>
-          </div>
-          {/* Konten Kanan */}
-          <div className="w-full md:w-3/5 flex flex-col gap-8">
+        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-12 items-start">
+          {/* Sidebar Navigation - Sticky on desktop */}
+          <SidebarNavigation
+            items={navigationItems}
+            title="Consultation Stages"
+            titleHighlight="according to SDLC"
+          />
+          
+          {/* Content Right */}
+          <div className="w-full lg:w-3/5 flex flex-col gap-8">
             {stages.map((stage) => (
               <div
                 key={stage.number}
-                className="rounded-[24px] bg-white/10 backdrop-blur-[13px] flex flex-row items-start p-8 gap-6 border border-[#757575]/30"
+                id={`stage-${stage.number}`}
+                className="scroll-mt-32 rounded-[24px] bg-white/10 backdrop-blur-[13px] flex flex-row items-start p-8 gap-6 border border-[#757575]/30"
               >
                 <div className="w-6 h-8 flex items-center justify-center text-[16px] font-medium text-[#7E7E7E]">{stage.number}</div>
                 <div className="flex flex-col gap-2 w-full">
@@ -116,7 +133,10 @@ const ITConsultantDetailPage: React.FC = () => {
       </div>
 
       {/* Why Choose Section */}
-      <div className="w-full flex flex-col items-center gap-6 mb-24">
+      <div 
+        id="why-choose" 
+        className="scroll-mt-32 w-full flex flex-col items-center gap-6 mb-24"
+      >
         <div className="flex flex-col items-center gap-0">
           <span className="text-[64px] font-medium text-[#7E7E7E] uppercase  -mb-3 text-center">Why Choose</span>
           <span className="text-[64px] font-semibold text-[#08C2C1] uppercase  text-center">Our Consulting Services?</span>
@@ -128,7 +148,10 @@ const ITConsultantDetailPage: React.FC = () => {
       </div>
 
       {/* Benefits Section */}
-      <div className="w-full flex flex-row flex-wrap justify-center gap-6">
+      <div 
+        id="benefits" 
+        className="scroll-mt-32 w-full flex flex-row flex-wrap justify-center gap-6"
+      >
         {benefits.map((benefit, idx) => (
           <div
             key={idx}
