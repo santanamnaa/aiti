@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Send, Mail, Phone, MapPin, Building2 } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 interface FormData {
   name: string;
@@ -16,6 +17,7 @@ interface FormErrors {
 }
 
 const ContactPage: React.FC = () => {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
@@ -33,13 +35,13 @@ const ContactPage: React.FC = () => {
 
   const validate = () => {
     const newErrors: FormErrors = {};
-    if (!formData.name.trim()) newErrors.name = 'Nama wajib diisi';
+    if (!formData.name.trim()) newErrors.name = t('contactPage.validation.nameRequired');
     if (!formData.email.trim()) {
-      newErrors.email = 'Email wajib diisi';
+      newErrors.email = t('contactPage.validation.emailRequired');
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Format email tidak valid';
+      newErrors.email = t('contactPage.validation.emailInvalid');
     }
-    if (!formData.message.trim()) newErrors.message = 'Pesan wajib diisi';
+    if (!formData.message.trim()) newErrors.message = t('contactPage.validation.messageRequired');
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -71,12 +73,12 @@ const ContactPage: React.FC = () => {
         </div>
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 text-center">
           <div className="font-poppins text-[64px] md:text-[96px] font-medium text-white drop-shadow-lg leading-none tracking-tight mb-4">
-            CONNECT WITH
+            {t('contactPage.hero.title')}
           </div>
           <div className="font-poppins text-[64px] md:text-[96px] font-semibold text-[#08C2C1] drop-shadow-lg leading-none tracking-tight mb-8">
-            OUR EXPERT
+            {t('contactPage.hero.titleHighlight')}
           </div>
-          <div className="text-white text-lg font-light mb-8">Let us know how we can help.</div>
+          <div className="text-white text-lg font-light mb-8">{t('contactPage.hero.subtitle')}</div>
         </div>
       </section>
       {/* Main Content Section */}
@@ -86,42 +88,42 @@ const ContactPage: React.FC = () => {
             {/* Contact Information Card */}
             <div className="bg-[rgba(8,194,193,0.05)] rounded-2xl p-10 w-full max-w-lg backdrop-blur-md shadow-lg border border-[#08C2C1]/10 flex flex-col gap-8 opacity-100">
               <div className="font-poppins text-[32px] md:text-[40px] font-medium text-[#7E7E7E] leading-none tracking-tight mb-2">
-                CONTACT <span className="font-semibold text-[#08C2C1]">INFORMATION</span>
+                {t('contactPage.contactInfo.title')} <span className="font-semibold text-[#08C2C1]">{t('contactPage.contactInfo.titleHighlight')}</span>
               </div>
               <div className="flex flex-col gap-6">
                 <div>
-                  <div className="text-[#7E7E7E] font-medium text-lg mb-1 flex items-center gap-2"><Building2 className="w-6 h-6 text-[#08C2C1]" /> Perusahaan</div>
-                  <div className="text-[#0E1423] font-semibold text-xl">PT AITISERVE DJAYA NARAYA</div>
+                  <div className="text-[#7E7E7E] font-medium text-lg mb-1 flex items-center gap-2"><Building2 className="w-6 h-6 text-[#08C2C1]" /> {t('contactPage.contactInfo.company.label')}</div>
+                  <div className="text-[#0E1423] font-semibold text-xl">{t('contactPage.contactInfo.company.value')}</div>
                 </div>
                 <div>
-                  <div className="text-[#7E7E7E] font-medium text-lg mb-1 flex items-center gap-2"><MapPin className="w-6 h-6 text-[#08C2C1]" /> Alamat</div>
-                  <div className="text-[#0E1423] font-medium">Jl. Manglid, Komplek Grand Kopo Parahyangan Blok A No 20<br/>Margahayu Selatan, Margahayu Kab. Bandung Jawa Barat</div>
+                  <div className="text-[#7E7E7E] font-medium text-lg mb-1 flex items-center gap-2"><MapPin className="w-6 h-6 text-[#08C2C1]" /> {t('contactPage.contactInfo.address.label')}</div>
+                  <div className="text-[#0E1423] font-medium" dangerouslySetInnerHTML={{ __html: t('contactPage.contactInfo.address.value') }}></div>
                 </div>
                 <div>
-                  <div className="text-[#7E7E7E] font-medium text-lg mb-1 flex items-center gap-2"><Mail className="w-6 h-6 text-[#08C2C1]" /> Email</div>
-                  <a href="mailto:hr@aitiserve.co.id" className="text-[#0E1423] font-medium hover:underline">hr@aitiserve.co.id</a>
+                  <div className="text-[#7E7E7E] font-medium text-lg mb-1 flex items-center gap-2"><Mail className="w-6 h-6 text-[#08C2C1]" /> {t('contactPage.contactInfo.email.label')}</div>
+                  <a href="mailto:hr@aitiserve.co.id" className="text-[#0E1423] font-medium hover:underline">{t('contactPage.contactInfo.email.value')}</a>
                 </div>
                 <div>
-                  <div className="text-[#7E7E7E] font-medium text-lg mb-1 flex items-center gap-2"><Phone className="w-6 h-6 text-[#08C2C1]" /> Telepon</div>
-                  <div className="text-[#0E1423] font-medium">+62 812-3456-7890</div>
+                  <div className="text-[#7E7E7E] font-medium text-lg mb-1 flex items-center gap-2"><Phone className="w-6 h-6 text-[#08C2C1]" /> {t('contactPage.contactInfo.phone.label')}</div>
+                  <div className="text-[#0E1423] font-medium">{t('contactPage.contactInfo.phone.value')}</div>
                 </div>
               </div>
             </div>
             {/* Contact Form Card */}
             <div className="bg-white rounded-2xl shadow-xl p-10 w-full max-w-lg border-t-8 border-[#08C2C1]/80">
               <div className="font-poppins text-[40px] font-medium text-[#7E7E7E] leading-none tracking-tight mb-8 text-center md:text-left">
-                GET IN <span className="font-semibold text-[#08C2C1]">TOUCH</span>
+                {t('contactPage.form.title')} <span className="font-semibold text-[#08C2C1]">{t('contactPage.form.titleHighlight')}</span>
               </div>
               {isSuccess && (
                 <div className="bg-[#08C2C1]/10 text-[#08C2C1] p-4 rounded-lg mb-6 text-center font-medium">
-                  Pesan Anda berhasil dikirim. Terima kasih telah menghubungi kami!
+                  {t('contactPage.form.success')}
                 </div>
               )}
               <form onSubmit={handleSubmit} className="mt-4">
                 <div className="grid grid-cols-1 gap-6 mb-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-[#7E7E7E] mb-1">
-                      Nama <span className="text-[#E53935]">*</span>
+                      {t('contactPage.form.name.label')} <span className="text-[#E53935]">{t('contactPage.form.required')}</span>
                     </label>
                     <input
                       type="text"
@@ -130,7 +132,7 @@ const ContactPage: React.FC = () => {
                       value={formData.name}
                       onChange={handleChange}
                       className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#08C2C1] focus:border-[#08C2C1] outline-none transition-all text-lg ${errors.name ? 'border-[#E53935]' : 'border-gray-300'}`}
-                      placeholder="Nama Lengkap"
+                      placeholder={t('contactPage.form.name.placeholder')}
                     />
                     {errors.name && (
                       <p className="mt-1 text-sm text-[#E53935]">{errors.name}</p>
@@ -138,7 +140,7 @@ const ContactPage: React.FC = () => {
                   </div>
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium text-[#7E7E7E] mb-1">
-                      Email <span className="text-[#E53935]">*</span>
+                      {t('contactPage.form.email.label')} <span className="text-[#E53935]">{t('contactPage.form.required')}</span>
                     </label>
                     <input
                       type="email"
@@ -147,7 +149,7 @@ const ContactPage: React.FC = () => {
                       value={formData.email}
                       onChange={handleChange}
                       className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#08C2C1] focus:border-[#08C2C1] outline-none transition-all text-lg ${errors.email ? 'border-[#E53935]' : 'border-gray-300'}`}
-                      placeholder="Alamat Email"
+                      placeholder={t('contactPage.form.email.placeholder')}
                     />
                     {errors.email && (
                       <p className="mt-1 text-sm text-[#E53935]">{errors.email}</p>
@@ -155,7 +157,7 @@ const ContactPage: React.FC = () => {
                   </div>
                   <div>
                     <label htmlFor="phone" className="block text-sm font-medium text-[#7E7E7E] mb-1">
-                      Telepon
+                      {t('contactPage.form.phone.label')}
                     </label>
                     <input
                       type="tel"
@@ -164,12 +166,12 @@ const ContactPage: React.FC = () => {
                       value={formData.phone}
                       onChange={handleChange}
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#08C2C1] focus:border-[#08C2C1] outline-none transition-all text-lg"
-                      placeholder="Nomor Telepon (opsional)"
+                      placeholder={t('contactPage.form.phone.placeholder')}
                     />
                   </div>
                   <div>
                     <label htmlFor="subject" className="block text-sm font-medium text-[#7E7E7E] mb-1">
-                      Subjek
+                      {t('contactPage.form.subject.label')}
                     </label>
                     <input
                       type="text"
@@ -178,12 +180,12 @@ const ContactPage: React.FC = () => {
                       value={formData.subject}
                       onChange={handleChange}
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#08C2C1] focus:border-[#08C2C1] outline-none transition-all text-lg"
-                      placeholder="Subjek Pesan (opsional)"
+                      placeholder={t('contactPage.form.subject.placeholder')}
                     />
                   </div>
                   <div>
                     <label htmlFor="message" className="block text-sm font-medium text-[#7E7E7E] mb-1">
-                      Pesan <span className="text-[#E53935]">*</span>
+                      {t('contactPage.form.message.label')} <span className="text-[#E53935]">{t('contactPage.form.required')}</span>
                     </label>
                     <textarea
                       id="message"
@@ -192,7 +194,7 @@ const ContactPage: React.FC = () => {
                       value={formData.message}
                       onChange={handleChange}
                       className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#08C2C1] focus:border-[#08C2C1] outline-none transition-all text-lg ${errors.message ? 'border-[#E53935]' : 'border-gray-300'}`}
-                      placeholder="Tulis pesan Anda di sini..."
+                      placeholder={t('contactPage.form.message.placeholder')}
                     ></textarea>
                     {errors.message && (
                       <p className="mt-1 text-sm text-[#E53935]">{errors.message}</p>
@@ -207,11 +209,11 @@ const ContactPage: React.FC = () => {
                   {isSubmitting ? (
                     <>
                       <span className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></span>
-                      Mengirim...
+                      {t('contactPage.form.submitting')}
                     </>
                   ) : (
                     <>
-                      Kirim Pesan
+                      {t('contactPage.form.submit')}
                       <Send className="ml-2 w-4 h-4" />
                     </>
                   )}

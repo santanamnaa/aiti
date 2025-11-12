@@ -1,71 +1,74 @@
 import React from 'react';
 import { Users, Rocket, Lightbulb, HeartHandshake, PenTool, Code2, FileCode2 } from 'lucide-react';
-const positions = [
-  {
-    icon: <PenTool className="w-12 h-12 text-[#08C2C1]" />,
-    title: 'UI/UX DESIGNER',
-    desc: 'Bertanggung jawab untuk merancang tampilan dan pengalaman pengguna yang menarik, intuitif, dan fungsional pada produk digital kami.',
-    mailSubject: 'Apply%20for%20UI%2FUX%20Designer',
-  },
-  {
-    icon: <Code2 className="w-12 h-12 text-[#08C2C1]" />,
-    title: 'FRONTEND DEVELOPER',
-    desc: 'Mengembangkan antarmuka web yang responsif dan interaktif menggunakan teknologi modern sesuai kebutuhan bisnis.',
-    mailSubject: 'Apply%20for%20Frontend%20Developer',
-  },
-  {
-    icon: <FileCode2 className="w-12 h-12 text-[#08C2C1]" />,
-    title: 'BACKEND ENGINEER',
-    desc: 'Membangun dan memelihara sistem backend yang scalable, aman, dan efisien untuk mendukung aplikasi digital.',
-    mailSubject: 'Apply%20for%20Backend%20Engineer',
-  },
-  {
-    icon: <FileCode2 className="w-12 h-12 text-[#08C2C1]" />,
-    title: 'AI/ML ENGINEER',
-    desc: 'Merancang dan mengimplementasikan solusi AI/ML inovatif untuk meningkatkan kapabilitas produk digital.',
-    mailSubject: 'Apply%20for%20AI%2FML%20Engineer',
-  },
-];
-
-const benefits = [
-  {
-    icon: <Users className="w-12 h-12 text-[#08C2C1]" />,
-    title: 'Tim Kolaboratif',
-    desc: 'Bekerja bersama profesional yang suportif, terbuka, dan saling menginspirasi.',
-  },
-  {
-    icon: <Lightbulb className="w-12 h-12 text-[#08C2C1]" />,
-    title: 'Inovasi Tanpa Batas',
-    desc: 'Budaya inovasi dan eksplorasi teknologi terbaru di setiap proyek.',
-  },
-  {
-    icon: <Rocket className="w-12 h-12 text-[#08C2C1]" />,
-    title: 'Perkembangan Karir',
-    desc: 'Dukungan pengembangan diri, pelatihan, dan peluang naik jenjang karir.',
-  },
-  {
-    icon: <HeartHandshake className="w-12 h-12 text-[#08C2C1]" />,
-    title: 'Lingkungan Fleksibel',
-    desc: 'Kerja remote, hybrid, dan work-life balance yang sehat.',
-  },
-  {
-    icon: <PenTool className="w-12 h-12 text-[#08C2C1]" />,
-    title: 'Proyek Menantang',
-    desc: 'Terlibat dalam proyek-proyek digital yang berdampak dan menantang.',
-  },
-  {
-    icon: <Code2 className="w-12 h-12 text-[#08C2C1]" />,
-    title: 'Teknologi Terkini',
-    desc: 'Akses ke tools dan teknologi terbaru untuk pengembangan diri.',
-  },
-  {
-    icon: <FileCode2 className="w-12 h-12 text-[#08C2C1]" />,
-    title: 'Keseimbangan Hidup',
-    desc: 'Lingkungan kerja yang mendukung keseimbangan antara karir dan kehidupan pribadi.',
-  },
-];
+import { useTranslation } from 'react-i18next';
 
 const CareersPage: React.FC = () => {
+  const { t } = useTranslation();
+
+  const positions = [
+    {
+      icon: <PenTool className="w-12 h-12 text-[#08C2C1]" />,
+      title: t('careersPage.positions.0.title'),
+      desc: t('careersPage.positions.0.desc'),
+      mailSubject: 'Apply%20for%20UI%2FUX%20Designer',
+    },
+    {
+      icon: <Code2 className="w-12 h-12 text-[#08C2C1]" />,
+      title: t('careersPage.positions.1.title'),
+      desc: t('careersPage.positions.1.desc'),
+      mailSubject: 'Apply%20for%20Frontend%20Developer',
+    },
+    {
+      icon: <FileCode2 className="w-12 h-12 text-[#08C2C1]" />,
+      title: t('careersPage.positions.2.title'),
+      desc: t('careersPage.positions.2.desc'),
+      mailSubject: 'Apply%20for%20Backend%20Engineer',
+    },
+    {
+      icon: <FileCode2 className="w-12 h-12 text-[#08C2C1]" />,
+      title: t('careersPage.positions.3.title'),
+      desc: t('careersPage.positions.3.desc'),
+      mailSubject: 'Apply%20for%20AI%2FML%20Engineer',
+    },
+  ];
+
+  const benefits = [
+    {
+      icon: <Users className="w-12 h-12 text-[#08C2C1]" />,
+      title: t('careersPage.benefits.items.0.title'),
+      desc: t('careersPage.benefits.items.0.desc'),
+    },
+    {
+      icon: <Lightbulb className="w-12 h-12 text-[#08C2C1]" />,
+      title: t('careersPage.benefits.items.1.title'),
+      desc: t('careersPage.benefits.items.1.desc'),
+    },
+    {
+      icon: <Rocket className="w-12 h-12 text-[#08C2C1]" />,
+      title: t('careersPage.benefits.items.2.title'),
+      desc: t('careersPage.benefits.items.2.desc'),
+    },
+    {
+      icon: <HeartHandshake className="w-12 h-12 text-[#08C2C1]" />,
+      title: t('careersPage.benefits.items.3.title'),
+      desc: t('careersPage.benefits.items.3.desc'),
+    },
+    {
+      icon: <PenTool className="w-12 h-12 text-[#08C2C1]" />,
+      title: t('careersPage.benefits.items.4.title'),
+      desc: t('careersPage.benefits.items.4.desc'),
+    },
+    {
+      icon: <Code2 className="w-12 h-12 text-[#08C2C1]" />,
+      title: t('careersPage.benefits.items.5.title'),
+      desc: t('careersPage.benefits.items.5.desc'),
+    },
+    {
+      icon: <FileCode2 className="w-12 h-12 text-[#08C2C1]" />,
+      title: t('careersPage.benefits.items.6.title'),
+      desc: t('careersPage.benefits.items.6.desc'),
+    },
+  ];
   return (
     <main className="relative bg-white min-h-screen overflow-x-hidden font-poppins">
       <section className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 md:px-10 pt-60 pb-12 flex flex-col lg:flex-row gap-16">
@@ -73,17 +76,15 @@ const CareersPage: React.FC = () => {
         <div className="flex-1">
           {/* Tag */}
           <div className="inline-flex items-center px-6 py-2 border border-[#08C2C1]/30 rounded-xl bg-white mb-6">
-            <span className="text-[#08C2C1] font-medium text-lg capitalize">We're hiring!</span>
+            <span className="text-[#08C2C1] font-medium text-lg capitalize">{t('careersPage.hero.tag')}</span>
           </div>
           {/* Title */}
           <div>
-            <h1 className="text-[64px] font-medium uppercase text-[#7E7E7E] leading-[96px] mb-4">be part of</h1>
-            <h1 className="text-[64px] font-bold uppercase text-[#08C2C1] leading-[96px] mb-8">our missions!</h1>
+            <h1 className="text-[64px] font-medium uppercase text-[#7E7E7E] leading-[96px] mb-4">{t('careersPage.hero.title')}</h1>
+            <h1 className="text-[64px] font-bold uppercase text-[#08C2C1] leading-[96px] mb-8">{t('careersPage.hero.titleHighlight')}</h1>
           </div>
           {/* Description */}
-          <p className="text-lg font-medium text-[#0E1423] capitalize max-w-2xl mb-8">
-            Bergabunglah bersama <span className="text-[#08C2C1] font-semibold">AITISERVE</span> dan jadilah bagian dari tim inovatif yang membentuk masa depan digital Indonesia. Kami mencari talenta terbaik yang siap berkembang, berkolaborasi, dan berkontribusi dalam menciptakan solusi teknologi berdampak.
-          </p>
+          <p className="text-lg font-medium text-[#0E1423] capitalize max-w-2xl mb-8" dangerouslySetInnerHTML={{ __html: t('careersPage.hero.description') }}></p>
         </div>
         {/* Positions Section */}
         <div className="flex-1 flex flex-col items-end">
@@ -101,7 +102,7 @@ const CareersPage: React.FC = () => {
                     href={`mailto:hr@aitiserve.com?subject=${pos.mailSubject}`}
                     className="inline-flex items-center justify-center px-6 py-2 rounded-xl bg-[#08C2C1] text-white font-medium text-lg capitalize shadow hover:bg-[#0E1423] transition-all duration-300"
                   >
-                    Apply Now
+                    {t(`careersPage.positions.${idx}.apply`)}
                   </a>
                 </div>
               </div>
@@ -112,11 +113,9 @@ const CareersPage: React.FC = () => {
       {/* Benefits Section */}
       <section className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 md:px-10 py-16 bg-white">
         <div className="text-center mb-12">
-          <h2 className="text-[64px] font-medium uppercase text-[#7E7E7E] leading-[96px] mb-4">Benefits</h2>
-          <h2 className="text-[64px] font-bold uppercase text-[#08C2C1] leading-[96px] mb-8">that you will get</h2>
-          <p className="text-lg font-medium text-[#0E1423] capitalize max-w-3xl mx-auto mb-8">
-            Nikmati berbagai benefit menarik yang mendukung perkembangan karir dan keseimbangan hidupmu di <span className="text-[#08C2C1] font-semibold">AITISERVE</span>.
-          </p>
+          <h2 className="text-[64px] font-medium uppercase text-[#7E7E7E] leading-[96px] mb-4">{t('careersPage.benefits.title')}</h2>
+          <h2 className="text-[64px] font-bold uppercase text-[#08C2C1] leading-[96px] mb-8">{t('careersPage.benefits.titleHighlight')}</h2>
+          <p className="text-lg font-medium text-[#0E1423] capitalize max-w-3xl mx-auto mb-8" dangerouslySetInnerHTML={{ __html: t('careersPage.benefits.description') }}></p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {benefits.map((item, idx) => (

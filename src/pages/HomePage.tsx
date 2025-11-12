@@ -1,43 +1,45 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from "framer-motion";
+import { useTranslation } from 'react-i18next';
 import { FaBrain, FaDesktop, FaMobileAlt, FaLaptop, FaMapMarkedAlt, FaHeadphones } from "react-icons/fa";
 
-const solutions = [
-  {
-    icon: <FaBrain size={36} className="text-[#08C2C1]" />,
-    title: 'IT & AI CONSULTANT',
-    desc: 'Providing Strategic Assistance In Digital Transformation, Including Technology Needs Mapping, AI-Based System Planning, And ...',
-  },
-  {
-    icon: <FaDesktop size={36} className="text-[#08C2C1]" />,
-    title: 'WEBSITE APPLICATION DEVELOPMENT',
-    desc: 'Building Modern Web Applications With Responsive Design, Optimal Performance, ...',
-  },
-  {
-    icon: <FaMobileAlt size={36} className="text-[#08C2C1]" />,
-    title: 'MOBILE APPLICATION DEVELOPMENT',
-    desc: 'Designing And Developing AI-Based Mobile Applications With Superior User Experience.',
-  },
-  {
-    icon: <FaLaptop size={36} className="text-[#08C2C1]" />,
-    title: 'DESKTOP APPLICATION DEVELOPMENT',
-    desc: 'Develop Robust, Secure, And Integrated Desktop Software According To The Specific Needs.',
-  },
-  {
-    icon: <FaMapMarkedAlt size={36} className="text-[#08C2C1]" />,
-    title: 'GEOGRAPHIC INFORMATION SYSTEM (GIS) DEVELOPMENT',
-    desc: 'Provide GIS Solutions For Location Visualization, Spatial Analysis, And Decision Making.',
-  },
-  {
-    icon: <FaHeadphones size={36} className="text-[#08C2C1]" />,
-    title: 'TECHNICAL SUPPORT',
-    desc: 'Provide 24/7 Professional Technical Assistance Services To Ensure Smooth System Operations And Minimal Disruption.',
-  },
-];
-
-
 const HomePage: React.FC = () => {
+  const { t } = useTranslation();
   const solutionsRef = useRef<HTMLDivElement>(null);
+
+  const solutions = [
+    {
+      icon: <FaBrain size={36} className="text-[#08C2C1]" />,
+      title: t('home.solutions.items.0.title'),
+      desc: t('home.solutions.items.0.desc'),
+    },
+    {
+      icon: <FaDesktop size={36} className="text-[#08C2C1]" />,
+      title: t('home.solutions.items.1.title'),
+      desc: t('home.solutions.items.1.desc'),
+    },
+    {
+      icon: <FaMobileAlt size={36} className="text-[#08C2C1]" />,
+      title: t('home.solutions.items.2.title'),
+      desc: t('home.solutions.items.2.desc'),
+    },
+    {
+      icon: <FaLaptop size={36} className="text-[#08C2C1]" />,
+      title: t('home.solutions.items.3.title'),
+      desc: t('home.solutions.items.3.desc'),
+    },
+    {
+      icon: <FaMapMarkedAlt size={36} className="text-[#08C2C1]" />,
+      title: t('home.solutions.items.4.title'),
+      desc: t('home.solutions.items.4.desc'),
+    },
+    {
+      icon: <FaHeadphones size={36} className="text-[#08C2C1]" />,
+      title: t('home.solutions.items.5.title'),
+      desc: t('home.solutions.items.5.desc'),
+    },
+  ];
 
   return (
     <main className="bg-gradient-to-b from-[#12192C] to-[#0A0E18] min-h-screen font-poppins">
@@ -48,14 +50,14 @@ const HomePage: React.FC = () => {
         {/* Konten utama HERO */}
         <div className="relative z-10 flex flex-col items-start justify-center w-full max-w-[1200px] mx-auto px-2 sm:px-4 md:px-0" style={{height: 'calc(50vh + 100px)', minHeight: 300}}>
           <h1 className="text-white text-[32px] sm:text-[44px] md:text-[80px] font-extrabold uppercase tracking-tight text-left leading-[1.08] mb-4" style={{letterSpacing: '-0.04em'}}>
-            Scalable Tech.<br />
-            <span className="text-[#08C2C1]">Global Impact.</span>
+            {t('home.hero.title')}<br />
+            <span className="text-[#08C2C1]">{t('home.hero.titleHighlight')}</span>
           </h1>
           <p className="text-white text-[16px] sm:text-[18px] md:text-[22px] font-normal text-left max-w-xl sm:max-w-2xl mb-8 leading-snug md:leading-normal">
-            We Design Robust Digital Platforms And Custom Solutions That Grow With Your Business—<b>Locally And Globally.</b>
+            {t('home.hero.subtitle')}
           </p>
           <a href="#solutions" className="inline-flex items-center bg-[#08C2C1] text-white hover:bg-[#0E1423] px-5 sm:px-6 py-2.5 sm:py-3 rounded-[10px] text-[16px] sm:text-[18px] font-medium shadow-md hover:shadow-lg transition-all duration-200">
-            Get Started
+            {t('home.hero.cta')}
             <span className="ml-2 text-[20px] sm:text-[22px]">→</span>
           </a>
         </div>
@@ -64,8 +66,8 @@ const HomePage: React.FC = () => {
           <div className="flex flex-col md:flex-row items-end gap-8 lg:gap-16">
             {/* Judul kiri, rata bawah dengan card pertama */}
             <div className="flex flex-col w-[200px] self-end pb-10 md:pb-24 mb-4 md:mb-0 ml-20 sm:ml-22 md:ml-24 lg:ml-28">
-              <span className="text-white text-[18px] sm:text-[22px] font-bold uppercase tracking-widest mb-1">OUR</span>
-              <span className="text-[#08C2C1] text-[32px] sm:text-[40px] font-bold uppercase leading-tight">SOLUTIONS</span>
+              <span className="text-white text-[18px] sm:text-[22px] font-bold uppercase tracking-widest mb-1">{t('home.solutions.our')}</span>
+              <span className="text-[#08C2C1] text-[32px] sm:text-[40px] font-bold uppercase leading-tight">{t('home.solutions.title')}</span>
             </div>
             {/* Card-card solutions */}
             <div
@@ -95,11 +97,11 @@ const HomePage: React.FC = () => {
       <section className="relative flex flex-col items-center justify-center w-full px-4 sm:px-6 md:px-10 py-16 bg-[#F8FAFC]" style={{minHeight: 332}}>
         <div className="flex flex-col items-center gap-8 max-w-[920px] w-full">
           <div className="flex flex-col items-center w-full max-w-[540px] mb-4">
-            <span className="w-full text-[24px] sm:text-[32px] md:text-[44px] font-medium text-[#7E7E7E] uppercase text-center leading-[1.1] tracking-[-0.02em] mb-2" style={{textShadow: '0px 1px 3px rgba(28,32,43,0.05), 0px 1px 2px rgba(28,32,43,0.04)'}}>Shaping a</span>
-            <span className="w-full text-[24px] sm:text-[32px] md:text-[44px] font-semibold text-[#08C2C1] uppercase text-center leading-[1.1] tracking-[-0.02em] mb-4" style={{textShadow: '0px 1px 3px rgba(28,32,43,0.05), 0px 1px 2px rgba(28,32,43,0.04)'}}>brighter future</span>
+            <span className="w-full text-[24px] sm:text-[32px] md:text-[44px] font-medium text-[#7E7E7E] uppercase text-center leading-[1.1] tracking-[-0.02em] mb-2" style={{textShadow: '0px 1px 3px rgba(28,32,43,0.05), 0px 1px 2px rgba(28,32,43,0.04)'}}>{t('home.brighterFuture.title')}</span>
+            <span className="w-full text-[24px] sm:text-[32px] md:text-[44px] font-semibold text-[#08C2C1] uppercase text-center leading-[1.1] tracking-[-0.02em] mb-4" style={{textShadow: '0px 1px 3px rgba(28,32,43,0.05), 0px 1px 2px rgba(28,32,43,0.04)'}}>{t('home.brighterFuture.titleHighlight')}</span>
           </div>
           <div className="w-full max-w-[920px] text-[16px] md:text-[18px] font-medium text-[#0E1423] text-center leading-[2] capitalize mb-4" style={{minHeight: 64}}>
-            AITISERVE specializes in software development and digital platform services, including programming, web portal management, as well as IT consulting and technical support. Our expertise spans AI-powered web and mobile applications, geographic information systems (GIS), and desktop solutions tailored to various business sectors and organizations.
+            {t('home.brighterFuture.description')}
           </div>
         </div>
       </section>
@@ -108,9 +110,9 @@ const HomePage: React.FC = () => {
         <div className="w-full max-w-[1200px] mx-auto flex flex-col md:flex-row gap-12 px-0">
           {/* KIRI: Judul dan deskripsi, sticky di desktop, lebar fix 360px */}
           <div className="md:w-[360px] w-full flex-shrink-0 flex flex-col justify-start md:sticky md:top-32 mb-6 md:mb-0 text-center md:text-left">
-            <h2 className="text-[#7E7E7E] text-[24px] sm:text-[32px] md:text-[44px] font-medium uppercase tracking-tight mb-2 leading-tight" style={{letterSpacing: '-0.02em'}}>TECHNOLOGY &</h2>
-            <h2 className="text-[#08C2C1] text-[24px] sm:text-[32px] md:text-[44px] font-semibold uppercase tracking-tight mb-8 leading-tight" style={{letterSpacing: '-0.02em'}}>CORE COMPETENCIES</h2>
-            <p className="text-[#12192C] text-[16px] sm:text-[18px] font-medium leading-relaxed max-w-xs md:max-w-none">Our expertise covers a wide range of technology stacks and core competencies to deliver the best digital solutions for your business.</p>
+            <h2 className="text-[#7E7E7E] text-[24px] sm:text-[32px] md:text-[44px] font-medium uppercase tracking-tight mb-2 leading-tight" style={{letterSpacing: '-0.02em'}}>{t('home.tech.title')}</h2>
+            <h2 className="text-[#08C2C1] text-[24px] sm:text-[32px] md:text-[44px] font-semibold uppercase tracking-tight mb-8 leading-tight" style={{letterSpacing: '-0.02em'}}>{t('home.tech.titleHighlight')}</h2>
+            <p className="text-[#12192C] text-[16px] sm:text-[18px] font-medium leading-relaxed max-w-xs md:max-w-none">{t('home.tech.description')}</p>
           </div>
           {/* KANAN: Card scrollable vertical, tinggi fix 520px, gap sesuai Figma */}
           <div className="flex-1 max-h-[420px] sm:max-h-[520px] overflow-y-auto hide-scrollbar flex flex-col gap-8 pb-2 md:pb-0 pr-1 sm:pr-2">
@@ -118,26 +120,26 @@ const HomePage: React.FC = () => {
               {/* Card 1 */}
               <div className="flex flex-col items-start bg-white rounded-[18px] sm:rounded-[22px] shadow-lg p-5 sm:p-8 border border-[#08C2C1]/30 min-w-[260px] sm:min-w-[340px] flex-shrink-0 transition-all duration-200 hover:shadow-xl hover:border-[#08C2C1]">
                 <img src="/images/figma/tech-competence-1.svg" alt="Tech 1" className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain mb-3 sm:mb-4" />
-                <div className="text-[#08C2C1] text-[16px] sm:text-[18px] font-extrabold uppercase mb-2 leading-tight tracking-tight" style={{letterSpacing: '-0.01em'}}>System Architecture & Solution Development</div>
-                <div className="text-[#12192C] text-[15px] sm:text-[16px] font-medium leading-relaxed">Including Telco & IT system design, OSS/BSS, and AI implementation based on Retrieval-Augmented Generation (RAG). Our team masters full-stack development using Java, Kotlin, Python, Go, Node.js, as well as modern interface development with React Native, Flutter, and various frontend frameworks.</div>
+                <div className="text-[#08C2C1] text-[16px] sm:text-[18px] font-extrabold uppercase mb-2 leading-tight tracking-tight" style={{letterSpacing: '-0.01em'}}>{t('home.tech.competencies.0.title')}</div>
+                <div className="text-[#12192C] text-[15px] sm:text-[16px] font-medium leading-relaxed">{t('home.tech.competencies.0.description')}</div>
               </div>
               {/* Card 2 */}
               <div className="flex flex-col items-start bg-white rounded-[18px] sm:rounded-[22px] shadow-lg p-5 sm:p-8 border border-[#08C2C1]/30 min-w-[260px] sm:min-w-[340px] flex-shrink-0 transition-all duration-200 hover:shadow-xl hover:border-[#08C2C1]">
                 <img src="/images/figma/tech-competence-2.svg" alt="Tech 2" className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain mb-3 sm:mb-4" />
-                <div className="text-[#08C2C1] text-[16px] sm:text-[18px] font-extrabold uppercase mb-2 leading-tight tracking-tight" style={{letterSpacing: '-0.01em'}}>Database & Infrastructure</div>
-                <div className="text-[#12192C] text-[15px] sm:text-[16px] font-medium leading-relaxed">Including relational and graph database management (Oracle, PostgreSQL, Neo4j), cloud and vector database utilization such as Supabase and Pinecone, as well as server and storage support based on Linux, NGINX, and MiniO. For spatial needs, we use GeoServer.</div>
+                <div className="text-[#08C2C1] text-[16px] sm:text-[18px] font-extrabold uppercase mb-2 leading-tight tracking-tight" style={{letterSpacing: '-0.01em'}}>{t('home.tech.competencies.1.title')}</div>
+                <div className="text-[#12192C] text-[15px] sm:text-[16px] font-medium leading-relaxed">{t('home.tech.competencies.1.description')}</div>
               </div>
               {/* Card 3 */}
               <div className="flex flex-col items-start bg-white rounded-[18px] sm:rounded-[22px] shadow-lg p-5 sm:p-8 border border-[#08C2C1]/30 min-w-[260px] sm:min-w-[340px] flex-shrink-0 transition-all duration-200 hover:shadow-xl hover:border-[#08C2C1]">
                 <img src="/images/figma/tech-competence-3.svg" alt="Tech 3" className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain mb-3 sm:mb-4" />
-                <div className="text-[#08C2C1] text-[16px] sm:text-[18px] font-extrabold uppercase mb-2 leading-tight tracking-tight" style={{letterSpacing: '-0.01em'}}>DevOps & System Security</div>
-                <div className="text-[#12192C] text-[15px] sm:text-[16px] font-medium leading-relaxed">Including Linux server management, scripting, container usage (Docker), orchestration (Kafka), and CI/CD pipelines with GitLab, Jenkins, and Agile methodology. System security is maintained through OWASP standards, SSL/TLS encryption, and secure protocols such as SSH and SFTP.</div>
+                <div className="text-[#08C2C1] text-[16px] sm:text-[18px] font-extrabold uppercase mb-2 leading-tight tracking-tight" style={{letterSpacing: '-0.01em'}}>{t('home.tech.competencies.2.title')}</div>
+                <div className="text-[#12192C] text-[15px] sm:text-[16px] font-medium leading-relaxed">{t('home.tech.competencies.2.description')}</div>
               </div>
               {/* Card 4 */}
               <div className="flex flex-col items-start bg-white rounded-[18px] sm:rounded-[22px] shadow-lg p-5 sm:p-8 border border-[#08C2C1]/30 min-w-[260px] sm:min-w-[340px] flex-shrink-0 transition-all duration-200 hover:shadow-xl hover:border-[#08C2C1]">
                 <img src="/images/figma/tech-competence-4.svg" alt="Tech 4" className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain mb-3 sm:mb-4" />
-                <div className="text-[#08C2C1] text-[16px] sm:text-[18px] font-extrabold uppercase mb-2 leading-tight tracking-tight" style={{letterSpacing: '-0.01em'}}>Design & User Interface</div>
-                <div className="text-[#12192C] text-[15px] sm:text-[16px] font-medium leading-relaxed">Focused on UI/UX development using Figma and AI-based cross-platform mobile application development with Flutter and React Native.</div>
+                <div className="text-[#08C2C1] text-[16px] sm:text-[18px] font-extrabold uppercase mb-2 leading-tight tracking-tight" style={{letterSpacing: '-0.01em'}}>{t('home.tech.competencies.3.title')}</div>
+                <div className="text-[#12192C] text-[15px] sm:text-[16px] font-medium leading-relaxed">{t('home.tech.competencies.3.description')}</div>
               </div>
             </div>
           </div>
@@ -154,7 +156,7 @@ const HomePage: React.FC = () => {
                 letterSpacing: '-0.02em',
               }}
             >
-              IDEAS THAT
+              {t('home.portfolio.title')}
             </h2>
             <h2
               className="w-full text-[24px] sm:text-[32px] md:text-[44px] font-semibold uppercase text-[#08C2C1] text-center leading-[1.1] tracking-[-0.02em] mb-8"
@@ -163,46 +165,67 @@ const HomePage: React.FC = () => {
                 letterSpacing: '-0.02em',
               }}
             >
-              TURNED INTO IMPACT
+              {t('home.portfolio.titleHighlight')}
             </h2>
           </div>
-          <div className="w-full max-w-[920px] text-[16px] md:text-[18px] font-medium text-[#0E1423] text-center leading-[2] capitalize mb-8" style={{minHeight: 64}}>
-            AITISERVE specializes in software development and digital platform services, including programming, web portal management, as well as IT consulting and technical support. Our expertise spans AI-powered web and mobile applications, geographic information systems (GIS), and desktop solutions tailored to various business sectors and organizations.
+          <div className="w-full max-w-[920px] text-[16px] md:text-[18px] font-medium text-[#0E1423] text-center leading-relaxed mb-8">
+            {t('home.portfolio.description')}
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 sm:gap-8 max-w-[920px] w-full">
-            {/* Team 1 */}
-            <div className="relative bg-white/10 backdrop-blur-[13px] rounded-[24px] shadow-xl overflow-hidden flex flex-col items-center p-0 min-h-[250px] max-w-full sm:max-w-full mx-auto">
-              <img src="/images/figma/team1.png" alt="Team 1" className="h-full w-full object-cover" />
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#0E1423] to-transparent p-4 sm:p-6 flex flex-col items-start" style={{height: 120}}>
-                <div className="text-[20px] sm:text-[32px] font-bold text-[#08C2C1] leading-[32px] sm:leading-[48px] capitalize">Lincoln Curtis</div>
-                <div className="text-white text-[14px] sm:text-[16px] font-medium leading-[20px] sm:leading-[24px] capitalize">Solution Architect | IT & Telecommunications Expert</div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-[920px] w-full mb-8">
+            {/* Direksi Card */}
+            <Link to="/portfolio" className="bg-white rounded-xl shadow-lg border border-[#E5E7EB] p-6 sm:p-8 flex flex-col gap-4 hover:shadow-xl hover:border-[#08C2C1] transition-all duration-300 group">
+              <div className="flex flex-col gap-2">
+                <h3 className="text-[#08C2C1] text-[20px] sm:text-[24px] font-bold uppercase">{t('home.portfolio.direksi.label')}</h3>
+                <div className="text-[#12192C] text-[18px] sm:text-[22px] font-semibold">{t('home.portfolio.direksi.name')}</div>
+                <div className="text-[#08C2C1] text-[14px] sm:text-[16px] font-medium">{t('home.portfolio.direksi.title')}</div>
+                <div className="text-[#7E7E7E] text-[13px] sm:text-[14px]">{t('home.portfolio.direksi.location')}</div>
               </div>
-            </div>
-            {/* Team 2 */}
-            <div className="relative bg-white/10 backdrop-blur-[13px] rounded-[24px] shadow-xl overflow-hidden flex flex-col items-center p-0 min-h-[250px] max-w-full sm:max-w-full mx-auto">
-              <img src="/images/figma/team2.png" alt="Team 2" className="h-full w-full object-cover" />
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#0E1423] to-transparent p-4 sm:p-6 flex flex-col items-start" style={{height: 100}}>
-                <div className="text-[20px] sm:text-[32px] font-bold text-[#08C2C1] leading-[32px] sm:leading-[48px] capitalize">Kaiya Korsgaard</div>
-                <div className="text-white text-[14px] sm:text-[16px] font-medium leading-[20px] sm:leading-[24px] capitalize">Product Manager</div>
+              <div className="border-t border-[#E5E7EB] my-2"></div>
+              <p className="text-[#0E1423] text-[14px] sm:text-[15px] leading-relaxed line-clamp-4">
+                {t('home.portfolio.direksi.summary')}
+              </p>
+              <div className="flex flex-wrap gap-2 mt-2">
+                <span className="text-[#08C2C1] text-[12px] sm:text-[13px] font-medium">{t('home.portfolio.direksi.skills.0')}</span>
+                <span className="text-[#7E7E7E]">•</span>
+                <span className="text-[#08C2C1] text-[12px] sm:text-[13px] font-medium">{t('home.portfolio.direksi.skills.1')}</span>
+                <span className="text-[#7E7E7E]">•</span>
+                <span className="text-[#08C2C1] text-[12px] sm:text-[13px] font-medium">{t('home.portfolio.direksi.skills.2')}</span>
               </div>
-            </div>
-            {/* Team 3 */}
-            <div className="relative bg-white/10 backdrop-blur-[13px] rounded-[24px] shadow-xl overflow-hidden flex flex-col items-center p-0 min-h-[250px] max-w-full sm:max-w-full mx-auto">
-              <img src="/images/figma/team3.png" alt="Team 3" className="h-full w-full object-cover" />
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#0E1423] to-transparent p-4 sm:p-6 flex flex-col items-start" style={{height: 100}}>
-                <div className="text-[20px] sm:text-[32px] font-bold text-[#08C2C1] leading-[32px] sm:leading-[48px] capitalize">Rayna Bator</div>
-                <div className="text-white text-[14px] sm:text-[16px] font-medium leading-[20px] sm:leading-[24px] capitalize">Product Designer</div>
+              <div className="mt-4 text-[#08C2C1] text-[14px] sm:text-[15px] font-medium group-hover:underline">
+                {t('home.portfolio.direksi.viewDetail')} →
               </div>
-            </div>
-            {/* Team 4 */}
-            <div className="relative bg-white/10 backdrop-blur-[13px] rounded-[24px] shadow-xl overflow-hidden flex flex-col items-center p-0 min-h-[250px] max-w-full sm:max-w-full mx-auto">
-              <img src="/images/figma/team4.png" alt="Team 4" className="h-full w-full object-cover" />
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#0E1423] to-transparent p-4 sm:p-6 flex flex-col items-start" style={{height: 100}}>
-                <div className="text-[20px] sm:text-[32px] font-bold text-[#08C2C1] leading-[32px] sm:leading-[48px] capitalize">Corey Culhane</div>
-                <div className="text-white text-[14px] sm:text-[16px] font-medium leading-[20px] sm:leading-[24px] capitalize">Senior Engineer</div>
+            </Link>
+            {/* Project Manager Card */}
+            <Link to="/portfolio" className="bg-white rounded-xl shadow-lg border border-[#E5E7EB] p-6 sm:p-8 flex flex-col gap-4 hover:shadow-xl hover:border-[#08C2C1] transition-all duration-300 group">
+              <div className="flex flex-col gap-2">
+                <h3 className="text-[#08C2C1] text-[20px] sm:text-[24px] font-bold uppercase">{t('home.portfolio.pm.label')}</h3>
+                <div className="text-[#12192C] text-[18px] sm:text-[22px] font-semibold">{t('home.portfolio.pm.name')}</div>
+                <div className="text-[#08C2C1] text-[14px] sm:text-[16px] font-medium">{t('home.portfolio.pm.title')}</div>
+                <div className="text-[#7E7E7E] text-[13px] sm:text-[14px]">{t('home.portfolio.pm.location')}</div>
               </div>
-            </div>
+              <div className="border-t border-[#E5E7EB] my-2"></div>
+              <p className="text-[#0E1423] text-[14px] sm:text-[15px] leading-relaxed">
+                {t('home.portfolio.pm.summary')}
+              </p>
+              <div className="flex flex-wrap gap-2 mt-2">
+                <span className="text-[#08C2C1] text-[12px] sm:text-[13px] font-medium">{t('home.portfolio.pm.skills.0')}</span>
+                <span className="text-[#7E7E7E]">•</span>
+                <span className="text-[#08C2C1] text-[12px] sm:text-[13px] font-medium">{t('home.portfolio.pm.skills.1')}</span>
+                <span className="text-[#7E7E7E]">•</span>
+                <span className="text-[#08C2C1] text-[12px] sm:text-[13px] font-medium">{t('home.portfolio.pm.skills.2')}</span>
+              </div>
+              <div className="mt-4 text-[#08C2C1] text-[14px] sm:text-[15px] font-medium group-hover:underline">
+                {t('home.portfolio.pm.viewDetail')} →
+              </div>
+            </Link>
           </div>
+          <Link 
+            to="/portfolio" 
+            className="inline-flex items-center bg-[#08C2C1] text-white hover:bg-[#0E1423] px-6 sm:px-8 py-3 sm:py-4 rounded-[10px] text-[16px] sm:text-[18px] font-medium shadow-md hover:shadow-lg transition-all duration-200"
+          >
+            {t('home.portfolio.viewFull')}
+            <span className="ml-2 text-[20px] sm:text-[22px]">→</span>
+          </Link>
         </div>
       </section>
       {/* BLOG/INSIGHTS */}
@@ -215,19 +238,19 @@ const HomePage: React.FC = () => {
               className="text-[#7E7E7E] font-poppins font-medium uppercase text-[32px] sm:text-[40px] md:text-[56px] lg:text-[64px] leading-[1.1] tracking-[-0.02em] mb-2"
               style={{ textShadow: '0px 1px 3px rgba(28,32,43,0.05), 0px 1px 2px rgba(28,32,43,0.04)' }}
             >
-              TECH INSIGHTS &
+              {t('home.blog.title')}
             </span>
             <span
               className="text-[#08C2C1] font-poppins font-semibold uppercase text-[32px] sm:text-[40px] md:text-[56px] lg:text-[64px] leading-[1.1] tracking-[-0.02em] mb-8"
               style={{ textShadow: '0px 1px 3px rgba(28,32,43,0.05), 0px 1px 2px rgba(28,32,43,0.04)' }}
             >
-              INDUSTRY UPDATES
+              {t('home.blog.titleHighlight')}
             </span>
           </div>
           {/* Description */}
           <div className="w-full md:w-[697px] min-h-[48px] flex items-center">
             <span className="font-poppins font-medium text-[15px] sm:text-[16px] leading-[28px] sm:leading-[32px] text-[#0E1423] capitalize">
-              AITISERVE specializes in software development and digital platform services, including programming, web portal management, as well as IT consulting and technical support. Our expertise spans AI-powered web and mobile applications, geographic information systems (GIS), and desktop solutions tailored to various business sectors and organizations.
+              {t('home.blog.description')}
             </span>
           </div>
         </div>
@@ -240,10 +263,10 @@ const HomePage: React.FC = () => {
             </div>
             <div className="flex flex-col items-start p-[12px] gap-[16px] sm:gap-[24px] w-full flex-1">
               <div className="flex flex-col gap-[6px] sm:gap-[8px] w-full">
-                <div className="text-[#08C2C1] font-bold uppercase text-[14px] sm:text-[16px] leading-[28px] sm:leading-[32px] mb-0">June, 24 2025</div>
-                <div className="text-[#08C2C1] font-bold uppercase text-[18px] sm:text-[24px] leading-[28px] sm:leading-[41px] tracking-tight mb-0">Advanced Java Concurrency: Patterns and Best Practices</div>
-                <div className="text-[#0E1423] font-medium text-[14px] sm:text-[16px] leading-[22px] sm:leading-[29px] capitalize mb-0">Concurrency is a cornerstone of modern software development, enabling applications to perform multiple tasks simultaneously and make efficient ...</div>
-                <div className="text-[#7E7E7E] font-medium text-[14px] sm:text-[16px] leading-[28px] sm:leading-[32px] capitalize">Read more →</div>
+                <div className="text-[#08C2C1] font-bold uppercase text-[14px] sm:text-[16px] leading-[28px] sm:leading-[32px] mb-0">{t('home.blog.posts.0.date')}</div>
+                <div className="text-[#08C2C1] font-bold uppercase text-[18px] sm:text-[24px] leading-[28px] sm:leading-[41px] tracking-tight mb-0">{t('home.blog.posts.0.title')}</div>
+                <div className="text-[#0E1423] font-medium text-[14px] sm:text-[16px] leading-[22px] sm:leading-[29px] capitalize mb-0">{t('home.blog.posts.0.description')}</div>
+                <div className="text-[#7E7E7E] font-medium text-[14px] sm:text-[16px] leading-[28px] sm:leading-[32px] capitalize">{t('home.blog.readMore')} →</div>
               </div>
             </div>
           </div>
@@ -254,10 +277,10 @@ const HomePage: React.FC = () => {
             </div>
             <div className="flex flex-col items-start p-[12px] gap-[16px] sm:gap-[24px] w-full flex-1">
               <div className="flex flex-col gap-[6px] sm:gap-[8px] w-full">
-                <div className="text-[#08C2C1] font-bold uppercase text-[14px] sm:text-[16px] leading-[28px] sm:leading-[32px] mb-0">June, 23 2025</div>
-                <div className="text-[#08C2C1] font-bold uppercase text-[18px] sm:text-[24px] leading-[28px] sm:leading-[41px] tracking-tight mb-0">Google UX Design Certificate in 2025</div>
-                <div className="text-[#0E1423] font-medium text-[14px] sm:text-[16px] leading-[22px] sm:leading-[29px] capitalize mb-0">Will the Google UX Certificate get you a UX designer job in 2025? How to take the most advantage of the course curriculum.</div>
-                <div className="text-[#7E7E7E] font-medium text-[14px] sm:text-[16px] leading-[28px] sm:leading-[32px] capitalize">Read more →</div>
+                <div className="text-[#08C2C1] font-bold uppercase text-[14px] sm:text-[16px] leading-[28px] sm:leading-[32px] mb-0">{t('home.blog.posts.1.date')}</div>
+                <div className="text-[#08C2C1] font-bold uppercase text-[18px] sm:text-[24px] leading-[28px] sm:leading-[41px] tracking-tight mb-0">{t('home.blog.posts.1.title')}</div>
+                <div className="text-[#0E1423] font-medium text-[14px] sm:text-[16px] leading-[22px] sm:leading-[29px] capitalize mb-0">{t('home.blog.posts.1.description')}</div>
+                <div className="text-[#7E7E7E] font-medium text-[14px] sm:text-[16px] leading-[28px] sm:leading-[32px] capitalize">{t('home.blog.readMore')} →</div>
               </div>
             </div>
           </div>
@@ -268,10 +291,10 @@ const HomePage: React.FC = () => {
             </div>
             <div className="flex flex-col items-start p-[12px] gap-[16px] sm:gap-[24px] w-full flex-1">
               <div className="flex flex-col gap-[6px] sm:gap-[8px] w-full">
-                <div className="text-[#08C2C1] font-bold uppercase text-[14px] sm:text-[16px] leading-[28px] sm:leading-[32px] mb-0">June, 22 2025</div>
-                <div className="text-[#08C2C1] font-bold uppercase text-[18px] sm:text-[24px] leading-[28px] sm:leading-[41px] tracking-tight mb-0">How Thinking Like a Product Designer Changed My Design ...</div>
-                <div className="text-[#0E1423] font-medium text-[14px] sm:text-[16px] leading-[22px] sm:leading-[29px] capitalize mb-0">Five lessons I've learned about deliverables that Junior Designer Me could've never imagined.</div>
-                <div className="text-[#7E7E7E] font-medium text-[14px] sm:text-[16px] leading-[28px] sm:leading-[32px] capitalize">Read more →</div>
+                <div className="text-[#08C2C1] font-bold uppercase text-[14px] sm:text-[16px] leading-[28px] sm:leading-[32px] mb-0">{t('home.blog.posts.2.date')}</div>
+                <div className="text-[#08C2C1] font-bold uppercase text-[18px] sm:text-[24px] leading-[28px] sm:leading-[41px] tracking-tight mb-0">{t('home.blog.posts.2.title')}</div>
+                <div className="text-[#0E1423] font-medium text-[14px] sm:text-[16px] leading-[22px] sm:leading-[29px] capitalize mb-0">{t('home.blog.posts.2.description')}</div>
+                <div className="text-[#7E7E7E] font-medium text-[14px] sm:text-[16px] leading-[28px] sm:leading-[32px] capitalize">{t('home.blog.readMore')} →</div>
               </div>
             </div>
           </div>
@@ -282,10 +305,10 @@ const HomePage: React.FC = () => {
             </div>
             <div className="flex flex-col items-start p-[12px] gap-[16px] sm:gap-[24px] w-full flex-1">
               <div className="flex flex-col gap-[6px] sm:gap-[8px] w-full">
-                <div className="text-[#08C2C1] font-bold uppercase text-[14px] sm:text-[16px] leading-[28px] sm:leading-[32px] mb-0">June, 25 2025</div>
-                <div className="text-[#08C2C1] font-bold uppercase text-[18px] sm:text-[24px] leading-[28px] sm:leading-[41px] tracking-tight mb-0">The Future of AI in Everyday Life</div>
-                <div className="text-[#0E1423] font-medium text-[14px] sm:text-[16px] leading-[22px] sm:leading-[29px] capitalize mb-0">Discover how artificial intelligence is seamlessly integrating into daily routines, from smart homes to personalized healthcare solutions.</div>
-                <div className="text-[#7E7E7E] font-medium text-[14px] sm:text-[16px] leading-[28px] sm:leading-[32px] capitalize">Read more →</div>
+                <div className="text-[#08C2C1] font-bold uppercase text-[14px] sm:text-[16px] leading-[28px] sm:leading-[32px] mb-0">{t('home.blog.posts.3.date')}</div>
+                <div className="text-[#08C2C1] font-bold uppercase text-[18px] sm:text-[24px] leading-[28px] sm:leading-[41px] tracking-tight mb-0">{t('home.blog.posts.3.title')}</div>
+                <div className="text-[#0E1423] font-medium text-[14px] sm:text-[16px] leading-[22px] sm:leading-[29px] capitalize mb-0">{t('home.blog.posts.3.description')}</div>
+                <div className="text-[#7E7E7E] font-medium text-[14px] sm:text-[16px] leading-[28px] sm:leading-[32px] capitalize">{t('home.blog.readMore')} →</div>
               </div>
             </div>
           </div>

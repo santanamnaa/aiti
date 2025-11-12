@@ -50,6 +50,7 @@ export default {
         'float': 'float 6s ease-in-out infinite',
         'slide-up': 'slideUp 0.5s ease-out forwards',
         'fade-in': 'fadeIn 0.5s ease-in forwards',
+        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       },
       keyframes: {
         float: {

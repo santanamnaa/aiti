@@ -1,101 +1,104 @@
 import React, { useState } from 'react';
-
-const sections = [
-  {
-    id: 'summary',
-    label: 'Summary',
-    content: (
-      <div className="space-y-4">
-        <p>
-          <b>PT AITISERVE DJAYA NARAYA (AITISERVE)</b> is a technology company established on August 27, 2024, in Bandung, Indonesia. As a legally registered limited liability company, AITISERVE was founded with a vision to integrate Artificial Intelligence (AI) and Information Technology (IT) to deliver adaptive, efficient, and impactful digital solutions.
-        </p>
-        <p>
-          AITISERVE specializes in software development and digital platform services, including programming, web portal management, as well as IT consulting and technical support. Our expertise spans AI-powered web and mobile applications, geographic information systems (GIS), and desktop solutions tailored to various business sectors and organizations.
-        </p>
-        <p>
-          The name "AITISERVE DJAYA NARAYA" reflects our core values—synergy between intelligence, technology, and service—symbolizing innovation, progress, and sustainability as the foundation for shaping a smarter and more meaningful digital future.
-        </p>
-      </div>
-    ),
-  },
-  {
-    id: 'vision-mission',
-    label: 'Vision And Mission',
-    content: (
-      <div className="space-y-4">
-        <div>
-          <span className="block text-[#08C2C1] font-semibold mb-1">Vision</span>
-          <p>
-            To be a trusted partner in superior and innovative digital transformation, as well as a leading technology company that delivers artificial intelligence and information technology-based solutions for a sustainable and impactful future.
-          </p>
-        </div>
-        <div>
-          <span className="block text-[#08C2C1] font-semibold mb-1">Mission</span>
-          <ul className="list-disc pl-6 space-y-1">
-            <li>Delivering efficient, value-added, and future-oriented AI and IT solutions.</li>
-            <li>Supporting digital transformation through consulting services, technology implementation, and strategic partnerships.</li>
-            <li>Improving the quality of human resources by instilling an innovative culture and sustainable competency development.</li>
-          </ul>
-        </div>
-      </div>
-    ),
-  },
-  {
-    id: 'company-values',
-    label: 'Company Values',
-    content: (
-      <div className="flex flex-col gap-4">
-        {[
-          {
-            letter: 'T',
-            title: 'Transformasi',
-            desc: 'Committed to positive and sustainable change in the face of challenges.',
-          },
-          {
-            letter: 'A',
-            title: 'Amanah',
-            desc: 'Upholding integrity, responsibility, and trust.',
-          },
-          {
-            letter: 'N',
-            title: 'Nyata',
-            desc: 'Focusing on concrete, measurable results that provide real impact.',
-          },
-          {
-            letter: 'G',
-            title: 'Gigih',
-            desc: 'Consistent and resilient in facing challenges and achieving targets.',
-          },
-          {
-            letter: 'G',
-            title: 'Gesit',
-            desc: 'Adaptive to change, responsive in making decisions.',
-          },
-          {
-            letter: 'U',
-            title: 'Unggul',
-            desc: 'Results-oriented with high quality standards.',
-          },
-          {
-            letter: 'H',
-            title: 'Harmonis',
-            desc: 'Establishing good relationships between teams, partners, and all stakeholders.',
-          },
-        ].map((v, i) => (
-          <div key={i} className="flex items-start gap-6">
-            <span className="text-[#08C2C1] font-bold text-5xl w-12 text-center font-poppins">{v.letter}</span>
-            <div>
-              <span className="block font-semibold text-[#08C2C1] text-lg font-poppins">{v.title.toUpperCase()}</span>
-              <span className="block text-[#0E1423] text-base font-poppins">{v.desc}</span>
-            </div>
-          </div>
-        ))}
-      </div>
-    ),
-  },
-];
+import { useTranslation } from 'react-i18next';
 
 const AboutPage: React.FC = () => {
+  const { t } = useTranslation();
+  
+  const sections = [
+    {
+      id: 'summary',
+      label: t('aboutPage.sections.summary.label'),
+      content: (
+        <div className="space-y-4">
+          <p>
+            <b>{t('aboutPage.sections.summary.content.0')}</b>
+          </p>
+          <p>
+            {t('aboutPage.sections.summary.content.1')}
+          </p>
+          <p>
+            {t('aboutPage.sections.summary.content.2')}
+          </p>
+        </div>
+      ),
+    },
+    {
+      id: 'vision-mission',
+      label: t('aboutPage.sections.visionMission.label'),
+      content: (
+        <div className="space-y-4">
+          <div>
+            <span className="block text-[#08C2C1] font-semibold mb-1">{t('aboutPage.sections.visionMission.vision')}</span>
+            <p>
+              {t('aboutPage.sections.visionMission.visionText')}
+            </p>
+          </div>
+          <div>
+            <span className="block text-[#08C2C1] font-semibold mb-1">{t('aboutPage.sections.visionMission.mission')}</span>
+            <ul className="list-disc pl-6 space-y-1">
+              <li>{t('aboutPage.sections.visionMission.mission.0')}</li>
+              <li>{t('aboutPage.sections.visionMission.mission.1')}</li>
+              <li>{t('aboutPage.sections.visionMission.mission.2')}</li>
+            </ul>
+          </div>
+        </div>
+      ),
+    },
+    {
+      id: 'company-values',
+      label: t('aboutPage.sections.values.label'),
+      content: (
+        <div className="flex flex-col gap-4">
+          {[
+            {
+              letter: 'T',
+              title: t('aboutPage.sections.values.T.title'),
+              desc: t('aboutPage.sections.values.T.desc'),
+            },
+            {
+              letter: 'A',
+              title: t('aboutPage.sections.values.A.title'),
+              desc: t('aboutPage.sections.values.A.desc'),
+            },
+            {
+              letter: 'N',
+              title: t('aboutPage.sections.values.N.title'),
+              desc: t('aboutPage.sections.values.N.desc'),
+            },
+            {
+              letter: 'G',
+              title: t('aboutPage.sections.values.G1.title'),
+              desc: t('aboutPage.sections.values.G1.desc'),
+            },
+            {
+              letter: 'G',
+              title: t('aboutPage.sections.values.G2.title'),
+              desc: t('aboutPage.sections.values.G2.desc'),
+            },
+            {
+              letter: 'U',
+              title: t('aboutPage.sections.values.U.title'),
+              desc: t('aboutPage.sections.values.U.desc'),
+            },
+            {
+              letter: 'H',
+              title: t('aboutPage.sections.values.H.title'),
+              desc: t('aboutPage.sections.values.H.desc'),
+            },
+          ].map((v, i) => (
+            <div key={i} className="flex items-start gap-6">
+              <span className="text-[#08C2C1] font-bold text-5xl w-12 text-center font-poppins">{v.letter}</span>
+              <div>
+                <span className="block font-semibold text-[#08C2C1] text-lg font-poppins">{v.title.toUpperCase()}</span>
+                <span className="block text-[#0E1423] text-base font-poppins">{v.desc}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      ),
+    },
+  ];
+
   // All sections open by default
   const [openSections, setOpenSections] = useState(sections.map(() => true));
 
@@ -115,11 +118,11 @@ const AboutPage: React.FC = () => {
           {/* Left Nav */}
           <div className="w-full md:w-1/3 flex flex-col gap-6">
             <div>
-              <span className="block text-[40px] md:text-[48px] font-medium uppercase text-[#7E7E7E] font-poppins leading-[1.1] mb-4">Shaping a</span>
-              <span className="block text-[40px] md:text-[48px] font-bold uppercase text-[#08C2C1] font-poppins leading-[1.1] mb-8">Brighter Future</span>
+              <span className="block text-[40px] md:text-[48px] font-medium uppercase text-[#7E7E7E] font-poppins leading-[1.1] mb-4">{t('aboutPage.title')}</span>
+              <span className="block text-[40px] md:text-[48px] font-bold uppercase text-[#08C2C1] font-poppins leading-[1.1] mb-8">{t('aboutPage.titleHighlight')}</span>
             </div>
             <p className="text-[#0E1423] text-base md:text-lg font-poppins max-w-xs mb-8">
-              We're a team of creators, engineers, and problem-solvers committed to designing technology that moves the world forward—one solution at a time.
+              {t('aboutPage.description')}
             </p>
             <div className="flex flex-col gap-2">
               {sections.map((s, i) => (

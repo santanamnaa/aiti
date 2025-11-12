@@ -1,13 +1,76 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
-const categories = [
-  'Latest',
-  'UI/UX Design',
-  'Website Development',
-  'Database',
+// Helper function to get blog posts with translations
+const getBlogPosts = (t: (key: string) => string) => [
+  {
+    image: '/images/blog/blog1.png',
+    categories: ['Latest', 'Website Development'],
+    title: t('blogPage.posts.0.title'),
+    slug: 'terke-corp',
+    description: t('blogPage.posts.0.description'),
+    date: t('blogPage.posts.0.date'),
+    content: [
+      { type: 'paragraph', text: 'Concurrency is a cornerstone of modern software development, enabling applications to perform multiple tasks simultaneously and make efficient use of system resources. Java, as a versatile and powerful programming language, has evolved to include robust concurrency support, allowing developers to create high-performance, scalable applications. This article provides an in-depth look at advanced concurrency patterns and best practices in Java, equipping developers with the knowledge to tackle complex concurrency challenges and optimize their applications.' },
+      { type: 'heading', level: 2, text: '1. Fundamentals of Java Concurrency' },
+      { type: 'paragraph', text: 'Basic Concurrency Concepts' },
+      { type: 'paragraph', text: 'Concurrency is a cornerstone of modern software development, enabling applications to perform multiple tasks simultaneously and make efficient use of system resources. Java, as a versatile and powerful programming language, has evolved to include robust concurrency support, allowing developers to create high-performance, scalable applications. This article provides an in-depth look at advanced concurrency patterns and best practices in Java, equipping developers with the knowledge to tackle complex concurrency challenges and optimize their applications.' },
+      { type: 'code', language: 'java', code: 'public class BasicRunnable implements Runnable {\n    @Override\n    public void run() {\n        System.out.println("Hello from a thread!");\n    }\n    public static void main(String[] args) {\n        Thread thread = new Thread(new BasicRunnable());\n        thread.start();\n    }\n}' },
+      { type: 'paragraph', text: 'In this example, a new thread is created and started, executing the run method of the BasicRunnable class.' }
+    ]
+  },
+  {
+    image: '/images/blog/blog2.png',
+    categories: ['Latest', 'UI/UX Design'],
+    title: t('blogPage.posts.1.title'),
+    slug: 'meetsup-app',
+    description: t('blogPage.posts.1.description'),
+    date: t('blogPage.posts.1.date'),
+  },
+  {
+    image: '/images/blog/blog3.png',
+    categories: ['Latest', 'Website Development', 'Database'],
+    title: t('blogPage.posts.2.title'),
+    slug: 'orka-startup',
+    description: t('blogPage.posts.2.description'),
+    date: t('blogPage.posts.2.date'),
+  },
+  {
+    image: '/images/blog/blog4.png',
+    categories: ['Latest', 'Database'],
+    title: t('blogPage.posts.3.title'),
+    slug: 'smartvision-ai',
+    description: t('blogPage.posts.3.description'),
+    date: t('blogPage.posts.3.date'),
+  },
+  {
+    image: '/images/blog/blog5.png',
+    categories: ['Latest', 'Database'],
+    title: t('blogPage.posts.4.title'),
+    slug: 'cloudops-platform',
+    description: t('blogPage.posts.4.description'),
+    date: t('blogPage.posts.4.date'),
+  },
+  {
+    image: '/images/blog2.png',
+    categories: ['Latest', 'UI/UX Design'],
+    title: t('blogPage.posts.5.title'),
+    slug: 'uiux-best-practice',
+    description: t('blogPage.posts.5.description'),
+    date: t('blogPage.posts.5.date'),
+  },
+  {
+    image: '/images/blog3.png',
+    categories: ['Latest', 'Website Development'],
+    title: t('blogPage.posts.6.title'),
+    slug: 'nextjs-for-enterprise',
+    description: t('blogPage.posts.6.description'),
+    date: t('blogPage.posts.6.date'),
+  },
 ];
 
+// Export original blogPosts for backward compatibility (used in BlogDetailPage)
 export const blogPosts = [
   {
     image: '/images/blog/blog1.png',
@@ -76,24 +139,42 @@ export const blogPosts = [
 ];
 
 const BlogPage = () => {
-  const [selectedCategory, setSelectedCategory] = useState('Latest');
+  const { t } = useTranslation();
+  const [selectedCategory, setSelectedCategory] = useState(t('blogPage.categories.latest'));
   const [visibleCount, setVisibleCount] = useState(6);
   const navigate = useNavigate();
 
+  const categories = [
+    t('blogPage.categories.latest'),
+    t('blogPage.categories.uiux'),
+    t('blogPage.categories.webdev'),
+    t('blogPage.categories.database'),
+  ];
+
+  const blogPostsWithTranslations = getBlogPosts(t);
+  
+  // Map category translations to original category names for filtering
+  const categoryMap: { [key: string]: string } = {
+    [t('blogPage.categories.latest')]: 'Latest',
+    [t('blogPage.categories.uiux')]: 'UI/UX Design',
+    [t('blogPage.categories.webdev')]: 'Website Development',
+    [t('blogPage.categories.database')]: 'Database',
+  };
+
   const filteredPosts =
-    selectedCategory === 'Latest'
-      ? blogPosts
-      : blogPosts.filter((post) => post.categories.includes(selectedCategory));
+    selectedCategory === t('blogPage.categories.latest')
+      ? blogPostsWithTranslations
+      : blogPostsWithTranslations.filter((post) => post.categories.includes(categoryMap[selectedCategory] || selectedCategory));
 
   const visiblePosts = filteredPosts.slice(0, visibleCount);
 
   return (
     <main className="bg-white min-h-screen w-full font-poppins">
       <section className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 md:px-10 pt-60 pb-8">
-        <h1 className="text-[64px] leading-[96px] font-medium uppercase text-[#7E7E7E] drop-shadow-sm mb-4">TECH INSIGHTS</h1>
-        <h2 className="text-[64px] leading-[96px] font-semibold uppercase text-[#08C2C1] drop-shadow-sm mb-8">& INDUSTRY UPDATES</h2>
+        <h1 className="text-[64px] leading-[96px] font-medium uppercase text-[#7E7E7E] drop-shadow-sm mb-4">{t('blogPage.title')}</h1>
+        <h2 className="text-[64px] leading-[96px] font-semibold uppercase text-[#08C2C1] drop-shadow-sm mb-8">{t('blogPage.titleHighlight')}</h2>
         <p className="text-lg font-medium text-[#0E1423] capitalize leading-8 max-w-[920px] mb-8">
-          Explore Our Latest Thoughts, Trends, And Tips On Technology, Innovation, And Digital Transformation—Written By Our Experts.
+          {t('blogPage.description')}
         </p>
         {/* Filter Buttons */}
         <div className="flex gap-6 mb-12">
@@ -140,7 +221,7 @@ const BlogPage = () => {
               className="bg-white border border-[#08C2C1] text-[#08C2C1] font-medium text-[18px] px-6 py-2 rounded-xl capitalize"
               onClick={() => setVisibleCount((prev) => prev + 3)}
             >
-              Show More
+              {t('blogPage.showMore')}
             </button>
           </div>
         )}

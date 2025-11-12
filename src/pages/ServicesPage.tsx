@@ -1,67 +1,69 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
-const services = [
-  {
-    id: 1,
-    label: 'Service 1',
-    title: 'IT & AI CONSULTANT',
-    desc1: 'AI Based Planning • Digital Transformation',
-    desc2: 'Providing strategic assistance in digital transformation, including mapping technology needs, AI-based system planning, and developing a sustainable technology roadmap.',
-    button: 'Learn More',
-  },
-  {
-    id: 2,
-    label: 'Service 2',
-    title: 'Web Application Development',
-    desc1: 'Design • Performance • High-Scalability',
-    desc2: 'Building modern web applications with responsive design, optimal performance, and high scalability to support current digital business needs.',
-    button: 'Learn More',
-  },
-  {
-    id: 3,
-    label: 'Service 3',
-    title: 'MOBILE Application Development',
-    desc1: 'Android • iOS',
-    desc2: 'Designing and developing AI-based mobile applications with excellent user experience (UX) and cross-platform compatibility (Android & iOS).',
-    button: 'Learn More',
-  },
-  {
-    id: 4,
-    label: 'Service 4',
-    title: 'DESKTOP Application Development',
-    desc1: 'Secure • Integrated',
-    desc2: 'Developing robust, secure, and integrated desktop software tailored to the specific needs of organizations or institutions.',
-    button: 'Learn More',
-  },
-  {
-    id: 5,
-    label: 'Service 5',
-    title: 'Geographic Information System (GIS) Development',
-    desc1: 'Spatial Analyst • Visualization',
-    desc2: 'Providing GIS solutions for location visualization, spatial analysis, and decision-making based on accurate and interactive geospatial data.',
-    button: 'Learn More',
-  },
-  {
-    id: 6,
-    label: 'Service 6',
-    title: 'TECHNICAL SUPPORT',
-    desc1: '24/7 • System Operation',
-    desc2: 'Providing professional 24/7 technical assistance to ensure smooth system operations with minimal disruption.',
-    button: 'Learn More',
-  },
-];
+import { useTranslation } from 'react-i18next';
 
 const ServicesPage: React.FC = () => {
+  const { t } = useTranslation();
+
+  const services = [
+    {
+      id: 1,
+      label: t('servicesPage.items.0.label'),
+      title: t('servicesPage.items.0.title'),
+      desc1: t('servicesPage.items.0.desc1'),
+      desc2: t('servicesPage.items.0.desc2'),
+      button: t('servicesPage.items.0.button'),
+    },
+    {
+      id: 2,
+      label: t('servicesPage.items.1.label'),
+      title: t('servicesPage.items.1.title'),
+      desc1: t('servicesPage.items.1.desc1'),
+      desc2: t('servicesPage.items.1.desc2'),
+      button: t('servicesPage.items.1.button'),
+    },
+    {
+      id: 3,
+      label: t('servicesPage.items.2.label'),
+      title: t('servicesPage.items.2.title'),
+      desc1: t('servicesPage.items.2.desc1'),
+      desc2: t('servicesPage.items.2.desc2'),
+      button: t('servicesPage.items.2.button'),
+    },
+    {
+      id: 4,
+      label: t('servicesPage.items.3.label'),
+      title: t('servicesPage.items.3.title'),
+      desc1: t('servicesPage.items.3.desc1'),
+      desc2: t('servicesPage.items.3.desc2'),
+      button: t('servicesPage.items.3.button'),
+    },
+    {
+      id: 5,
+      label: t('servicesPage.items.4.label'),
+      title: t('servicesPage.items.4.title'),
+      desc1: t('servicesPage.items.4.desc1'),
+      desc2: t('servicesPage.items.4.desc2'),
+      button: t('servicesPage.items.4.button'),
+    },
+    {
+      id: 6,
+      label: t('servicesPage.items.5.label'),
+      title: t('servicesPage.items.5.title'),
+      desc1: t('servicesPage.items.5.desc1'),
+      desc2: t('servicesPage.items.5.desc2'),
+      button: t('servicesPage.items.5.button'),
+    },
+  ];
   return (
     <main className="w-full min-h-screen bg-white font-poppins">
       <section className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 md:px-10 pt-60 pb-16">
         {/* Section Title */}
         <div className="mb-8 flex flex-col gap-0">
-          <span className="text-[64px] leading-[96px] font-medium text-[#7E7E7E] uppercase font-poppins mb-4">powering</span>
-          <span className="text-[64px] leading-[96px] font-semibold text-[#08C2C1] uppercase font-poppins mb-8">the Future Through Tech</span>
+          <span className="text-[64px] leading-[96px] font-medium text-[#7E7E7E] uppercase font-poppins mb-4">{t('servicesPage.title')}</span>
+          <span className="text-[64px] leading-[96px] font-semibold text-[#08C2C1] uppercase font-poppins mb-8">{t('servicesPage.titleHighlight')}</span>
           <p className="text-[16px] leading-[32px] font-medium text-[#0E1423] capitalize font-poppins max-w-[920px] mb-8">
-            We provide a wide range of technology services to help your business thrive in the digital era.
+            {t('servicesPage.description')}
           </p>
         </div>
         {/* Services List */}

@@ -1,22 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import Logo from '../common/Logo';
 
-// TODO: Ganti menu dan struktur sesuai urutan & label di Figma
-const MENU = [
-  // { label: 'Home', to: '/' },
-  { label: 'Services', to: '/services' },
-  { label: 'Portfolio', to: '/portfolio' },
-  { label: 'Blog', to: '/blog' },
-  { label: 'About', to: '/about' },
-  { label: 'Career', to: '/career' },
-  { label: 'Contact', to: '/contact' },
-];
-
 const Header: React.FC = () => {
+  const { t, i18n } = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
   const location = useLocation();
+
+  const MENU = [
+    { label: t('nav.services'), to: '/services' },
+    { label: t('nav.portfolio'), to: '/portfolio' },
+    { label: t('nav.blog'), to: '/blog' },
+    { label: t('nav.about'), to: '/about' },
+    { label: t('nav.careers'), to: '/career' },
+    { label: t('nav.contact'), to: '/contact' },
+  ];
+
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng);
+    setIsLangMenuOpen(false);
+  };
 
   // Tentukan apakah warna harus putih (home/contact) atau hitam (lainnya) SAAT header transparan
   const isWhiteHeader = location.pathname === '/' || location.pathname === '/contact';
@@ -37,7 +43,24 @@ const Header: React.FC = () => {
 
   useEffect(() => {
     setIsMenuOpen(false);
+    setIsLangMenuOpen(false);
   }, [location]);
+
+  // Close language menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as HTMLElement;
+      if (isLangMenuOpen && !target.closest('.language-switcher')) {
+        setIsLangMenuOpen(false);
+      }
+    };
+    if (isLangMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isLangMenuOpen]);
 
   return (
     <header
@@ -68,11 +91,70 @@ const Header: React.FC = () => {
               {item.label}
             </NavLink>
           ))}
-          {/* Tambahkan tombol CTA jika ada di Figma, contoh: */}
-          {/* <Link to="/contact" className="ml-8 px-6 py-2 rounded-full bg-[#08C2C1] text-white font-bold shadow hover:bg-[#0fdad9] transition">Contact Us</Link> */}
+          {/* Language Switcher */}
+          <div className="relative language-switcher">
+            <button
+              onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
+              className={`${navTextColor} hover:text-[#08C2C1] transition flex items-center gap-1 uppercase font-semibold`}
+            >
+              {i18n.language === 'en' ? 'EN' : 'ID'}
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            {isLangMenuOpen && (
+              <div className="absolute right-0 mt-2 w-32 bg-white rounded-lg shadow-xl border border-[#E5E7EB] overflow-hidden z-50">
+                <button
+                  onClick={() => changeLanguage('en')}
+                  className={`w-full px-4 py-2 text-left hover:bg-[#08C2C1] hover:text-white transition ${
+                    i18n.language === 'en' ? 'bg-[#08C2C1] text-white' : 'text-[#12192C]'
+                  }`}
+                >
+                  English
+                </button>
+                <button
+                  onClick={() => changeLanguage('id')}
+                  className={`w-full px-4 py-2 text-left hover:bg-[#08C2C1] hover:text-white transition ${
+                    i18n.language === 'id' ? 'bg-[#08C2C1] text-white' : 'text-[#12192C]'
+                  }`}
+                >
+                  Indonesia
+                </button>
+              </div>
+            )}
+          </div>
         </nav>
         {/* Mobile Navigation Toggle */}
-        <div className="lg:hidden flex items-center">
+        <div className="lg:hidden flex items-center gap-4">
+          {/* Language Switcher Mobile */}
+          <div className="relative language-switcher">
+            <button
+              onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
+              className="text-white hover:text-[#08C2C1] transition flex items-center gap-1 uppercase font-semibold text-sm"
+            >
+              {i18n.language === 'en' ? 'EN' : 'ID'}
+            </button>
+            {isLangMenuOpen && (
+              <div className="absolute right-0 mt-2 w-32 bg-white rounded-lg shadow-xl border border-[#E5E7EB] overflow-hidden z-50">
+                <button
+                  onClick={() => changeLanguage('en')}
+                  className={`w-full px-4 py-2 text-left hover:bg-[#08C2C1] hover:text-white transition ${
+                    i18n.language === 'en' ? 'bg-[#08C2C1] text-white' : 'text-[#12192C]'
+                  }`}
+                >
+                  English
+                </button>
+                <button
+                  onClick={() => changeLanguage('id')}
+                  className={`w-full px-4 py-2 text-left hover:bg-[#08C2C1] hover:text-white transition ${
+                    i18n.language === 'id' ? 'bg-[#08C2C1] text-white' : 'text-[#12192C]'
+                  }`}
+                >
+                  Indonesia
+                </button>
+              </div>
+            )}
+          </div>
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="text-white hover:text-[#08C2C1] focus:outline-none"
