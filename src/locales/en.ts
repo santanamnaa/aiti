@@ -393,6 +393,7 @@ export default {
   'home.blog.titleHighlight': 'INDUSTRY UPDATES',
   'home.blog.description': 'AITISERVE specializes in software development and digital platform services, including programming, web portal management, as well as IT consulting and technical support. Our expertise spans AI-powered web and mobile applications, geographic information systems (GIS), and desktop solutions tailored to various business sectors and organizations.',
   'home.blog.readMore': 'Read more',
+  'home.blog.viewAll': 'View All Blogs',
   'home.blog.posts.0.date': 'June, 24 2025',
   'home.blog.posts.0.title': 'Advanced Java Concurrency: Patterns and Best Practices',
   'home.blog.posts.0.description': 'Concurrency is a cornerstone of modern software development, enabling applications to perform multiple tasks simultaneously and make efficient ...',

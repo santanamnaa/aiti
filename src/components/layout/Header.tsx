@@ -72,9 +72,9 @@ const Header: React.FC = () => {
       style={{ fontFamily: 'Poppins, sans-serif', height: '100px' }}
     >
       <div className="w-full max-w-[1512px] mx-auto flex justify-between items-center px-6 md:px-[60px] h-full" style={{ height: '100px', paddingTop: 0, paddingBottom: 0 }}>
-        <Link to="/" className="flex items-center gap-2 select-none">
+        <Link to="/" className="flex items-center gap-2 select-none group">
           {/* Logo text, bisa diganti SVG jika ada asset dari Figma */}
-          <span className={`${logoTextColor} font-bold text-2xl tracking-wide uppercase`}>AITISERVE</span>
+          <span className={`${logoTextColor} font-bold text-2xl tracking-wide uppercase transition-all duration-300 group-hover:text-[#08C2C1] group-hover:scale-105`}>AITISERVE</span>
         </Link>
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center gap-[48px] text-base font-semibold uppercase tracking-wide">

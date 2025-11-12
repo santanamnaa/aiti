@@ -393,6 +393,7 @@ export default {
   'home.blog.titleHighlight': 'Pembaruan Industri',
   'home.blog.description': 'AITISERVE mengkhususkan diri dalam pengembangan perangkat lunak dan layanan platform digital, termasuk pemrograman, manajemen portal web, serta konsultasi IT dan dukungan teknis. Keahlian kami mencakup aplikasi web dan mobile berbasis AI, sistem informasi geografis (GIS), dan solusi desktop yang disesuaikan dengan berbagai sektor bisnis dan organisasi.',
   'home.blog.readMore': 'Baca selengkapnya',
+  'home.blog.viewAll': 'Lihat Semua Blog',
   'home.blog.posts.0.date': '24 Juni 2025',
   'home.blog.posts.0.title': 'Java Concurrency Lanjutan: Pola dan Praktik Terbaik',
   'home.blog.posts.0.description': 'Concurrency adalah landasan pengembangan perangkat lunak modern, memungkinkan aplikasi untuk melakukan beberapa tugas secara bersamaan dan membuat efisien ...',

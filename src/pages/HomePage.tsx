@@ -269,10 +269,12 @@ const HomePage: React.FC = () => {
               className="bg-white rounded-xl shadow-md flex flex-col overflow-hidden w-full max-w-[448px] h-[497px] mx-auto cursor-pointer transition-all duration-300 hover:shadow-2xl hover:scale-[1.02] hover:border-2 hover:border-[#08C2C1]"
               onClick={() => navigate(`/blog/${post.slug}`)}
             >
-              <img src={post.image} alt={post.title} className="w-full h-[240px] object-cover" />
-              <div className="p-6 flex flex-col flex-1">
-                <h3 className="text-[24px] font-bold uppercase text-[#08C2C1] mb-2 leading-[41px]">{post.title}</h3>
-                <p className="text-[#0E1423] font-medium text-[16px] mb-2 capitalize leading-[29px]">{post.description}</p>
+              <div className="w-full h-[240px] overflow-hidden">
+                <img src={post.image} alt={post.title} className="w-full h-full object-cover" />
+              </div>
+              <div className="p-6 flex flex-col flex-1 min-h-0">
+                <h3 className="text-[24px] font-bold uppercase text-[#08C2C1] mb-2 leading-[41px] line-clamp-2 overflow-hidden text-ellipsis">{post.title}</h3>
+                <p className="text-[#0E1423] font-medium text-[16px] mb-2 capitalize leading-[29px] line-clamp-3 overflow-hidden text-ellipsis">{post.description}</p>
                 <span className="text-[#7E7E7E] text-[16px] font-medium mt-auto capitalize leading-[32px]">{post.date}</span>
               </div>
             </div>
