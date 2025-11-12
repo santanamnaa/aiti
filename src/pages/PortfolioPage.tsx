@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
 
@@ -47,6 +47,21 @@ interface PMData {
 export default function PortfolioPage() {
   const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState<'direksi' | 'pm'>('direksi');
+  const heroRef = useRef<HTMLImageElement>(null);
+
+  // Parallax effect on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      if (heroRef.current) {
+        const scrolled = window.pageYOffset;
+        const parallaxSpeed = 0.5;
+        heroRef.current.style.transform = `translateY(${scrolled * parallaxSpeed}px)`;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const direksi: DireksiData = {
     name: t('portfolio.direksi.name'),
@@ -255,33 +270,41 @@ export default function PortfolioPage() {
   };
 
   return (
-    <section className="bg-gray-50 py-24 min-h-screen relative overflow-hidden">  
-      <div className="container mx-auto px-6 scrollbar-none relative z-10">
-        {/* Header */}
-        <div className="mb-10 flex flex-col items-center justify-center relative">
-          {/* Blurred Gradient Background - larger and more offset */}
-          <div className="absolute -top-10 left-1/2 -translate-x-1/2 -z-10 w-[120%] h-[160%] flex items-center justify-center pointer-events-none select-none">
-            <div className="w-full h-full bg-gradient-to-r from-secondary/30 via-primary/20 to-secondary/30 blur-3xl rounded-3xl opacity-50"></div>
-          </div>
-          <div className="w-full bg-primary rounded-3xl px-6 py-12 shadow-lg relative z-10">
-            <h2 className="text-5xl md:text-6xl font-semibold text-white text-center tracking-tight drop-shadow-lg relative">
-              {activeTab === 'direksi' ? (
-                <>
-                  <span className="text-secondary">{t('portfolio.header.direksi')}</span>
-                </>
-              ) : (
-                <>
-                  <span className="text-secondary">{t('portfolio.header.pm')}</span>
-                </>
-              )}
-              <span className="block mx-auto mt-4 w-32 h-1 rounded-full bg-gradient-to-r from-secondary via-white to-secondary opacity-80 animate-pulse-slow"></span>
-            </h2>
-            <p className="text-white/90 mt-8 mb-0 text-lg md:text-xl text-center max-w-3xl mx-auto font-light">
+    <main className="bg-white min-h-screen font-poppins">
+      {/* Hero Section with Parallax */}
+      <section className="relative w-full min-h-[500px] sm:min-h-[600px] md:min-h-[700px] flex flex-col items-center justify-center overflow-hidden px-4 sm:px-6 md:px-10 pt-32 pb-16">
+        {/* Background image with parallax effect */}
+        <img 
+          ref={heroRef}
+          src="/images/portfolio/pexels-karola-g-5202949.webp" 
+          alt="Portfolio Hero Background" 
+          className="absolute inset-0 w-full h-full object-cover object-center z-0" 
+          style={{ willChange: 'transform' }}
+        />
+        {/* Overlay gradient */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#12192C]/40 via-[#12192C]/30 to-[#0A0E18]/50 z-0"></div>
+        
+        {/* Hero Content */}
+        <div className="relative z-10 w-full max-w-[1200px] mx-auto px-2 sm:px-4 md:px-0 flex flex-col items-center justify-center text-center">
+          <h2 className="text-5xl md:text-6xl font-semibold text-white text-center tracking-tight drop-shadow-lg relative">
+            {activeTab === 'direksi' ? (
+              <>
+                <span className="text-secondary">{t('portfolio.header.direksi')}</span>
+              </>
+            ) : (
+              <>
+                <span className="text-secondary">{t('portfolio.header.pm')}</span>
+              </>
+            )}
+            <span className="block mx-auto mt-4 w-32 h-1 rounded-full bg-gradient-to-r from-secondary via-white to-secondary opacity-80 animate-pulse-slow"></span>
+          </h2>
+          <p className="text-white/90 mt-8 mb-0 text-lg md:text-xl text-center max-w-3xl mx-auto font-light">
             {t('portfolio.header.description')}
-            </p>
-          </div>
+          </p>
         </div>
-      </div>
+      </section>
+      
+      <section className="bg-gray-50 py-12 min-h-screen relative overflow-hidden">  
       <div className="container mx-auto px-6 py-0">
       {/* Tab Switcher */}
       <div className="flex justify-center mb-10">
@@ -404,6 +427,7 @@ export default function PortfolioPage() {
         </div>
       )}
       </div>
-    </section>
+      </section>
+    </main>
   );
 }

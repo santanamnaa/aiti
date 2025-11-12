@@ -64,10 +64,10 @@ const Header: React.FC = () => {
 
   return (
     <header
-      className={`fixed w-full z-50 transition-colors duration-1000 ease-in-out font-poppins shadow-[0_0_15px_0_rgba(0,0,0,0.08)] ${
+      className={`fixed w-full z-50 transition-all duration-1000 ease-in-out font-poppins ${
         isScrolled
-          ? 'bg-gradient-to-b from-[#12192C]/95 to-[#0A0E18]/95'
-          : 'bg-transparent'
+          ? 'bg-gradient-to-b from-[#12192C]/95 to-[#0A0E18]/95 shadow-[0_0_15px_0_rgba(0,0,0,0.08)]'
+          : 'bg-transparent shadow-none'
       }`}
       style={{ fontFamily: 'Poppins, sans-serif', height: '100px' }}
     >
